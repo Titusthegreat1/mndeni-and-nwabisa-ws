@@ -69,7 +69,8 @@ const Registry = () => {
     }
   }, []);
 
-  const featuredItems = registryItems.slice(0, 4);
+  // Use page 9 items as featured items (items 49-52)
+  const featuredItems = registryItems.filter(item => [49, 50, 51, 52].includes(item.id));
   
   // Rearrange items: move first 20 to pages 6 and 7, others move up
   const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
@@ -86,9 +87,9 @@ const Registry = () => {
     });
   };
 
-  // Make all items available by returning false
-  const isItemUnavailable = () => {
-    return false;
+  // Check if item is unavailable (purchased)
+  const isItemUnavailable = (item: RegistryItem) => {
+    return purchasedItems.has(item.id);
   };
 
   const scrollToAllItems = () => {

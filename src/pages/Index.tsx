@@ -18,65 +18,37 @@ const Index = () => {
     return storedPurchasedItems ? new Set(JSON.parse(storedPurchasedItems)) : new Set();
   };
 
-  // All registry items for filtering
+  // Page 9 featured items (items 49-52 based on 6 items per page: 8*6=48, so page 9 starts at index 48)
   const allRegistryItems = [
     {
-      id: 1,
-      name: "Ella 12 Piece Porcelain Dinner Set White",
-      price: "R3,597",
-      image: "/lovable-uploads/98a9519d-ca4d-4051-9676-a04e8e1c5f5e.png"
+      id: 49,
+      name: "Smeg 50's Retro Style Hand Blender Cream",
+      price: "R2,699",
+      image: "/lovable-uploads/c5b2e663-3192-4e77-b00a-225b7b3adc38.png"
     },
     {
-      id: 2,
-      name: "Laguna Cutlery 16 Piece Set Silver", 
-      price: "R1,197",
-      image: "/lovable-uploads/e19d5600-5a96-44f4-a0c6-290f4b4f58fa.png"
+      id: 50,
+      name: "Russell Hobbs 2.5L Glass Kettle",
+      price: "R899",
+      image: "/lovable-uploads/c08030a5-28ad-4921-be33-950fb37faeab.png"
     },
     {
-      id: 15,
-      name: "Smeg 2 Slice Toaster Cream",
-      price: "R3,399",
-      image: "/lovable-uploads/5d8cddd1-0af0-41ec-80a2-392d1cb8013b.png"
+      id: 51,
+      name: "Bamboo Cutting Board Set of 3",
+      price: "R599",
+      image: "/lovable-uploads/55a23160-0d93-419d-941c-d41ff6efffae.png"
     },
     {
-      id: 31,
-      name: "Philips 3000 Series 9L Dual Basket Air Fryer",
-      price: "R4,499",
-      image: "/lovable-uploads/97d4b3f0-993b-4689-afd7-f306cca678ec.png"
-    },
-    {
-      id: 3,
-      name: "Grater Square 4 Sided w/Storage Container",
-      price: "R249",
-      image: "/lovable-uploads/0312ba0b-f410-43f2-bc78-4ce8654f0391.png"
-    },
-    {
-      id: 4,
-      name: "Progressive Onion Chopper",
-      price: "R399",
-      image: "/lovable-uploads/cf841809-1fd0-45a0-bf0c-4785adbfe09a.png"
-    },
-    {
-      id: 5,
-      name: "@home Extendable Pot Stand",
-      price: "R498", 
-      image: "/lovable-uploads/c922899a-1d5f-4633-a700-0a28cdfa2493.png"
-    },
-    {
-      id: 6,
-      name: "Joie Regular Ice Cube Tray Green",
-      price: "R258",
-      image: "/lovable-uploads/23050d27-a9bc-4780-b4a4-35aac12b6b8e.png"
+      id: 52,
+      name: "Progressive Oil Drizzler Set",
+      price: "R449",
+      image: "/lovable-uploads/c9709d3e-a9b5-45a3-9bf3-bd9cc07197e4.png"
     }
   ];
 
-  // Filter out purchased items and get last 4 items from page 5 (items 21-24)
+  // Filter out purchased items and get featured items
   const purchasedItems = getPurchasedItems();
-  const availableItems = allRegistryItems.filter(item => !purchasedItems.has(item.id));
-  // Page 5 would have items 21-24 (with 6 items per page: 4*6=24, so page 5 starts at index 24)
-  // Get the last 4 items from what would be page 5
-  const page5StartIndex = 24; // Items 25-30 would be on page 5
-  const featuredRegistryItems = availableItems.slice(page5StartIndex, page5StartIndex + 4);
+  const featuredRegistryItems = allRegistryItems.filter(item => !purchasedItems.has(item.id));
 
   return (
     <div className="min-h-screen bg-cream">
@@ -232,23 +204,31 @@ const Index = () => {
             Help us start our new journey together with these special gifts
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            {featuredRegistryItems.map((item, index) => (
-              <Link 
-                key={index} 
-                to={`/registry?highlight=${item.id}`}
-                className="bg-white rounded-lg p-4 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              >
-                <div className="aspect-square mb-3 overflow-hidden rounded-lg">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-brown mb-1 line-clamp-2">{item.name}</h3>
-                <p className="text-lg font-bold text-terracotta">{item.price}</p>
-              </Link>
-            ))}
+            {featuredRegistryItems.map((item, index) => {
+              const isPurchased = purchasedItems.has(item.id);
+              return (
+                <Link 
+                  key={index} 
+                  to={`/registry?highlight=${item.id}`}
+                  className={`bg-white rounded-lg p-4 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
+                    isPurchased ? 'opacity-50 grayscale' : ''
+                  }`}
+                >
+                  <div className="aspect-square mb-3 overflow-hidden rounded-lg">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-brown mb-1 line-clamp-2">{item.name}</h3>
+                  <p className="text-lg font-bold text-terracotta">{item.price}</p>
+                  {isPurchased && (
+                    <p className="text-xs text-gray-500 mt-1">Selected</p>
+                  )}
+                </Link>
+              );
+            })}
           </div>
           <Link 
             to="/registry"

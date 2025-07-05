@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import AccommodationCard from '../components/accommodation/AccommodationCard';
 import AccommodationPagination from '../components/accommodation/AccommodationPagination';
-import AccommodationContact from '../components/accommodation/AccommodationContact';
 import { accommodations } from '../components/accommodation/AccommodationData';
 
 const Accommodation = () => {
@@ -51,9 +50,6 @@ const Accommodation = () => {
             totalPages={totalPages}
             onPageChange={handlePageChange}
           />
-
-          {/* General Booking Contact Info */}
-          <AccommodationContact />
         </div>
       </div>
     </div>

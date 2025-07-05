@@ -11,11 +11,13 @@ interface ItemCardProps {
   isItemUnavailable: (item: RegistryItem) => boolean;
 }
 
-const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm }) => {
+const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnavailable }) => {
   const [buyerName, setBuyerName] = useState('');
   const [buyerSurname, setBuyerSurname] = useState('');
   const [requestDelivery, setRequestDelivery] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const isUnavailable = isItemUnavailable(item);
 
   const handleGiftSelection = () => {
     // If item has a website URL, just redirect after delivery confirmation
@@ -86,7 +88,9 @@ ${buyerName} ${buyerSurname}`
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:scale-105">
+    <div className={`bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:scale-105 ${
+      isUnavailable ? 'opacity-50 grayscale' : ''
+    }`}>
       <div className="mb-4 h-40 bg-gray-100 rounded-lg overflow-hidden">
         <img 
           src={item.image} 
@@ -100,8 +104,12 @@ ${buyerName} ${buyerSurname}`
       {item.color && <p className="text-sm text-brown/60 mb-2">Color: {item.color}</p>}
       <div className="flex justify-between items-center mb-4">
         <span className="font-bold text-xl text-brown">{item.price}</span>
-        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-          Available
+        <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+          isUnavailable 
+            ? 'bg-gray-100 text-gray-600' 
+            : 'bg-green-100 text-green-800'
+        }`}>
+          {isUnavailable ? 'Selected' : 'Available'}
         </span>
       </div>
       
@@ -120,9 +128,10 @@ ${buyerName} ${buyerSurname}`
         >
           <Button 
             className="w-full bg-terracotta hover:bg-terracotta/90 text-white"
+            disabled={isUnavailable}
           >
             <Gift className="w-4 h-4 mr-2" />
-            Select Gift
+            {isUnavailable ? 'Already Selected' : 'Select Gift'}
           </Button>
         </GiftSelectionDialog>
       </div>
