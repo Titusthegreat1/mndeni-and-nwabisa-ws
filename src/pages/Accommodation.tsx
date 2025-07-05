@@ -31,10 +31,16 @@ const Accommodation = () => {
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-brown mb-4">
               Accommodation
             </h1>
-            <p className="text-brown/80 text-lg max-w-2xl mx-auto">
+            <p className="text-brown/80 text-lg max-w-2xl mx-auto mb-6">
               We've carefully selected these wonderful places for you to stay during our special celebration.
               Each offers unique charm and comfort for our guests.
             </p>
+            {/* Deposit Notice */}
+            <div className="bg-terracotta/10 border border-terracotta/20 rounded-lg p-4 max-w-3xl mx-auto">
+              <p className="text-brown font-medium">
+                <strong>Important:</strong> All places require a deposit as soon as possible to make reservations due to the limited time before our special day.
+              </p>
+            </div>
           </div>
 
           {/* Accommodations Grid - Current Page Items */}
@@ -60,12 +66,10 @@ const Accommodation = () => {
               <div>
                 <p className="text-brown font-medium">Amahle Makiwane</p>
                 <p className="text-brown/80">+27 72 064 4631</p>
-                <p className="text-brown/60 text-sm">Beach & Coastal Venues</p>
               </div>
               <div>
                 <p className="text-brown font-medium">Sibabalwe Songca</p>
                 <p className="text-brown/80">+27 76 739 6163</p>
-                <p className="text-brown/60 text-sm">Inland & Lodge Venues</p>
               </div>
             </div>
           </div>

@@ -71,12 +71,10 @@ const AccommodationCard = ({ place }: AccommodationCardProps) => {
               <div>
                 <p className="text-brown font-medium">Amahle Makiwane</p>
                 <p className="text-brown/80 text-sm">+27 72 064 4631</p>
-                <p className="text-brown/60 text-xs">Beach & Coastal Venues</p>
               </div>
               <div>
                 <p className="text-brown font-medium">Sibabalwe Songca</p>
                 <p className="text-brown/80 text-sm">+27 76 739 6163</p>
-                <p className="text-brown/60 text-xs">Inland & Lodge Venues</p>
               </div>
             </div>
           </div>
