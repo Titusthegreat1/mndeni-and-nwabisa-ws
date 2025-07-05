@@ -1,0 +1,63 @@
+
+import React, { useState } from 'react';
+import Navigation from '../components/Navigation';
+import AccommodationCard from '../components/accommodation/AccommodationCard';
+import AccommodationPagination from '../components/accommodation/AccommodationPagination';
+import AccommodationContact from '../components/accommodation/AccommodationContact';
+import { accommodations } from '../components/accommodation/AccommodationData';
+
+const Accommodation = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(accommodations.length / itemsPerPage);
+
+  const getCurrentPageItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return accommodations.slice(startIndex, endIndex);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <div className="min-h-screen bg-cream">
+      <Navigation />
+      
+      <div className="container mx-auto px-4 py-16" id="accommodation-section">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="font-playfair text-4xl md:text-5xl font-bold text-brown mb-4">
+              Accommodation
+            </h1>
+            <p className="text-brown/80 text-lg max-w-2xl mx-auto">
+              We've carefully selected these wonderful places for you to stay during our special celebration.
+              Each offers unique charm and comfort for our guests.
+            </p>
+          </div>
+
+          {/* Accommodations Grid - Current Page Items */}
+          <div className="grid lg:grid-cols-1 gap-8 mb-8">
+            {getCurrentPageItems().map((place) => (
+              <AccommodationCard key={place.id} place={place} />
+            ))}
+          </div>
+
+          {/* Pagination */}
+          <AccommodationPagination 
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+
+          {/* General Booking Contact Info */}
+          <AccommodationContact />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Accommodation;
