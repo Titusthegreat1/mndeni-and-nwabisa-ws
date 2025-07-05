@@ -50,6 +50,25 @@ const Accommodation = () => {
             totalPages={totalPages}
             onPageChange={handlePageChange}
           />
+
+          {/* Contact Information Footer */}
+          <div className="mt-12 text-center p-6 bg-brown/5 rounded-lg">
+            <h3 className="font-playfair text-2xl font-bold text-brown mb-4">
+              For More Information
+            </h3>
+            <div className="flex flex-col md:flex-row justify-center gap-8">
+              <div>
+                <p className="text-brown font-medium">Amahle Makiwane</p>
+                <p className="text-brown/80">+27 72 064 4631</p>
+                <p className="text-brown/60 text-sm">Beach & Coastal Venues</p>
+              </div>
+              <div>
+                <p className="text-brown font-medium">Sibabalwe Songca</p>
+                <p className="text-brown/80">+27 76 739 6163</p>
+                <p className="text-brown/60 text-sm">Inland & Lodge Venues</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

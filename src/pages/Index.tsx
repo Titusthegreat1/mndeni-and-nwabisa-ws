@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import CountdownTimer from '../components/CountdownTimer';
 import { MapPin, Calendar, ExternalLink, Gift } from 'lucide-react';
+import { registryItems } from '../components/registry/RegistryItems';
 
 const Index = () => {
   const previewImages = [
@@ -18,37 +19,14 @@ const Index = () => {
     return storedPurchasedItems ? new Set(JSON.parse(storedPurchasedItems)) : new Set();
   };
 
-  // Page 9 featured items (items 49-52 based on 6 items per page: 8*6=48, so page 9 starts at index 48)
-  const allRegistryItems = [
-    {
-      id: 49,
-      name: "Smeg 50's Retro Style Hand Blender Cream",
-      price: "R2,699",
-      image: "/lovable-uploads/c5b2e663-3192-4e77-b00a-225b7b3adc38.png"
-    },
-    {
-      id: 50,
-      name: "Russell Hobbs 2.5L Glass Kettle",
-      price: "R899",
-      image: "/lovable-uploads/c08030a5-28ad-4921-be33-950fb37faeab.png"
-    },
-    {
-      id: 51,
-      name: "Bamboo Cutting Board Set of 3",
-      price: "R599",
-      image: "/lovable-uploads/55a23160-0d93-419d-941c-d41ff6efffae.png"
-    },
-    {
-      id: 52,
-      name: "Progressive Oil Drizzler Set",
-      price: "R449",
-      image: "/lovable-uploads/c9709d3e-a9b5-45a3-9bf3-bd9cc07197e4.png"
-    }
-  ];
+  // Get actual page 9 items (items 49-52) from the registry
+  const getFeaturedItems = () => {
+    return registryItems.filter(item => [49, 50, 51, 52].includes(item.id));
+  };
 
   // Filter out purchased items and get featured items
   const purchasedItems = getPurchasedItems();
-  const featuredRegistryItems = allRegistryItems.filter(item => !purchasedItems.has(item.id));
+  const featuredRegistryItems = getFeaturedItems().filter(item => !purchasedItems.has(item.id));
 
   return (
     <div className="min-h-screen bg-cream">
@@ -222,6 +200,7 @@ const Index = () => {
                     />
                   </div>
                   <h3 className="text-sm font-semibold text-brown mb-1 line-clamp-2">{item.name}</h3>
+                  <p className="text-xs text-brown/70 mb-1">{item.brand}</p>
                   <p className="text-lg font-bold text-terracotta">{item.price}</p>
                   {isPurchased && (
                     <p className="text-xs text-gray-500 mt-1">Selected</p>

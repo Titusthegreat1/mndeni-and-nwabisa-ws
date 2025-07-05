@@ -24,32 +24,6 @@ interface AccommodationCardProps {
 }
 
 const AccommodationCard = ({ place }: AccommodationCardProps) => {
-  // Determine which booking contact to show based on accommodation type
-  const getBookingContact = () => {
-    const lowerType = place.type.toLowerCase();
-    const lowerName = place.name.toLowerCase();
-    
-    // Check if it's a beach/coastal venue
-    if (lowerType.includes('beach') || lowerType.includes('coastal') || 
-        lowerName.includes('beach') || lowerName.includes('coast') ||
-        lowerName.includes('ocean') || lowerName.includes('sea')) {
-      return {
-        name: 'Amahle Makiwane',
-        phone: '+27 72 064 4631',
-        category: 'Beach & Coastal Venues'
-      };
-    }
-    
-    // Default to inland/lodge contact
-    return {
-      name: 'Sibabalwe Songca',
-      phone: '+27 76 739 6163',
-      category: 'Inland & Lodge Venues'
-    };
-  };
-
-  const bookingContact = getBookingContact();
-
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
       <div className="lg:flex">
@@ -92,13 +66,19 @@ const AccommodationCard = ({ place }: AccommodationCardProps) => {
 
           {/* Booking Contact Details */}
           <div className="mb-6 p-4 bg-cream/50 rounded-lg">
-            <h4 className="font-semibold text-brown mb-2">Booking Contact:</h4>
-            <p className="text-brown font-medium">{bookingContact.name}</p>
-            <p className="text-brown/80 text-sm">{bookingContact.phone}</p>
-            <p className="text-brown/60 text-xs mt-1">
-              Specialist for {bookingContact.category}
-            </p>
-            <p className="text-brown/60 text-xs">Available to assist with reservations and booking inquiries.</p>
+            <h4 className="font-semibold text-brown mb-2">Booking Contacts:</h4>
+            <div className="space-y-2">
+              <div>
+                <p className="text-brown font-medium">Amahle Makiwane</p>
+                <p className="text-brown/80 text-sm">+27 72 064 4631</p>
+                <p className="text-brown/60 text-xs">Beach & Coastal Venues</p>
+              </div>
+              <div>
+                <p className="text-brown font-medium">Sibabalwe Songca</p>
+                <p className="text-brown/80 text-sm">+27 76 739 6163</p>
+                <p className="text-brown/60 text-xs">Inland & Lodge Venues</p>
+              </div>
+            </div>
           </div>
 
           {/* Website Button */}
