@@ -188,7 +188,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://m.yuppiechef.com/le-creuset-serveware.htm?id=56067&name=Le-Creuset-Angular-Stoneware-Oil-and-Vinegar-Carafes-Set-of-2&vid=1722581"
   },
   {
-    id: 52,
+    id: 73,
     name: "Grace Leaf Salt & Pepper Shaker Gold",
     brand: "GRACE COLLECTION",
     price: "R399",
@@ -198,7 +198,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/grace-leaf-salt-pepper-shaker-gold-153300aaro3/p?skuId=1634967"
   },
   {
-    id: 53,
+    id: 74,
     name: "Cup and Saucer – Face Facts",
     brand: "CARROL BOYES",
     price: "R369.00",
@@ -208,7 +208,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://carrolboyes.com/za/cup-and-saucer-face-facts.html"
   },
   {
-    id: 54,
+    id: 75,
     name: "Cup and Saucer – It's a Secret",
     brand: "CARROL BOYES",
     price: "R369.00",
@@ -218,7 +218,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://carrolboyes.com/za/cup-and-saucer-it-s-a-secret.html"
   },
   {
-    id: 55,
+    id: 76,
     name: "Mug Set of 4 – Let's Face It",
     brand: "CARROL BOYES",
     price: "R1,099.00",
@@ -229,7 +229,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://carrolboyes.com/za/mug-set-of-4-let-s-face-it.html"
   },
   {
-    id: 56,
+    id: 77,
     name: "Milk Jug – Face Facts",
     brand: "CARROL BOYES",
     price: "R799.00",
@@ -239,7 +239,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://carrolboyes.com/za/milk-jug-face-facts.html"
   },
   {
-    id: 57,
+    id: 78,
     name: "Canister with Lid Set of 3 – Sketchbook",
     brand: "CARROL BOYES",
     price: "R1,619.00",

@@ -99,7 +99,7 @@ export const kitchenwareItems: RegistryItem[] = [
     websiteUrl: "https://m.yuppiechef.com/gift-baskets.htm?id=65409&name=Gift-Baskets-Bamboo-Braai-Case-3-Piece"
   },
   {
-    id: 52,
+    id: 70,
     name: "Le Creuset Sea Salt Classic Salt & Pepper Mill 11cm",
     brand: "LE CREUSET",
     price: "R1,249",
@@ -110,7 +110,7 @@ export const kitchenwareItems: RegistryItem[] = [
     websiteUrl: "https://m.yuppiechef.com/le-creuset-mills.htm?id=65488&name=Le-Creuset-Sea-Salt-Classic-Salt-and-Pepper-Mill-11cm"
   },
   {
-    id: 53,
+    id: 71,
     name: "Le Creuset Sea Salt Stoneware Butter Crock 170ml",
     brand: "LE CREUSET",
     price: "R799",
@@ -121,7 +121,7 @@ export const kitchenwareItems: RegistryItem[] = [
     websiteUrl: "https://m.yuppiechef.com/le-creuset-prep-and-storage.htm?id=65485&name=Le-Creuset-Sea-Salt-Stoneware-Butter-Crock-170ml"
   },
   {
-    id: 54,
+    id: 72,
     name: "Taurus Spicesync Battery Operated Salt & Pepper Grinder",
     brand: "TAURUS",
     price: "R999.00",

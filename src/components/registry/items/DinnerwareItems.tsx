@@ -64,17 +64,6 @@ export const dinnerwareItems: RegistryItem[] = [
     websiteUrl: "https://www.lecreuset.co.za/stoneware-set-of-4-tasting-cups/79113.html"
   },
   {
-    id: 50,
-    name: "Le Creuset Set of 4 Tasting Cups",
-    brand: "LE CREUSET",
-    price: "R559.00",
-    size: "SET OF 4",
-    color: "Red",
-    available: true,
-    image: "/lovable-uploads/6653c9d7-735f-46cc-bfe8-da5dee6bf924.png",
-    websiteUrl: "https://www.lecreuset.co.za/stoneware-set-of-4-tasting-cups/79113.html"
-  },
-  {
     id: 51,
     name: "Le Creuset Calm Collection Mugs (Set of 4)",
     brand: "LE CREUSET",

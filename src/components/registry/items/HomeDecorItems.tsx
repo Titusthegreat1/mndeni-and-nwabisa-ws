@@ -33,7 +33,7 @@ export const homeDecorItems: RegistryItem[] = [
     image: "/lovable-uploads/22e3ad5a-1c91-4bca-9ca8-f6b01432a459.png"
   },
   {
-    id: 53,
+    id: 79,
     name: "Verona Seafoam 600TC Egyptian Cotton Duvet Cover Set",
     brand: "VOLPES",
     price: "R2,299 - R2,699",
@@ -44,7 +44,7 @@ export const homeDecorItems: RegistryItem[] = [
     websiteUrl: "https://www.volpes.co.za/product/verona-seafoam-600tc-egyptian-cotton-duvet-cover-set"
   },
   {
-    id: 54,
+    id: 80,
     name: "White 600TC Egyptian Cotton Fitted Sheet",
     brand: "VOLPES",
     price: "R1,099 - R1,599",
@@ -55,7 +55,7 @@ export const homeDecorItems: RegistryItem[] = [
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
   },
   {
-    id: 55,
+    id: 81,
     name: "White 600TC Egyptian Cotton Flat Sheet",
     brand: "VOLPES",
     price: "R1,199 - R1,299",
