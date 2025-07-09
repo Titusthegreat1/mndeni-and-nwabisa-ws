@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import { Button } from '@/components/ui/button';
@@ -103,9 +102,17 @@ ${formData.fullName} ${formData.surname}`;
             <h1 className="font-playfair text-5xl font-bold text-brown mb-4">
               RSVP
             </h1>
-            <p className="text-lg text-brown/80">
+            <p className="text-lg text-brown/80 mb-4">
               We would be honored by your presence at our special day
             </p>
+            <div className="bg-terracotta/10 border border-terracotta/30 rounded-lg p-4 mb-6">
+              <p className="text-terracotta font-semibold text-lg">
+                ⏰ RSVP Deadline: 31 August 2025
+              </p>
+              <p className="text-brown/70 text-sm mt-1">
+                Please respond by this date to help us with our planning
+              </p>
+            </div>
             <div className="geometric-divider w-24 mx-auto mt-6"></div>
           </div>
 
