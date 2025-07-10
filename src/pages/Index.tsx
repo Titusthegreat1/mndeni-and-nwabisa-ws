@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
@@ -19,9 +20,10 @@ const Index = () => {
     return storedPurchasedItems ? new Set(JSON.parse(storedPurchasedItems)) : new Set();
   };
 
-  // Get actual page 9 items (items 49-52) from the registry
+  // Get featured items (expand to 7 items: 49, 50, 51, 52, plus 3 more random items)
   const getFeaturedItems = () => {
-    return registryItems.filter(item => [49, 50, 51, 52].includes(item.id));
+    const featuredIds = [49, 50, 51, 52, 25, 42, 70]; // Added 3 more items
+    return registryItems.filter(item => featuredIds.includes(item.id));
   };
 
   // Filter out purchased items and get featured items
@@ -181,27 +183,27 @@ const Index = () => {
           <p className="text-lg text-brown/80 mb-8">
             Help us start our new journey together with these special gifts
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 mb-8">
             {featuredRegistryItems.map((item, index) => {
               const isPurchased = purchasedItems.has(item.id);
               return (
                 <Link 
                   key={index} 
                   to={`/registry?highlight=${item.id}`}
-                  className={`bg-white rounded-lg p-4 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
+                  className={`bg-white rounded-lg p-3 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
                     isPurchased ? 'opacity-50 grayscale' : ''
                   }`}
                 >
-                  <div className="aspect-square mb-3 overflow-hidden rounded-lg">
+                  <div className="aspect-square mb-2 overflow-hidden rounded-lg">
                     <img 
                       src={item.image} 
                       alt={item.name}
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="text-sm font-semibold text-brown mb-1 line-clamp-2">{item.name}</h3>
+                  <h3 className="text-xs font-semibold text-brown mb-1 line-clamp-2">{item.name}</h3>
                   <p className="text-xs text-brown/70 mb-1">{item.brand}</p>
-                  <p className="text-lg font-bold text-terracotta">{item.price}</p>
+                  <p className="text-sm font-bold text-terracotta">{item.price}</p>
                   {isPurchased && (
                     <p className="text-xs text-gray-500 mt-1">Selected</p>
                   )}

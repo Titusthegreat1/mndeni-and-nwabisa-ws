@@ -89,7 +89,7 @@ export const kitchenwareItems: RegistryItem[] = [
   },
   {
     id: 43,
-    name: "Gift Baskets Bamboo Braai Case, 3-Piece",
+    name: "Bamboo Braai Case, 3-Piece",
     brand: "GIFT BASKETS",
     price: "R449",
     size: "BRAAI SET",

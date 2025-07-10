@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -70,12 +69,14 @@ const Registry = () => {
     }
   }, []);
 
-  // Use page 9 items as featured items (items 49-52)
-  const featuredItems = registryItems.filter(item => [49, 50, 51, 52].includes(item.id));
+  // Use page 9 items as featured items (items 49, 50, 51, 52)
+  const featuredItemIds = [49, 50, 51, 52];
+  const featuredItems = registryItems.filter(item => featuredItemIds.includes(item.id));
   
   // Rearrange items: move first 20 to pages 6 and 7, others move up
+  // Also exclude featured items from the "View All" section
   const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
-  const remainingItems = rearrangedItems;
+  const remainingItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
   const totalPages = Math.ceil(remainingItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = (item: RegistryItem, buyerName: string, buyerSurname: string) => {
