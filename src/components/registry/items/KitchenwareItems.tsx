@@ -130,5 +130,71 @@ export const kitchenwareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/d768bc5c-9c92-4386-864f-6653602b8bd1.png",
     websiteUrl: "https://bash.com/taurus-spicesync-battery-operated-salt-and-pepper-grinder-153301aant3/p?skuId=1625862"
+  },
+  {
+    id: 73,
+    name: "Villa Wicker Picnic Basket with Cotton Lining",
+    brand: "WOOLWORTHS",
+    price: "R1,299.00",
+    size: "PICNIC BASKET",
+    color: "Natural",
+    available: true,
+    image: "/lovable-uploads/716a629e-facb-4bfc-9c69-47490ee08ac3.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Outdoor-Braai/Picnic-Accessories-Coolers/Villa-Wicker-Picnic-Basket-with-Cotton-Lining/_/A-509228756?isFromPLP=true"
+  },
+  {
+    id: 74,
+    name: "Brown Round Wood Serving Board",
+    brand: "WOOLWORTHS",
+    price: "R329",
+    size: "SERVING BOARD",
+    color: "Brown",
+    available: true,
+    image: "/lovable-uploads/c0861a7a-9e84-44b4-a6e1-8ea83b56dce8.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-501570990"
+  },
+  {
+    id: 75,
+    name: "Apron Gift Set",
+    brand: "SERIOUS COOK",
+    price: "R470.00",
+    size: "APRON SET",
+    color: "Black",
+    available: true,
+    image: "/lovable-uploads/f7745248-add4-4168-a74c-d41ef433ac9d.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Easter/Outdoor-Table-Inspiration/Braai-Outdoor/Outdoor-Utensils-Prep/Serious-Cook-Apron-Gift-Set/_/A-507991300?isFromPLP=true"
+  },
+  {
+    id: 77,
+    name: "Oslo Aluminium Pan with Reinforced Ceramic Non-Stick 28cm",
+    brand: "SERIOUS COOK",
+    price: "R599.00",
+    size: "28CM",
+    color: "Black",
+    available: true,
+    image: "/lovable-uploads/7e5e9931-207a-4b01-af7f-27374a9858c8.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Kitchen-Essentials/Pots-Pans-Cookware/Woks-Frying-Pans/Serious-Cook-Oslo-Aluminium-Pan-with-Reinforced-Ceramic-Non-Stick-28cm/_/A-508368220?isFromPLP=true"
+  },
+  {
+    id: 78,
+    name: "Milano Stainless Steel Cutlery Set 16 Piece",
+    brand: "WOOLWORTHS",
+    price: "R799.00",
+    size: "16 PIECE",
+    color: "Stainless Steel",
+    available: true,
+    image: "/lovable-uploads/78a62350-54dc-4578-b060-1e789f38670c.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Cutlery/Milano-Stainless-Steel-Cutlery-Set-16-Piece/_/A-508838278?isFromPLP=true"
+  },
+  {
+    id: 79,
+    name: "Lava Stainless Steel Salad Server Set 2 Pack",
+    brand: "WOOLWORTHS",
+    price: "R549.00",
+    size: "2 PACK",
+    color: "Stainless Steel",
+    available: true,
+    image: "/lovable-uploads/2c9d9640-5ef8-48ef-9a02-21f76913c7c0.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-509169222"
   }
 ];

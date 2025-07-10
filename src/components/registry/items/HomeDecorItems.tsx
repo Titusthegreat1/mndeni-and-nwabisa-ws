@@ -3,66 +3,85 @@ import { RegistryItem } from '../types';
 
 export const homeDecorItems: RegistryItem[] = [
   {
-    id: 22,
-    name: "Amanda-Jayne Fresh Zest Reed Diffuser",
-    brand: "AMANDA JAYNE",
-    price: "R1,338",
-    size: "170ml",
-    color: "Natural",
+    id: 26,
+    name: "Ciroa Textured Cylinder Vase 15cm",
+    brand: "CIROA",
+    price: "R399",
+    size: "15CM",
+    color: "White",
     available: true,
-    image: "/lovable-uploads/c0cfb71a-cbeb-4b71-b2a3-d0695849ca20.png"
+    image: "/lovable-uploads/d0daea06-f034-4959-8fec-504591a3275e.png"
   },
   {
     id: 27,
-    name: "Amanda-Jayne Fresh Zest Ambient Mist",
-    brand: "AMANDA JAYNE",
-    price: "R558",
-    size: "500ml",
-    color: "Natural",
+    name: "Ciroa Textured Cylinder Vase 20cm",
+    brand: "CIROA",
+    price: "R499",
+    size: "20CM",
+    color: "White",
     available: true,
-    image: "/lovable-uploads/f1b0124e-f99d-486a-95de-32178416ae59.png"
+    image: "/lovable-uploads/e612db67-5af2-4bbb-9676-3499d0f980ec.png"
   },
   {
-    id: 33,
-    name: "Grace Most Opulent 1000 Thread Count Duvet Cover Set",
-    brand: "GRACE COLLECTION",
-    price: "R3,999",
-    size: "Queen",
-    color: "Cream",
+    id: 28,
+    name: "Ciroa Textured Cylinder Vase 25cm",
+    brand: "CIROA",
+    price: "R599",
+    size: "25CM",
+    color: "White",
     available: true,
-    image: "/lovable-uploads/22e3ad5a-1c91-4bca-9ca8-f6b01432a459.png"
+    image: "/lovable-uploads/e679785c-ab69-46a9-92d5-23b4721f81f6.png"
   },
   {
-    id: 79,
-    name: "Verona Seafoam 600TC Egyptian Cotton Duvet Cover Set",
-    brand: "VOLPES",
-    price: "R2,299 - R2,699",
-    size: "Queen",
-    color: "Seafoam",
+    id: 29,
+    name: "Ciroa Textured Oval Vase 15cm",
+    brand: "CIROA",
+    price: "R399",
+    size: "15CM",
+    color: "White",
     available: true,
-    image: "/lovable-uploads/verona-seafoam-duvet-cover.png",
-    websiteUrl: "https://www.volpes.co.za/product/verona-seafoam-600tc-egyptian-cotton-duvet-cover-set"
+    image: "/lovable-uploads/e19d5600-5a96-44f4-a0c6-290f4b4f58fa.png"
+  },
+  {
+    id: 30,
+    name: "Ciroa Textured Oval Vase 20cm",
+    brand: "CIROA",
+    price: "R499",
+    size: "20CM",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/1a2b4ad4-d080-4516-8c83-da192ad545ea.png"
+  },
+  {
+    id: 31,
+    name: "Ciroa Textured Oval Vase 25cm",
+    brand: "CIROA",
+    price: "R599",
+    size: "25CM",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/88f2364b-0fcb-4ff6-b5dc-a1fc2235b4cd.png"
+  },
+  {
+    id: 76,
+    name: "Milky Finish Round Vase",
+    brand: "WOOLWORTHS",
+    price: "R279.00",
+    size: "ROUND VASE",
+    color: "Green",
+    available: true,
+    image: "/lovable-uploads/4e4948a1-d639-4fb9-83b3-6c7be0caa390.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Home-Decor/Vases-Planters-Plants/Milky-Finish-Round-Vase/_/A-509104202"
   },
   {
     id: 80,
-    name: "White 600TC Egyptian Cotton Fitted Sheet",
-    brand: "VOLPES",
-    price: "R1,099 - R1,599",
-    size: "Queen",
-    color: "White",
+    name: "Barrel Vase Large",
+    brand: "WOOLWORTHS",
+    price: "R279.00",
+    size: "LARGE",
+    color: "Clear",
     available: true,
-    image: "/lovable-uploads/white-fitted-sheet.png",
-    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
-  },
-  {
-    id: 81,
-    name: "White 600TC Egyptian Cotton Flat Sheet",
-    brand: "VOLPES",
-    price: "R1,199 - R1,299",
-    size: "Queen",
-    color: "White",
-    available: true,
-    image: "/lovable-uploads/white-flat-sheet.png",
-    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
+    image: "/lovable-uploads/8d6d6a8c-85ca-4bf0-8ff2-649671a9d278.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Home-Decor/Vases-Planters-Plants/Barrel-Vase-Large/_/A-507685238?isFromPLP=true"
   }
 ];

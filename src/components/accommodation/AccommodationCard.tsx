@@ -67,6 +67,9 @@ const AccommodationCard = ({ place }: AccommodationCardProps) => {
           {/* Booking Contact Details */}
           <div className="mb-6 p-4 bg-cream/50 rounded-lg">
             <h4 className="font-semibold text-brown mb-2">Booking Contacts:</h4>
+            <p className="text-brown/70 text-sm mb-3 italic">
+              These contacts are to assist with family/friend group bookings.
+            </p>
             <div className="space-y-2">
               <div>
                 <p className="text-brown font-medium">Amahle Makiwane</p>
