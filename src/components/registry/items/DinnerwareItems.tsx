@@ -1,16 +1,15 @@
-
 import { RegistryItem } from '../types';
 
 export const dinnerwareItems: RegistryItem[] = [
   {
     id: 1,
-    name: "Ella 12 Piece Porcelain Dinner Set White",
+    name: "Dinner Plate Set (6 pieces)",
     brand: "@HOME",
-    price: "R3,597",
-    size: "CROCKERY S",
+    price: "R299",
+    size: "27CM",
     color: "White",
     available: true,
-    image: "/lovable-uploads/98a9519d-ca4d-4051-9676-a04e8e1c5f5e.png"
+    image: "/lovable-uploads/02e231f2-28e9-45c6-be73-3bde72adf3aa.png"
   },
   {
     id: 2,
