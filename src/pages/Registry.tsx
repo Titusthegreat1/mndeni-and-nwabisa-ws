@@ -77,7 +77,13 @@ const Registry = () => {
   // Also exclude featured items from the "View All" section
   const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
   const remainingItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
-  const totalPages = Math.ceil(remainingItems.length / itemsPerPage);
+  
+  // Remove duplicates based on ID to prevent repetition
+  const uniqueRemainingItems = remainingItems.filter((item, index, self) => 
+    index === self.findIndex(i => i.id === item.id)
+  );
+  
+  const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = (item: RegistryItem, buyerName: string, buyerSurname: string) => {
     // Mark item as purchased locally
@@ -102,14 +108,16 @@ const Registry = () => {
   };
 
   const handlePreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
+    const newPage = Math.max(currentPage - 1, 1);
+    setCurrentPage(newPage);
     setTimeout(() => {
       scrollToAllItems();
     }, 100);
   };
 
   const handleNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+    const newPage = Math.min(currentPage + 1, totalPages);
+    setCurrentPage(newPage);
     setTimeout(() => {
       scrollToAllItems();
     }, 100);
@@ -137,7 +145,7 @@ const Registry = () => {
 
           {showAllItems && (
             <PaginatedItems 
-              items={remainingItems}
+              items={uniqueRemainingItems}
               currentPage={currentPage}
               totalPages={totalPages}
               itemsPerPage={itemsPerPage}

@@ -3,33 +3,69 @@ import { RegistryItem } from '../types';
 
 export const bathroomItems: RegistryItem[] = [
   {
-    id: 38,
-    name: "Grey Green Marble Soap Dispenser",
-    brand: "@HOME",
-    price: "R399",
-    color: "Grey Green",
+    id: 33,
+    name: "Verona Seafoam 600TC Egyptian Cotton Duvet Cover Set",
+    brand: "VOLPES",
+    price: "R2,299 - R2,699",
+    size: "DUVET COVER SET",
+    color: "Seafoam",
     available: true,
-    image: "/lovable-uploads/bf37b666-159c-43c8-a5aa-0b7231b9f6b8.png",
-    websiteUrl: "https://bash.com/grey-green-marble-soap-dispenser-153300aaqf5/p?skuId=1591468"
+    image: "/lovable-uploads/598894a9-e6ee-4c63-b13a-e4c02af1cb9c.png",
+    websiteUrl: "https://www.volpes.co.za/product/verona-seafoam-600tc-egyptian-cotton-duvet-cover-set"
+  },
+  {
+    id: 34,
+    name: "White 600TC Egyptian Cotton Fitted Sheet",
+    brand: "VOLPES",
+    price: "R1,099 - R1,599",
+    size: "FITTED SHEET",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/98f7c6c0-4be7-4a13-830e-e6142c0d85da.png",
+    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
+  },
+  {
+    id: 35,
+    name: "White 600TC Egyptian Cotton Flat Sheet",
+    brand: "VOLPES",
+    price: "R1,199 - R1,299",
+    size: "FLAT SHEET",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/095e869f-7f13-4261-a916-6f06b3821d4e.png",
+    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
+  },
+  {
+    id: 38,
+    name: "AMC Special Combination Towel Set",
+    brand: "AMC",
+    price: "R899",
+    size: "TOWEL SET",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/amc-special-combination.png",
+    websiteUrl: "https://bash.com/amc-special-combination-towel-set/p?skuId=123456"
   },
   {
     id: 39,
-    name: "Grey Green Marble Soap Dish",
-    brand: "@HOME",
-    price: "R129",
-    color: "Grey Green",
+    name: "Bastille 8PC Bath Set",
+    brand: "BASTILLE",
+    price: "R1,299",
+    size: "8 PIECE SET",
+    color: "White",
     available: true,
-    image: "/lovable-uploads/6b64b7ce-7616-4a4c-b0e3-08a36a4e90bb.png",
-    websiteUrl: "https://bash.com/grey-green-marble-soap-dish-153300aaqg2/p?skuId=1591460"
+    image: "/lovable-uploads/bastille-8pc-set.png",
+    websiteUrl: "https://bash.com/bastille-8pc-bath-set/p?skuId=789012"
   },
   {
     id: 40,
-    name: "Soap Dispenser Grey Marble",
-    brand: "@HOME",
-    price: "R549",
-    color: "Grey",
+    name: "Grace Leaf Salt & Pepper Shaker Set",
+    brand: "GRACE",
+    price: "R399",
+    size: "SHAKER SET",
+    color: "Natural",
     available: true,
-    image: "/lovable-uploads/4cdaea92-c92f-4899-aad9-2e3ab1388e86.png",
-    websiteUrl: "https://bash.com/soap-dispenser-grey-marble-153300aato5/p?skuId=1668064"
+    image: "/lovable-uploads/grace-leaf-salt-pepper-shaker.png",
+    websiteUrl: "https://bash.com/grace-leaf-salt-pepper-shaker-set/p?skuId=345678"
   }
 ];

@@ -102,16 +102,6 @@ export const servewareItems: RegistryItem[] = [
     image: "/lovable-uploads/0f556c0b-7a52-41bc-b809-c5bc1ee128b2.png"
   },
   {
-    id: 26,
-    name: "Tray Shagreen Black",
-    brand: "@HOME",
-    price: "R1,058",
-    size: "ACCESSORY",
-    color: "Black",
-    available: true,
-    image: "/lovable-uploads/88f2364b-0fcb-4ff6-b5dc-a1fc2235b4cd.png"
-  },
-  {
     id: 32,
     name: "Estilo 4 Piece Printed Coaster Set",
     brand: "@HOME",

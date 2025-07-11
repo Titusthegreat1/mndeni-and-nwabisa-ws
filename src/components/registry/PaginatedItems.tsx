@@ -27,10 +27,15 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
   onPreviousPage,
   onNextPage
 }) => {
+  // Ensure unique items by removing duplicates based on ID
+  const uniqueItems = items.filter((item, index, self) => 
+    index === self.findIndex(i => i.id === item.id)
+  );
+
   // Pagination logic
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentPageItems = items.slice(startIndex, endIndex);
+  const currentPageItems = uniqueItems.slice(startIndex, endIndex);
 
   return (
     <div className="animate-fade-in">

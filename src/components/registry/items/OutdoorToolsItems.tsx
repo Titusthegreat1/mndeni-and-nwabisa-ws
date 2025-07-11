@@ -31,7 +31,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R999",
     size: "500W",
     available: true,
-    image: "/lovable-uploads/cf841809-1fd0-45a0-bf0c-4785adbfe09a.png",
+    image: "/lovable-uploads/4afe121b-c39d-478f-acf0-04ccb7b74c63.png",
     websiteUrl: "https://leroymerlin.co.za/garden-trimmer-500w"
   },
   {
@@ -51,7 +51,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R2,100",
     size: "2-Stroke 43cm",
     available: true,
-    image: "/lovable-uploads/c922899a-1d5f-4633-a700-0a28cdfa2493.png",
+    image: "/lovable-uploads/e9ac9646-0b35-4cbd-884e-b59e96b6bec5.png",
     websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm"
   },
   {
@@ -61,7 +61,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R749",
     size: "3000W",
     available: true,
-    image: "/lovable-uploads/23050d27-a9bc-4780-b4a4-35aac12b6b8e.png",
+    image: "/lovable-uploads/45f15e6f-7ed4-4530-9370-7de5e61f4633.png",
     websiteUrl: "https://leroymerlin.co.za/ryobi-blower-mulching-vacuum-3000w-1"
   },
   {
