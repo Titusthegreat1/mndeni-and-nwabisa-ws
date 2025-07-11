@@ -4,14 +4,14 @@ import { RegistryItem } from '../types';
 export const outdoorToolsItems: RegistryItem[] = [
   {
     id: 62,
-    name: "Nouvelle Cast Iron 8-Piece Cookware Set",
-    brand: "NOUVELLE",
-    price: "R3,999",
-    size: "8-Piece Set",
-    color: "Matt Black",
+    name: "Grip 39 Piece Tool Set GT2015",
+    brand: "GRIP",
+    price: "R499",
+    size: "39-Piece Set",
+    color: "Orange/Black",
     available: true,
-    image: "/lovable-uploads/02e231f2-28e9-45c6-be73-3bde72adf3aa.png",
-    websiteUrl: "https://www.cielo.co.za/nouvelle-cast-iron-sets/nouvelle-cast-iron-8-piece-cookware-set-matt-black"
+    image: "/lovable-uploads/757c758a-0c1b-47bd-adc2-e0dcc4b22b42.png",
+    websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
   },
   {
     id: 63,
@@ -66,22 +66,22 @@ export const outdoorToolsItems: RegistryItem[] = [
   },
   {
     id: 68,
-    name: "Ryobi Circular Saw",
+    name: "Ryobi Circular Saw 1250W",
     brand: "RYOBI",
     price: "R899",
     size: "1250W",
     available: true,
-    image: "/lovable-uploads/354c5ba2-054f-4d27-bed7-5436e8311070.png",
+    image: "/lovable-uploads/e84e105f-b0c5-47bf-a52f-f6d2c5aba881.png",
     websiteUrl: "https://leroymerlin.co.za/ryobi-circular-saw-1250w-81485851"
   },
   {
     id: 69,
-    name: "Red Rhino Pressure Washer",
+    name: "Red Rhino 1700W Pressure Washer 120 Bar",
     brand: "RED RHINO",
     price: "R1,499",
     size: "1700W - 120 Bar",
     available: true,
-    image: "/lovable-uploads/d174729d-db71-4fb2-9b63-4287176cbb7d.png",
+    image: "/lovable-uploads/acbbf2ef-52f2-4000-8691-c11264c77f0e.png",
     websiteUrl: "https://leroymerlin.co.za/red-rhino-1700w-pressure-washer-120-bar"
   }
 ];
