@@ -52,17 +52,6 @@ export const appliancesItems: RegistryItem[] = [
     websiteUrl: "https://m.yuppiechef.com/philips-garment-steamers.htm?id=53695&name=Philips-3000-Series-Handheld-Garment-Steamer-with-Metal-Steam-Plate-1000W&vid=1717456&display=mobile&campaignid=21412411439&adgroupid=&keyword=&device=m&network=x&devm=&gad_source=1&gad_campaignid=21412412810&gclid=EAIaIQobChMI6sbI3-eSjgMVKK2DBx1ZdCFPEAQYDCABEgJbJPD_BwE"
   },
   {
-    id: 44,
-    name: "Grip 39 Piece Tool Set GT2015",
-    brand: "GRIP",
-    price: "R499",
-    size: "TOOL SET",
-    color: "Orange/Black",
-    available: true,
-    image: "/lovable-uploads/87d8efc7-b306-49ef-9075-f0f86791d3ac.png",
-    websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
-  },
-  {
     id: 56,
     name: "Nutribullet Pro 900W High-Speed Blender",
     brand: "NUTRIBULLET",
