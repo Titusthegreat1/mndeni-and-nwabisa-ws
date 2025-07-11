@@ -36,28 +36,6 @@ export const bathroomItems: RegistryItem[] = [
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
   },
   {
-    id: 38,
-    name: "AMC Special Combination Towel Set",
-    brand: "AMC",
-    price: "R899",
-    size: "TOWEL SET",
-    color: "White",
-    available: true,
-    image: "/lovable-uploads/amc-special-combination.png",
-    websiteUrl: "https://bash.com/amc-special-combination-towel-set/p?skuId=123456"
-  },
-  {
-    id: 39,
-    name: "Bastille 8PC Bath Set",
-    brand: "BASTILLE",
-    price: "R1,299",
-    size: "8 PIECE SET",
-    color: "White",
-    available: true,
-    image: "/lovable-uploads/bastille-8pc-set.png",
-    websiteUrl: "https://bash.com/bastille-8pc-bath-set/p?skuId=789012"
-  },
-  {
     id: 40,
     name: "Grace Leaf Salt & Pepper Shaker Set",
     brand: "GRACE",

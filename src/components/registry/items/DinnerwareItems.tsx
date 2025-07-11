@@ -3,13 +3,14 @@ import { RegistryItem } from '../types';
 export const dinnerwareItems: RegistryItem[] = [
   {
     id: 1,
-    name: "Dinner Plate Set (6 pieces)",
-    brand: "@HOME",
-    price: "R299",
-    size: "27CM",
-    color: "White",
+    name: "Garden Trimmer 500W",
+    brand: "GARDEN TOOLS",
+    price: "R999",
+    size: "500W",
+    color: "Green",
     available: true,
-    image: "/lovable-uploads/02e231f2-28e9-45c6-be73-3bde72adf3aa.png"
+    image: "/lovable-uploads/4afe121b-c39d-478f-acf0-04ccb7b74c63.png",
+    websiteUrl: "https://leroymerlin.co.za/garden-trimmer-500w"
   },
   {
     id: 2,
