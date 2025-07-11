@@ -59,7 +59,7 @@ export const appliancesItems: RegistryItem[] = [
     size: "TOOL SET",
     color: "Orange/Black",
     available: true,
-    image: "/lovable-uploads/02e231f2-28e9-45c6-be73-3bde72adf3aa.png",
+    image: "/lovable-uploads/87d8efc7-b306-49ef-9075-f0f86791d3ac.png",
     websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
   },
   {
