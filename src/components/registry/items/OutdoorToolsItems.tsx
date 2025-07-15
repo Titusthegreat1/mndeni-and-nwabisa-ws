@@ -25,17 +25,6 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
   },
   {
-    id: 71,
-    name: "Alva Split Pole Gas Patio Heater",
-    brand: "ALVA",
-    price: "R2,599.00",
-    size: "13KW",
-    color: "Grey",
-    available: true,
-    image: "/lovable-uploads/e19d5600-5a96-44f4-a0c6-290f4b4f58fa.png",
-    websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
-  },
-  {
     id: 72,
     name: "Garden Trimmer",
     brand: "GARDEN TOOLS",

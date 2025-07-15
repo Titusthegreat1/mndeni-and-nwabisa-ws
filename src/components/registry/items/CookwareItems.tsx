@@ -68,28 +68,6 @@ export const cookwareItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/le-creuset-shallow-casserole-bamboo-30cm-154103aaal8/p?skuId=403978"
   },
   {
-    id: 60,
-    name: "AMC Special Combination 1 (2-Piece Set)",
-    brand: "AMC",
-    price: "R16,264.00",
-    size: "2-Piece Set",
-    color: "Stainless Steel",
-    available: true,
-    image: "/lovable-uploads/amc-special-combination.png",
-    websiteUrl: "https://www.amcsa.co.za/en/product-range/cookware/two-piece-sets/special-combination-1/"
-  },
-  {
-    id: 61,
-    name: "Bastille 8 Pc Set",
-    brand: "BASTILLE",
-    price: "R3,999.00",
-    size: "8-Piece Set",
-    color: "Stainless Steel",
-    available: true,
-    image: "/lovable-uploads/bastille-8pc-set.png",
-    websiteUrl: "https://verimark.co.za/bastille-8-pc-set"
-  },
-  {
     id: 78,
     name: "White 600TC Egyptian Cotton Fitted Sheet",
     brand: "VOLPES",
