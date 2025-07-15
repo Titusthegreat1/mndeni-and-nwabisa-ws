@@ -36,7 +36,7 @@ export const giftItems: RegistryItem[] = [
   },
   {
     id: 1004,
-    name: "Natural Earth Stone Round Tablecloth",
+    name: "Natural Earth Stone Round Tablecloth (6-8seater)",
     brand: "DSA",
     price: "R 799.00",
     image: "/lovable-uploads/c4284563-4889-4bdb-8884-c28fb40a9fb1.png",
@@ -147,7 +147,7 @@ export const giftItems: RegistryItem[] = [
   },
   {
     id: 1014,
-    name: "Natural Earth Stone Round Tablecloth",
+    name: "Natural Earth Stone Round Tablecloth (6-8seater)",
     brand: "DSA",
     price: "R 799.00",
     image: "/lovable-uploads/60337be3-ca2d-412d-a3d7-a1120265334f.png",
