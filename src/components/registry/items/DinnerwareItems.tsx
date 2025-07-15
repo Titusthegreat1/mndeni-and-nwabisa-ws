@@ -73,5 +73,60 @@ export const dinnerwareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/394ba56c-872a-46a1-ba93-d4a70cccb2f0.png",
     websiteUrl: "https://m.yuppiechef.com/le-creuset-coffee-and-tea.htm?id=48675&name=Le-Creuset-Calm-Collection-Mugs-Set-of-4"
+  },
+  {
+    id: 60,
+    name: "Cup and Saucer – Face Facts",
+    brand: "CARROL BOYES",
+    price: "R369.00",
+    size: "CUP & SAUCER",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/2c101db2-110e-48ee-b194-8b580ac4f579.png",
+    websiteUrl: "https://carrolboyes.com/za/cup-and-saucer-face-facts.html"
+  },
+  {
+    id: 61,
+    name: "Cup and Saucer – It's a Secret",
+    brand: "CARROL BOYES",
+    price: "R369.00",
+    size: "CUP & SAUCER",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/015de6b6-d988-4902-b287-c6133f617dec.png",
+    websiteUrl: "https://carrolboyes.com/za/cup-and-saucer-it-s-a-secret.html"
+  },
+  {
+    id: 62,
+    name: "Mug Set of 4 – Let's Face It",
+    brand: "CARROL BOYES",
+    price: "R1,099.00",
+    size: "SET OF 4",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/5dd070f2-45f8-4981-8546-96e9af1ce60c.png",
+    websiteUrl: "https://carrolboyes.com/za/mug-set-of-4-let-s-face-it.html"
+  },
+  {
+    id: 63,
+    name: "Milk Jug – Face Facts",
+    brand: "CARROL BOYES",
+    price: "R799.00",
+    size: "MILK JUG",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/8140cb70-235e-4bba-b2b4-a8da5b4e3724.png",
+    websiteUrl: "https://carrolboyes.com/za/milk-jug-face-facts.html"
+  },
+  {
+    id: 64,
+    name: "Canister with Lid Set of 3 – Sketchbook",
+    brand: "CARROL BOYES",
+    price: "R1,619.00",
+    size: "SET OF 3",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/296c8be6-8284-4c86-af59-03cab134a787.png",
+    websiteUrl: "https://carrolboyes.com/za/canister-with-lid-set-of-3-sketchbook.html"
   }
 ];
