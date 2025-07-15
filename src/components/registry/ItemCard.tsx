@@ -83,11 +83,11 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
         });
       }
 
-      // If direct URL is available and no email provided, open it immediately
-      if (item.websiteUrl && !buyerEmail.trim()) {
+      // If direct URL is available, open it after short delay
+      if (item.websiteUrl) {
         setTimeout(() => {
           window.open(item.websiteUrl, '_blank');
-        }, 1000);
+        }, 1500);
       }
 
     } catch (error: any) {
