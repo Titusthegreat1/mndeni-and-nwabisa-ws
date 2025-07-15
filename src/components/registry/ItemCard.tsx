@@ -28,7 +28,8 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
   const hasQuantity = item.color?.includes('Qty:');
 
   const handleGiftSelection = async () => {
-    if (!buyerName.trim() || !buyerSurname.trim()) {
+    // Only require name/surname for items without direct purchase URLs
+    if (!item.websiteUrl && (!buyerName.trim() || !buyerSurname.trim())) {
       toast({
         title: "Missing Information",
         description: "Please enter your name and surname.",
