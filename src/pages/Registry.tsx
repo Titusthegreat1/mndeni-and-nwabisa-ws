@@ -13,26 +13,42 @@ import { ExternalLink } from 'lucide-react';
 const Registry = () => {
   const { toast } = useToast();
   const [showAllItems, setShowAllItems] = useState(false);
+  const [itemQuantities, setItemQuantities] = useState<Record<number, number>>({});
   const [purchasedItems, setPurchasedItems] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
   const itemsPerPage = 6;
 
-  // Load purchased items from localStorage on component mount
+  // Load purchased items and quantities from localStorage on component mount
   useEffect(() => {
     const storedPurchasedItems = localStorage.getItem('purchasedRegistryItems');
+    const storedItemQuantities = localStorage.getItem('registryItemQuantities');
+    
     if (storedPurchasedItems) {
       const purchasedSet = new Set(JSON.parse(storedPurchasedItems));
       // Remove item 62 (Mug Set of 4 – Let's Face It) to make it available
       purchasedSet.delete(62);
       setPurchasedItems(purchasedSet);
     }
+    
+    if (storedItemQuantities) {
+      const quantities = JSON.parse(storedItemQuantities);
+      // Reset item 62 quantity to full if it exists
+      if (quantities[62] !== undefined) {
+        quantities[62] = 0; // Reset to show full quantity
+      }
+      setItemQuantities(quantities);
+    }
   }, []);
 
-  // Save purchased items to localStorage whenever purchasedItems changes
+  // Save purchased items and quantities to localStorage
   useEffect(() => {
     localStorage.setItem('purchasedRegistryItems', JSON.stringify(Array.from(purchasedItems)));
   }, [purchasedItems]);
+
+  useEffect(() => {
+    localStorage.setItem('registryItemQuantities', JSON.stringify(itemQuantities));
+  }, [itemQuantities]);
 
   // Check for highlight parameter and show all items if coming from homepage
   useEffect(() => {
@@ -89,8 +105,24 @@ const Registry = () => {
   const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = (item: RegistryItem, buyerName: string, buyerSurname: string) => {
-    // Mark item as purchased locally
-    setPurchasedItems(prev => new Set([...prev, item.id]));
+    // Extract quantity from color field if it exists
+    const quantityMatch = item.color?.match(/Qty:\s*(\d+)/);
+    const originalQuantity = quantityMatch ? parseInt(quantityMatch[1]) : 1;
+    
+    // Get current purchased quantity for this item
+    const currentPurchased = itemQuantities[item.id] || 0;
+    const newPurchased = currentPurchased + 1;
+    
+    // Update quantities
+    setItemQuantities(prev => ({
+      ...prev,
+      [item.id]: newPurchased
+    }));
+    
+    // If all quantity is purchased, mark as fully purchased
+    if (newPurchased >= originalQuantity) {
+      setPurchasedItems(prev => new Set([...prev, item.id]));
+    }
     
     toast({
       title: "Gift Selected!",
@@ -98,9 +130,17 @@ const Registry = () => {
     });
   };
 
-  // Check if item is unavailable (purchased)
+  // Check if item is unavailable (fully purchased)
   const isItemUnavailable = (item: RegistryItem) => {
     return purchasedItems.has(item.id);
+  };
+
+  // Get remaining quantity for an item
+  const getRemainingQuantity = (item: RegistryItem) => {
+    const quantityMatch = item.color?.match(/Qty:\s*(\d+)/);
+    const originalQuantity = quantityMatch ? parseInt(quantityMatch[1]) : 1;
+    const purchasedQuantity = itemQuantities[item.id] || 0;
+    return Math.max(0, originalQuantity - purchasedQuantity);
   };
 
   const scrollToAllItems = () => {
@@ -139,6 +179,7 @@ const Registry = () => {
             highlightItemId={highlightItemId}
             onPurchaseConfirm={handlePurchaseConfirm}
             isItemUnavailable={isItemUnavailable}
+            getRemainingQuantity={getRemainingQuantity}
           />
 
           <RegistryFilters 
@@ -155,6 +196,7 @@ const Registry = () => {
               highlightItemId={highlightItemId}
               onPurchaseConfirm={handlePurchaseConfirm}
               isItemUnavailable={isItemUnavailable}
+              getRemainingQuantity={getRemainingQuantity}
               onPreviousPage={handlePreviousPage}
               onNextPage={handleNextPage}
             />

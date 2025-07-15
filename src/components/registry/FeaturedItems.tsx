@@ -8,13 +8,15 @@ interface FeaturedItemsProps {
   highlightItemId: number | null;
   onPurchaseConfirm: (item: RegistryItem, buyerName: string, buyerSurname: string) => void;
   isItemUnavailable: (item: RegistryItem) => boolean;
+  getRemainingQuantity: (item: RegistryItem) => number;
 }
 
 const FeaturedItems: React.FC<FeaturedItemsProps> = ({
   items,
   highlightItemId,
   onPurchaseConfirm,
-  isItemUnavailable
+  isItemUnavailable,
+  getRemainingQuantity
 }) => {
   return (
     <div className="mb-8">
@@ -31,6 +33,7 @@ const FeaturedItems: React.FC<FeaturedItemsProps> = ({
               item={item} 
               onPurchaseConfirm={onPurchaseConfirm}
               isItemUnavailable={isItemUnavailable}
+              getRemainingQuantity={getRemainingQuantity}
             />
           </div>
         ))}

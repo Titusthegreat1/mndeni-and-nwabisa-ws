@@ -9,15 +9,18 @@ interface ItemCardProps {
   item: RegistryItem;
   onPurchaseConfirm: (item: RegistryItem, buyerName: string, buyerSurname: string) => void;
   isItemUnavailable: (item: RegistryItem) => boolean;
+  getRemainingQuantity: (item: RegistryItem) => number;
 }
 
-const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnavailable }) => {
+const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnavailable, getRemainingQuantity }) => {
   const [buyerName, setBuyerName] = useState('');
   const [buyerSurname, setBuyerSurname] = useState('');
   const [requestDelivery, setRequestDelivery] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const isUnavailable = isItemUnavailable(item);
+  const remainingQuantity = getRemainingQuantity(item);
+  const hasQuantity = item.color?.includes('Qty:');
 
   const handleGiftSelection = () => {
     // If item has a website URL, just redirect after delivery confirmation
@@ -101,7 +104,11 @@ ${buyerName} ${buyerSurname}`
       <h3 className="font-playfair text-lg font-bold text-brown mb-2">{item.name}</h3>
       <p className="text-sm text-brown/70 mb-1">{item.brand}</p>
       {item.size && <p className="text-sm text-brown/60 mb-1">Size: {item.size}</p>}
-      {item.color && <p className="text-sm text-brown/60 mb-2">Color: {item.color}</p>}
+      {item.color && (
+        <p className="text-sm text-brown/60 mb-2">
+          Color: {hasQuantity ? item.color.replace(/,\s*Qty:\s*\d+/, `, Qty: ${remainingQuantity}`) : item.color}
+        </p>
+      )}
       <div className="flex justify-between items-center mb-4">
         <span className="font-bold text-xl text-brown">{item.price}</span>
         <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
@@ -109,7 +116,7 @@ ${buyerName} ${buyerSurname}`
             ? 'bg-gray-100 text-gray-600' 
             : 'bg-green-100 text-green-800'
         }`}>
-          {isUnavailable ? 'Selected' : 'Available'}
+          {isUnavailable ? 'Selected' : hasQuantity ? `${remainingQuantity} Available` : 'Available'}
         </span>
       </div>
       

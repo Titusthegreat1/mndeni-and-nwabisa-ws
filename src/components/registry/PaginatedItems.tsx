@@ -12,6 +12,7 @@ interface PaginatedItemsProps {
   highlightItemId: number | null;
   onPurchaseConfirm: (item: RegistryItem, buyerName: string, buyerSurname: string) => void;
   isItemUnavailable: (item: RegistryItem) => boolean;
+  getRemainingQuantity: (item: RegistryItem) => number;
   onPreviousPage: () => void;
   onNextPage: () => void;
 }
@@ -24,6 +25,7 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
   highlightItemId,
   onPurchaseConfirm,
   isItemUnavailable,
+  getRemainingQuantity,
   onPreviousPage,
   onNextPage
 }) => {
@@ -54,6 +56,7 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
               item={item} 
               onPurchaseConfirm={onPurchaseConfirm}
               isItemUnavailable={isItemUnavailable}
+              getRemainingQuantity={getRemainingQuantity}
             />
           </div>
         ))}
