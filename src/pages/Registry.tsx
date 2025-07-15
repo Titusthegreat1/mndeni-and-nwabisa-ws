@@ -22,7 +22,10 @@ const Registry = () => {
   useEffect(() => {
     const storedPurchasedItems = localStorage.getItem('purchasedRegistryItems');
     if (storedPurchasedItems) {
-      setPurchasedItems(new Set(JSON.parse(storedPurchasedItems)));
+      const purchasedSet = new Set(JSON.parse(storedPurchasedItems));
+      // Remove item 62 (Mug Set of 4 – Let's Face It) to make it available
+      purchasedSet.delete(62);
+      setPurchasedItems(purchasedSet);
     }
   }, []);
 
