@@ -3,7 +3,7 @@ import { RegistryItem } from '../types';
 
 export const outdoorToolsItems: RegistryItem[] = [
   {
-    id: 62,
+    id: 70,
     name: "Grip 39 Piece Tool Set GT2015",
     brand: "GRIP",
     price: "R499",
@@ -14,7 +14,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
   },
   {
-    id: 63,
+    id: 71,
     name: "Alva Split Pole Gas Patio Heater",
     brand: "ALVA",
     price: "R2,599",
@@ -25,7 +25,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
   },
   {
-    id: 64,
+    id: 72,
     name: "Garden Trimmer",
     brand: "GARDEN TOOLS",
     price: "R999",
@@ -35,7 +35,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/garden-trimmer-500w"
   },
   {
-    id: 65,
+    id: 73,
     name: "Cordless Lithium Battery Screwdriver",
     brand: "POWER TOOLS",
     price: "R699",
@@ -45,7 +45,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
   },
   {
-    id: 66,
+    id: 74,
     name: "Talon Petrol Brush Cutter",
     brand: "TALON",
     price: "R2,100",
@@ -55,7 +55,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm"
   },
   {
-    id: 67,
+    id: 75,
     name: "Ryobi Blower Mulching Vacuum",
     brand: "RYOBI",
     price: "R749",
@@ -65,7 +65,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/ryobi-blower-mulching-vacuum-3000w-1"
   },
   {
-    id: 68,
+    id: 76,
     name: "Ryobi Circular Saw 1250W",
     brand: "RYOBI",
     price: "R899",
@@ -75,7 +75,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/ryobi-circular-saw-1250w-81485851"
   },
   {
-    id: 69,
+    id: 77,
     name: "Red Rhino 1700W Pressure Washer 120 Bar",
     brand: "RED RHINO",
     price: "R1,499",

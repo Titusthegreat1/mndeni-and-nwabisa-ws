@@ -36,7 +36,7 @@ export const bathroomItems: RegistryItem[] = [
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
   },
   {
-    id: 40,
+    id: 36,
     name: "Grace Leaf Salt & Pepper Shaker Set",
     brand: "GRACE",
     price: "R399",
