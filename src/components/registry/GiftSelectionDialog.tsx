@@ -75,7 +75,7 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
           </Button>
           <Button 
             className="bg-terracotta hover:bg-terracotta/90"
-            disabled={isLoading || (!buyerName.trim() || !buyerSurname.trim())}
+            disabled={isLoading || (!item.websiteUrl && (!buyerName.trim() || !buyerSurname.trim()))}
             onClick={onGiftSelection}
           >
             {isLoading ? 'Processing...' : (item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift')}
