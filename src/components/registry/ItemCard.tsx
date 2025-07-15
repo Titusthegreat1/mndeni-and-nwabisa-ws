@@ -4,6 +4,8 @@ import { Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { RegistryItem } from './types';
 import GiftSelectionDialog from './GiftSelectionDialog';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface ItemCardProps {
   item: RegistryItem;
@@ -15,78 +17,88 @@ interface ItemCardProps {
 const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnavailable, getRemainingQuantity }) => {
   const [buyerName, setBuyerName] = useState('');
   const [buyerSurname, setBuyerSurname] = useState('');
+  const [buyerEmail, setBuyerEmail] = useState('');
   const [requestDelivery, setRequestDelivery] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const isUnavailable = isItemUnavailable(item);
   const remainingQuantity = getRemainingQuantity(item);
   const hasQuantity = item.color?.includes('Qty:');
 
-  const handleGiftSelection = () => {
-    // If item has a website URL, just redirect after delivery confirmation
-    if (item.websiteUrl) {
-      window.open(item.websiteUrl, '_blank');
-      onPurchaseConfirm(item, '', '');
-      setRequestDelivery(false);
-      setIsDialogOpen(false);
+  const handleGiftSelection = async () => {
+    if (!buyerName.trim() || !buyerSurname.trim()) {
+      toast({
+        title: "Missing Information",
+        description: "Please enter your name and surname.",
+        variant: "destructive",
+      });
       return;
     }
 
-    // For items without links, proceed with email process
-    if (buyerName.trim() && buyerSurname.trim()) {
-      const subject = encodeURIComponent(`Gift Selection: ${item.name} - Wedding Registry`);
-      let body = '';
-      
-      if (requestDelivery) {
-        body = encodeURIComponent(
-          `Dear Dimpho Parkies / Zama Kunene,
+    setIsLoading(true);
 
-I would like to purchase and have delivered the following item from Mndeni & Nwabisa's wedding registry:
+    try {
+      // Call the enhanced email function
+      const { data, error } = await supabase.functions.invoke('send-registry-email', {
+        body: {
+          itemId: item.id,
+          itemName: item.name,
+          itemBrand: item.brand,
+          itemPrice: item.price,
+          itemSize: item.size,
+          itemColor: item.color,
+          itemWebsiteUrl: item.websiteUrl,
+          buyerName: buyerName.trim(),
+          buyerSurname: buyerSurname.trim(),
+          buyerEmail: buyerEmail.trim() || undefined,
+        },
+      });
 
-Item: ${item.name}
-Brand: ${item.brand}
-Price: ${item.price}
-${item.size ? `Size: ${item.size}` : ''}
-${item.color ? `Color: ${item.color}` : ''}
-
-Please provide the shipping address for delivery.
-
-Buyer Details:
-Name: ${buyerName} ${buyerSurname}
-
-Best regards,
-${buyerName} ${buyerSurname}`
-        );
-      } else {
-        body = encodeURIComponent(
-          `Dear Mndeni & Nwabisa,
-
-I would like to select the following gift from your wedding registry:
-
-Item: ${item.name}
-Brand: ${item.brand}
-Price: ${item.price}
-${item.size ? `Size: ${item.size}` : ''}
-${item.color ? `Color: ${item.color}` : ''}
-
-I will arrange the purchase myself.
-
-Gift Giver Details:
-Name: ${buyerName} ${buyerSurname}
-
-Best regards,
-${buyerName} ${buyerSurname}`
-        );
+      if (error) {
+        console.error('Email function error:', error);
+        throw new Error(error.message || 'Failed to send email');
       }
-      
-      const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
-      window.location.href = mailtoLink;
-      
+
       onPurchaseConfirm(item, buyerName, buyerSurname);
+      
+      // Clear form
       setBuyerName('');
       setBuyerSurname('');
+      setBuyerEmail('');
       setRequestDelivery(false);
       setIsDialogOpen(false);
+
+      // Show success message
+      if (buyerEmail.trim()) {
+        toast({
+          title: "Gift Selected!",
+          description: "Check your email for confirmation link to complete your purchase.",
+        });
+      } else {
+        toast({
+          title: "Gift Selected!",
+          description: "Registry owners have been notified. Please contact them directly to arrange purchase.",
+        });
+      }
+
+      // If direct URL is available and no email provided, open it immediately
+      if (item.websiteUrl && !buyerEmail.trim()) {
+        setTimeout(() => {
+          window.open(item.websiteUrl, '_blank');
+        }, 1000);
+      }
+
+    } catch (error: any) {
+      console.error('Error selecting gift:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to select gift. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -127,9 +139,12 @@ ${buyerName} ${buyerSurname}`
           setIsDialogOpen={setIsDialogOpen}
           buyerName={buyerName}
           buyerSurname={buyerSurname}
+          buyerEmail={buyerEmail}
           requestDelivery={requestDelivery}
+          isLoading={isLoading}
           setBuyerName={setBuyerName}
           setBuyerSurname={setBuyerSurname}
+          setBuyerEmail={setBuyerEmail}
           setRequestDelivery={setRequestDelivery}
           onGiftSelection={handleGiftSelection}
         >

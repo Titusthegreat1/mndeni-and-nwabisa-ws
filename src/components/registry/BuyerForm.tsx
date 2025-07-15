@@ -7,9 +7,11 @@ import { Checkbox } from '@/components/ui/checkbox';
 interface BuyerFormProps {
   buyerName: string;
   buyerSurname: string;
+  buyerEmail: string;
   requestDelivery: boolean;
   setBuyerName: (name: string) => void;
   setBuyerSurname: (surname: string) => void;
+  setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
   showNameFields: boolean;
 }
@@ -17,9 +19,11 @@ interface BuyerFormProps {
 const BuyerForm: React.FC<BuyerFormProps> = ({
   buyerName,
   buyerSurname,
+  buyerEmail,
   requestDelivery,
   setBuyerName,
   setBuyerSurname,
+  setBuyerEmail,
   setRequestDelivery,
   showNameFields
 }) => {
@@ -51,6 +55,23 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
               className="mt-1 border-sand focus:border-terracotta"
               placeholder="Enter your surname"
             />
+          </div>
+          
+          <div>
+            <Label htmlFor="buyerEmail" className="text-brown font-semibold">
+              Your Email (Optional)
+            </Label>
+            <Input
+              id="buyerEmail"
+              type="email"
+              value={buyerEmail}
+              onChange={(e) => setBuyerEmail(e.target.value)}
+              className="mt-1 border-sand focus:border-terracotta"
+              placeholder="Enter your email for confirmation"
+            />
+            <p className="text-xs text-brown/60 mt-1">
+              If provided, you'll receive a confirmation email with purchase instructions
+            </p>
           </div>
         </>
       )}

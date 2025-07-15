@@ -1,7 +1,13 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+const supabase = createClient(
+  "https://yptjhzawttwkaiacpnpc.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlwdGpoemF3dHR3a2FpYWNwbnBjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2MTQxNDUsImV4cCI6MjA2ODE5MDE0NX0.T3HG791nmPKtRyCDFJCfv6yIbaLxqvhyNJ3Ka1UMoJc"
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -9,13 +15,16 @@ const corsHeaders = {
 };
 
 interface RegistryEmailRequest {
+  itemId: number;
   itemName: string;
   itemBrand: string;
   itemPrice: string;
   itemSize?: string;
   itemColor?: string;
+  itemWebsiteUrl?: string;
   buyerName: string;
   buyerSurname: string;
+  buyerEmail?: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -25,12 +34,42 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { itemName, itemBrand, itemPrice, itemSize, itemColor, buyerName, buyerSurname }: RegistryEmailRequest = await req.json();
+    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail }: RegistryEmailRequest = await req.json();
 
-    const subject = `Gift Purchase - ${itemName} - Mndeni & Nwabisa Wedding Registry`;
-    const emailBody = `Dear Mndeni & Nwabisa,
+    // Generate unique confirmation token
+    const confirmationToken = crypto.randomUUID();
 
-I would like to purchase the following item from your wedding registry:
+    // Store purchase intent in database
+    const { error: dbError } = await supabase
+      .from('registry_purchases')
+      .insert({
+        item_id: itemId,
+        item_name: itemName,
+        item_brand: itemBrand,
+        item_price: itemPrice,
+        item_size: itemSize,
+        item_color: itemColor,
+        buyer_name: buyerName,
+        buyer_surname: buyerSurname,
+        buyer_email: buyerEmail,
+        redirect_url: itemWebsiteUrl,
+        confirmation_token: confirmationToken,
+        purchase_confirmed: false
+      });
+
+    if (dbError) {
+      console.error("Database error:", dbError);
+      throw new Error("Failed to store purchase information");
+    }
+
+    // Create confirmation link
+    const confirmationUrl = `https://yptjhzawttwkaiacpnpc.supabase.co/functions/v1/confirm-purchase?token=${confirmationToken}`;
+
+    // Send notification email to registry owners
+    const ownerSubject = `New Gift Selection - ${itemName} - Wedding Registry`;
+    const ownerEmailBody = `Dear Mndeni & Nwabisa,
+
+Someone has selected an item from your wedding registry and is proceeding with the purchase:
 
 Item: ${itemName}
 Brand: ${itemBrand}
@@ -38,23 +77,64 @@ Price: ${itemPrice}
 ${itemSize ? `Size: ${itemSize}` : ''}
 ${itemColor ? `Color: ${itemColor}` : ''}
 
-This email has been automatically generated to confirm my selection from your wedding registry. I will proceed with purchasing this item for your special day.
+Gift Buyer: ${buyerName} ${buyerSurname}
+${buyerEmail ? `Email: ${buyerEmail}` : ''}
 
-Please let me know if you need any additional information.
+This purchase is pending confirmation from the buyer.
 
 Best regards,
-${buyerName} ${buyerSurname}`;
+Wedding Registry System`;
 
-    const emailResponse = await resend.emails.send({
-      from: "Wedding Registry <onboarding@resend.dev>",
-      to: ["titus3luvo@gmail.com"],
-      subject: subject,
-      text: emailBody,
-    });
+    // Send confirmation email to buyer if email provided
+    const emailPromises = [
+      resend.emails.send({
+        from: "Wedding Registry <onboarding@resend.dev>",
+        to: ["titus3luvo@gmail.com"],
+        subject: ownerSubject,
+        text: ownerEmailBody,
+      })
+    ];
 
-    console.log("Registry email sent successfully:", emailResponse);
+    if (buyerEmail) {
+      const buyerSubject = `Confirm Your Gift Purchase - ${itemName}`;
+      const buyerEmailBody = `Dear ${buyerName},
 
-    return new Response(JSON.stringify({ success: true, emailId: emailResponse.id }), {
+Thank you for selecting a gift from Mndeni & Nwabisa's wedding registry!
+
+Please confirm your gift selection by clicking the link below:
+${confirmationUrl}
+
+Item Details:
+- Item: ${itemName}
+- Brand: ${itemBrand}
+- Price: ${itemPrice}
+${itemSize ? `- Size: ${itemSize}` : ''}
+${itemColor ? `- Color: ${itemColor}` : ''}
+
+After confirming, you'll be redirected to complete your purchase.
+
+Best regards,
+Wedding Registry Team`;
+
+      emailPromises.push(
+        resend.emails.send({
+          from: "Wedding Registry <onboarding@resend.dev>",
+          to: [buyerEmail],
+          subject: buyerSubject,
+          text: buyerEmailBody,
+        })
+      );
+    }
+
+    const emailResponses = await Promise.all(emailPromises);
+    console.log("Emails sent successfully:", emailResponses);
+
+    return new Response(JSON.stringify({ 
+      success: true, 
+      confirmationToken,
+      confirmationUrl: buyerEmail ? confirmationUrl : null,
+      message: buyerEmail ? "Confirmation email sent to buyer" : "Registry owners notified"
+    }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",

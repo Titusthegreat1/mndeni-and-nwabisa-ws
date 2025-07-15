@@ -1,1 +1,7 @@
-project_id = "cvdxwzhajfrhvezxtzxm"
+project_id = "yptjhzawttwkaiacpnpc"
+
+[functions.send-registry-email]
+verify_jwt = false
+
+[functions.confirm-purchase]
+verify_jwt = false

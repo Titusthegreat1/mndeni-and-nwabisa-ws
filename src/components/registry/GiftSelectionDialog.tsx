@@ -12,9 +12,12 @@ interface GiftSelectionDialogProps {
   setIsDialogOpen: (open: boolean) => void;
   buyerName: string;
   buyerSurname: string;
+  buyerEmail: string;
   requestDelivery: boolean;
+  isLoading: boolean;
   setBuyerName: (name: string) => void;
   setBuyerSurname: (surname: string) => void;
+  setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
   onGiftSelection: () => void;
   children: React.ReactNode;
@@ -26,9 +29,12 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
   setIsDialogOpen,
   buyerName,
   buyerSurname,
+  buyerEmail,
   requestDelivery,
+  isLoading,
   setBuyerName,
   setBuyerSurname,
+  setBuyerEmail,
   setRequestDelivery,
   onGiftSelection,
   children
@@ -54,9 +60,11 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
           <BuyerForm
             buyerName={buyerName}
             buyerSurname={buyerSurname}
+            buyerEmail={buyerEmail}
             requestDelivery={requestDelivery}
             setBuyerName={setBuyerName}
             setBuyerSurname={setBuyerSurname}
+            setBuyerEmail={setBuyerEmail}
             setRequestDelivery={setRequestDelivery}
             showNameFields={!item.websiteUrl}
           />
@@ -67,10 +75,10 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
           </Button>
           <Button 
             className="bg-terracotta hover:bg-terracotta/90"
-            disabled={!item.websiteUrl && (!buyerName.trim() || !buyerSurname.trim())}
+            disabled={isLoading || (!buyerName.trim() || !buyerSurname.trim())}
             onClick={onGiftSelection}
           >
-            {item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift'}
+            {isLoading ? 'Processing...' : (item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift')}
           </Button>
         </DialogFooter>
       </DialogContent>
