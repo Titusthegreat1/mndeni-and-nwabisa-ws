@@ -155,5 +155,49 @@ export const giftItems: RegistryItem[] = [
     size: "Round",
     color: "Natural Earth Stone",
     websiteUrl: "https://m.yuppiechef.com/dsa-tablecloths-and-runners.htm?id=30881&name=DSA-Natural-Earth-Stone-Round-Tablecloth&vid=54247&display=mobile&campaignid=21412411439&adgroupid=&keyword=&device=m&network=x&devm=&gad_source=1&gad_campaignid=21412412810&gclid=EAIaIQobChMIhd3GlruxjgMVU5FQBh1BQCD8EAQYAyABEgKNJfD_BwE"
+  },
+  {
+    id: 1015,
+    name: "Aurora Round Porcelain Casserole With Lid 30cm",
+    brand: "@home",
+    price: "R 379.00",
+    image: "/lovable-uploads/0f5d5829-58a6-420c-a2e8-11e576a324e4.png",
+    available: true,
+    size: "30cm",
+    color: "White, Qty: 2",
+    websiteUrl: "https://bash.com/aurora-round-porcelain-casserole-with-lid-30cm-153002aabl9/p?skuId=401732"
+  },
+  {
+    id: 1016,
+    name: "Aurora Rectangle Porcelain Casserole With Lid 32cm",
+    brand: "@home",
+    price: "R 649.00",
+    image: "/lovable-uploads/67a6e3eb-3a0e-48b4-9e68-59be2c858a2a.png",
+    available: true,
+    size: "32cm",
+    color: "White",
+    websiteUrl: "https://bash.com/aurora-rectangle-porcelain-casserole-with-lid-32cm-153002aabl3/p?skuId=400906"
+  },
+  {
+    id: 1017,
+    name: "Country Striped Table Runner, 3m",
+    brand: "Barrydale Hand Weavers",
+    price: "R 799.00",
+    image: "/lovable-uploads/7b287a38-7af5-4b00-84ee-82554df8fdbc.png",
+    available: true,
+    size: "3m",
+    color: "Country Striped",
+    websiteUrl: "https://m.yuppiechef.com/barrydale-hand-weavers-tablecloths-and-runners.htm?id=50833&name=Barrydale-Hand-Weavers-Country-Striped-Table-Runner-3m&vid=1712299"
+  },
+  {
+    id: 1018,
+    name: "Gold Border Cotton Table Runner Navy",
+    brand: "@home",
+    price: "R 699.00",
+    image: "/lovable-uploads/a402950d-d6d8-49ee-9593-4fd35328c677.png",
+    available: true,
+    size: "Standard",
+    color: "Navy",
+    websiteUrl: "https://bash.com/gold-border-cotton-table-runner-navy-153302aajo8/p?skuId=1791327"
   }
 ];

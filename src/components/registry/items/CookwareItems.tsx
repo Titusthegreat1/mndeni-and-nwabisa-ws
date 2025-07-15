@@ -3,16 +3,6 @@ import { RegistryItem } from '../types';
 
 export const cookwareItems: RegistryItem[] = [
   {
-    id: 16,
-    name: "Aurora Casserole Round w/lid Porcelain",
-    brand: "@HOME",
-    price: "R1,137.00",
-    size: "CASSELRGE",
-    color: "White",
-    available: true,
-    image: "/lovable-uploads/ad8010c9-c351-462e-8da1-bdd6aeffe754.png"
-  },
-  {
     id: 40,
     name: "AMC Special Combination 1 (2-Piece Set)",
     brand: "AMC",
