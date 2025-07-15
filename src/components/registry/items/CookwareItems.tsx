@@ -13,6 +13,39 @@ export const cookwareItems: RegistryItem[] = [
     image: "/lovable-uploads/ad8010c9-c351-462e-8da1-bdd6aeffe754.png"
   },
   {
+    id: 40,
+    name: "AMC Special Combination 1 (2-Piece Set)",
+    brand: "AMC",
+    price: "R16,264",
+    size: "2-Piece Set",
+    color: "Stainless Steel",
+    available: true,
+    image: "/lovable-uploads/9e913554-0a3c-4d0d-88a3-fdbfee675de0.png",
+    websiteUrl: "https://www.amcsa.co.za/en/product-range/cookware/two-piece-sets/special-combination-1/"
+  },
+  {
+    id: 41,
+    name: "Bastille 8 Pc Set",
+    brand: "BASTILLE",
+    price: "R3,999",
+    size: "8-Piece Set",
+    color: "Stainless Steel",
+    available: true,
+    image: "/lovable-uploads/2c3f21ff-8ce3-4f16-b12a-eaf1d3ff53d5.png",
+    websiteUrl: "https://verimark.co.za/bastille-8-pc-set"
+  },
+  {
+    id: 42,
+    name: "Nouvelle Cast Iron 8-Piece Cookware Set Matt Black",
+    brand: "NOUVELLE",
+    price: "R3,999",
+    size: "8-Piece Set",
+    color: "Matt Black",
+    available: true,
+    image: "/lovable-uploads/9d6be5a0-d7b7-4d6f-b541-327f1b9a1da7.png",
+    websiteUrl: "https://www.cielo.co.za/nouvelle-cast-iron-sets/nouvelle-cast-iron-8-piece-cookware-set-matt-black"
+  },
+  {
     id: 45,
     name: "Le Creuset Square Skillet Grill 26cm Bamboo",
     brand: "LE CREUSET",

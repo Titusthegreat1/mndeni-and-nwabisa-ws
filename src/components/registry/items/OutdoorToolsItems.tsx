@@ -3,6 +3,17 @@ import { RegistryItem } from '../types';
 
 export const outdoorToolsItems: RegistryItem[] = [
   {
+    id: 43,
+    name: "Alva Split Pole Gas Patio Heater",
+    brand: "ALVA",
+    price: "R2,599",
+    size: "13KW",
+    color: "Grey",
+    available: true,
+    image: "/lovable-uploads/54028bad-bb89-44d5-a1d8-1b04280796c8.png",
+    websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
+  },
+  {
     id: 70,
     name: "Grip 39 Piece Tool Set GT2015",
     brand: "GRIP",

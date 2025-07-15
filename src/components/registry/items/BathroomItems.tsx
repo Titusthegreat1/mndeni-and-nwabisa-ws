@@ -21,7 +21,7 @@ export const bathroomItems: RegistryItem[] = [
     size: "FITTED SHEET",
     color: "White",
     available: true,
-    image: "/lovable-uploads/98f7c6c0-4be7-4a13-830e-e6142c0d85da.png",
+    image: "/lovable-uploads/cac8f62e-319b-499e-9bdf-33cba239819b.png",
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
   },
   {
@@ -32,7 +32,7 @@ export const bathroomItems: RegistryItem[] = [
     size: "FLAT SHEET",
     color: "White",
     available: true,
-    image: "/lovable-uploads/095e869f-7f13-4261-a916-6f06b3821d4e.png",
+    image: "/lovable-uploads/cff0bd85-3796-4ac1-8bc7-f5ed5a53d680.png",
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
   },
   {
