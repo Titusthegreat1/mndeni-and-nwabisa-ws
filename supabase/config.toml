@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.confirm-purchase]
 verify_jwt = false
+
+[functions.send-rsvp-email]
+verify_jwt = false
