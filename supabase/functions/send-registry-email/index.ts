@@ -73,7 +73,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Send notification email to registry owners
-    const ownerSubject = `New Gift Selection - ${itemName} - Wedding Registry`;
+    const ownerSubject = `Gift Registry Selection from ${buyerName} ${buyerSurname} - ${itemName}`;
     const ownerEmailBody = `Dear Mndeni & Nwabisa,
 
 ${buyerName} ${buyerSurname} has selected an item from your wedding registry and is proceeding with the purchase:
