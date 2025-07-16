@@ -38,7 +38,7 @@ Response: Cannot attend
 We're sorry they can't make it to your special day.
 
 Best regards,
-Wedding RSVP System`;
+Mndeni & Nwabisa`;
 
       await resend.emails.send({
         from: "Wedding RSVP <noreply@mndeni-and-nwabisa-ws.site>",
@@ -76,10 +76,10 @@ Full Name: ${fullName}
 Surname: ${surname}
 Number of Guests: ${guestText}${guestNamesSection}${songRequestSection}
 
-We look forward to celebrating with them!
+Looking forward to celebrating the special day
 
 Best regards,
-Wedding RSVP System`;
+Mndeni & Nwabisa`;
 
     await resend.emails.send({
       from: "Wedding RSVP <noreply@mndeni-and-nwabisa-ws.site>",
