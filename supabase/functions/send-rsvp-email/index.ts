@@ -26,10 +26,15 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { fullName, surname, attendance, guestCount, guestNames, songRequest }: RSVPEmailRequest = await req.json();
 
-    // If not attending, send simple notification
-    if (attendance === 'no') {
-      const subject = `RSVP Response - ${fullName} ${surname} - Cannot Attend`;
-      const emailBody = `Dear Mndeni & Nwabisa,
+    // Define background email sending task
+    const sendEmailInBackground = async () => {
+      try {
+        let subject: string;
+        let emailBody: string;
+
+        if (attendance === 'no') {
+          subject = `RSVP Response - ${fullName} ${surname} - Cannot Attend`;
+          emailBody = `Dear Mndeni & Nwabisa,
 
 ${fullName} ${surname} has responded to your wedding RSVP:
 
@@ -39,33 +44,13 @@ We're sorry they can't make it to your special day.
 
 Best regards,
 Mndeni & Nwabisa`;
+        } else {
+          const guestText = `${guestCount} guest${parseInt(guestCount) !== 1 ? 's' : ''} coming`;
+          const guestNamesSection = guestNames ? `\nGuest Names: ${guestNames}` : '';
+          const songRequestSection = songRequest ? `\nSong Request: ${songRequest}` : '';
 
-      await resend.emails.send({
-        from: "Wedding RSVP <noreply@mndeni-and-nwabisa-ws.site>",
-        to: ["titus3luvo@gmail.com"],
-        subject: subject,
-        text: emailBody,
-      });
-
-      return new Response(JSON.stringify({ 
-        success: true, 
-        message: "RSVP response recorded"
-      }), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders,
-        },
-      });
-    }
-
-    // For attending guests
-    const guestText = `${guestCount} guest${parseInt(guestCount) !== 1 ? 's' : ''} coming`;
-    const guestNamesSection = guestNames ? `\nGuest Names: ${guestNames}` : '';
-    const songRequestSection = songRequest ? `\nSong Request: ${songRequest}` : '';
-
-    const subject = `RSVP Response - ${fullName} ${surname} - Attending`;
-    const emailBody = `Dear Mndeni & Nwabisa,
+          subject = `RSVP Response - ${fullName} ${surname} - Attending`;
+          emailBody = `Dear Mndeni & Nwabisa,
 
 ${fullName} ${surname} has responded to your wedding RSVP:
 
@@ -80,19 +65,28 @@ Looking forward to celebrating the special day
 
 Best regards,
 Mndeni & Nwabisa`;
+        }
 
-    await resend.emails.send({
-      from: "Wedding RSVP <noreply@mndeni-and-nwabisa-ws.site>",
-      to: ["titus3luvo@gmail.com"],
-      subject: subject,
-      text: emailBody,
-    });
+        await resend.emails.send({
+          from: "Wedding RSVP <noreply@mndeni-and-nwabisa-ws.site>",
+          to: ["titus3luvo@gmail.com"],
+          subject: subject,
+          text: emailBody,
+        });
 
-    console.log("RSVP email sent successfully");
+        console.log("RSVP email sent successfully");
+      } catch (error) {
+        console.error("Error sending RSVP email:", error);
+      }
+    };
 
+    // Start background task
+    EdgeRuntime.waitUntil(sendEmailInBackground());
+
+    // Return immediate response
     return new Response(JSON.stringify({ 
       success: true, 
-      message: "RSVP submitted successfully"
+      message: attendance === 'no' ? "RSVP response recorded" : "RSVP submitted successfully"
     }), {
       status: 200,
       headers: {
