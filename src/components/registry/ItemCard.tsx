@@ -86,9 +86,22 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       }
 
       // If direct URL is available, open it after short delay
+      // Enhanced for better mobile and desktop compatibility
       if (item.websiteUrl) {
         setTimeout(() => {
-          window.open(item.websiteUrl, '_blank');
+          // Try multiple methods for better cross-platform compatibility
+          try {
+            // For mobile devices, use location.href as fallback
+            const newWindow = window.open(item.websiteUrl, '_blank', 'noopener,noreferrer');
+            
+            // Fallback for mobile devices that might block popups
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+              window.location.href = item.websiteUrl;
+            }
+          } catch (error) {
+            // Final fallback
+            window.location.href = item.websiteUrl;
+          }
         }, 1500);
       }
 
@@ -105,9 +118,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
   };
 
   return (
-    <div className={`bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:scale-105 ${
-      isUnavailable ? 'opacity-50 grayscale' : ''
-    }`}>
+    <div className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:scale-105">
       <div className="mb-4 h-40 bg-gray-100 rounded-lg overflow-hidden">
         <img 
           src={item.image} 
@@ -125,12 +136,8 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       )}
       <div className="flex justify-between items-center mb-4">
         <span className="font-bold text-xl text-brown">{item.price}</span>
-        <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-          isUnavailable 
-            ? 'bg-gray-100 text-gray-600' 
-            : 'bg-green-100 text-green-800'
-        }`}>
-          {isUnavailable ? 'Selected' : hasQuantity ? `${remainingQuantity} Available` : 'Available'}
+        <span className="px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
+          {hasQuantity ? `${remainingQuantity} Available` : 'Available'}
         </span>
       </div>
       
@@ -152,10 +159,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
         >
           <Button 
             className="w-full bg-terracotta hover:bg-terracotta/90 text-white"
-            disabled={isUnavailable}
+            disabled={false}
           >
             <Gift className="w-4 h-4 mr-2" />
-            {isUnavailable ? 'Already Selected' : 'Select Gift'}
+            Select Gift
           </Button>
         </GiftSelectionDialog>
       </div>
