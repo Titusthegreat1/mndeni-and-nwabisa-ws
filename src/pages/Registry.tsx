@@ -132,7 +132,8 @@ const Registry = () => {
 
   // Check if item is unavailable (fully purchased)
   const isItemUnavailable = (item: RegistryItem) => {
-    return purchasedItems.has(item.id);
+    // All items are now available
+    return false;
   };
 
   // Get remaining quantity for an item

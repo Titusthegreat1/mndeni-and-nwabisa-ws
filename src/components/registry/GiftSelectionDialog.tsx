@@ -14,13 +14,11 @@ interface GiftSelectionDialogProps {
   buyerSurname: string;
   buyerEmail: string;
   requestDelivery: boolean;
-  requestShippingAssistance: boolean;
   isLoading: boolean;
   setBuyerName: (name: string) => void;
   setBuyerSurname: (surname: string) => void;
   setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
-  setRequestShippingAssistance: (shipping: boolean) => void;
   onGiftSelection: () => void;
   children: React.ReactNode;
 }
@@ -33,13 +31,11 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
   buyerSurname,
   buyerEmail,
   requestDelivery,
-  requestShippingAssistance,
   isLoading,
   setBuyerName,
   setBuyerSurname,
   setBuyerEmail,
   setRequestDelivery,
-  setRequestShippingAssistance,
   onGiftSelection,
   children
 }) => {
@@ -66,13 +62,11 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
             buyerSurname={buyerSurname}
             buyerEmail={buyerEmail}
             requestDelivery={requestDelivery}
-            requestShippingAssistance={requestShippingAssistance}
             setBuyerName={setBuyerName}
             setBuyerSurname={setBuyerSurname}
             setBuyerEmail={setBuyerEmail}
             setRequestDelivery={setRequestDelivery}
-            setRequestShippingAssistance={setRequestShippingAssistance}
-            showNameFields={!item.websiteUrl}
+            showNameFields={true}
           />
         </div>
         <DialogFooter className="flex flex-col sm:flex-row gap-2">
@@ -81,7 +75,7 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
           </Button>
           <Button 
             className="bg-terracotta hover:bg-terracotta/90"
-            disabled={isLoading || (!item.websiteUrl && (!buyerName.trim() || !buyerSurname.trim()))}
+            disabled={isLoading || (!buyerName.trim() || !buyerSurname.trim())}
             onClick={onGiftSelection}
           >
             {isLoading ? 'Processing...' : (item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift')}

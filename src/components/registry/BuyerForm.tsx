@@ -9,12 +9,10 @@ interface BuyerFormProps {
   buyerSurname: string;
   buyerEmail: string;
   requestDelivery: boolean;
-  requestShippingAssistance: boolean;
   setBuyerName: (name: string) => void;
   setBuyerSurname: (surname: string) => void;
   setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
-  setRequestShippingAssistance: (shipping: boolean) => void;
   showNameFields: boolean;
 }
 
@@ -23,61 +21,57 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
   buyerSurname,
   buyerEmail,
   requestDelivery,
-  requestShippingAssistance,
   setBuyerName,
   setBuyerSurname,
   setBuyerEmail,
   setRequestDelivery,
-  setRequestShippingAssistance,
   showNameFields
 }) => {
   return (
     <div className="space-y-4">
-      {showNameFields && (
-        <>
-          <div>
-            <Label htmlFor="buyerName" className="text-brown font-semibold">
-              Your Name *
-            </Label>
-            <Input
-              id="buyerName"
-              value={buyerName}
-              onChange={(e) => setBuyerName(e.target.value)}
-              className="mt-1 border-sand focus:border-terracotta"
-              placeholder="Enter your first name"
-            />
-          </div>
-          
-          <div>
-            <Label htmlFor="buyerSurname" className="text-brown font-semibold">
-              Your Surname *
-            </Label>
-            <Input
-              id="buyerSurname"
-              value={buyerSurname}
-              onChange={(e) => setBuyerSurname(e.target.value)}
-              className="mt-1 border-sand focus:border-terracotta"
-              placeholder="Enter your surname"
-            />
-          </div>
-          
-          <div>
-            <Label htmlFor="buyerEmail" className="text-brown font-semibold">
-              Your Email (Optional)
-            </Label>
-            <Input
-              id="buyerEmail"
-              type="email"
-              value={buyerEmail}
-              onChange={(e) => setBuyerEmail(e.target.value)}
-              className="mt-1 border-sand focus:border-terracotta"
-              placeholder="Enter your email for confirmation"
-            />
-            <p className="text-xs text-brown/60 mt-1">
-              If provided, you'll receive a confirmation email with purchase instructions
-            </p>
-          </div>
-        </>
+      <div>
+        <Label htmlFor="buyerName" className="text-brown font-semibold">
+          Your Name *
+        </Label>
+        <Input
+          id="buyerName"
+          value={buyerName}
+          onChange={(e) => setBuyerName(e.target.value)}
+          className="mt-1 border-sand focus:border-terracotta"
+          placeholder="Enter your first name"
+        />
+      </div>
+      
+      <div>
+        <Label htmlFor="buyerSurname" className="text-brown font-semibold">
+          Your Surname *
+        </Label>
+        <Input
+          id="buyerSurname"
+          value={buyerSurname}
+          onChange={(e) => setBuyerSurname(e.target.value)}
+          className="mt-1 border-sand focus:border-terracotta"
+          placeholder="Enter your surname"
+        />
+      </div>
+      
+      {!showNameFields && (
+        <div>
+          <Label htmlFor="buyerEmail" className="text-brown font-semibold">
+            Your Email (Optional)
+          </Label>
+          <Input
+            id="buyerEmail"
+            type="email"
+            value={buyerEmail}
+            onChange={(e) => setBuyerEmail(e.target.value)}
+            className="mt-1 border-sand focus:border-terracotta"
+            placeholder="Enter your email for confirmation"
+          />
+          <p className="text-xs text-brown/60 mt-1">
+            If provided, you'll receive a confirmation email with purchase instructions
+          </p>
+        </div>
       )}
 
       <div className="space-y-3">
@@ -89,17 +83,6 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
           />
           <Label htmlFor="requestDelivery" className="text-brown text-sm">
             I would like delivery assistance from Dimpho Parkies or Zama Kunene
-          </Label>
-        </div>
-        
-        <div className="flex items-center space-x-2">
-          <Checkbox 
-            id="requestShippingAssistance" 
-            checked={requestShippingAssistance}
-            onCheckedChange={(checked) => setRequestShippingAssistance(checked === true)}
-          />
-          <Label htmlFor="requestShippingAssistance" className="text-brown text-sm">
-            I would like assistance with shipping address arrangements
           </Label>
         </div>
       </div>

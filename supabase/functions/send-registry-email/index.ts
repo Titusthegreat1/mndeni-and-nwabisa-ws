@@ -26,7 +26,6 @@ interface RegistryEmailRequest {
   buyerSurname: string;
   buyerEmail?: string;
   requestDelivery?: boolean;
-  requestShippingAssistance?: boolean;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -36,7 +35,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery, requestShippingAssistance }: RegistryEmailRequest = await req.json();
+    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery }: RegistryEmailRequest = await req.json();
 
     // Generate unique confirmation token
     const confirmationToken = crypto.randomUUID();
@@ -69,14 +68,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Build additional requests section
     let additionalRequests = '';
-    if (requestDelivery || requestShippingAssistance) {
-      additionalRequests = '\n\nAdditional Requests:';
-      if (requestDelivery) {
-        additionalRequests += '\n- Delivery assistance from Dimpho Parkies or Zama Kunene requested';
-      }
-      if (requestShippingAssistance) {
-        additionalRequests += '\n- Shipping address assistance requested';
-      }
+    if (requestDelivery) {
+      additionalRequests = '\n\nAdditional Requests:\n- Delivery assistance from Dimpho Parkies or Zama Kunene requested';
     }
 
     // Send notification email to registry owners

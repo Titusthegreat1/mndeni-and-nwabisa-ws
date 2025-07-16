@@ -19,7 +19,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
   const [buyerSurname, setBuyerSurname] = useState('');
   const [buyerEmail, setBuyerEmail] = useState('');
   const [requestDelivery, setRequestDelivery] = useState(false);
-  const [requestShippingAssistance, setRequestShippingAssistance] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -29,8 +28,8 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
   const hasQuantity = item.color?.includes('Qty:');
 
   const handleGiftSelection = async () => {
-    // Only require name/surname for items without direct purchase URLs
-    if (!item.websiteUrl && (!buyerName.trim() || !buyerSurname.trim())) {
+    // Always require name/surname
+    if (!buyerName.trim() || !buyerSurname.trim()) {
       toast({
         title: "Missing Information",
         description: "Please enter your name and surname.",
@@ -56,7 +55,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           buyerSurname: buyerSurname.trim(),
           buyerEmail: buyerEmail.trim() || undefined,
           requestDelivery,
-          requestShippingAssistance,
         },
       });
 
@@ -72,7 +70,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       setBuyerSurname('');
       setBuyerEmail('');
       setRequestDelivery(false);
-      setRequestShippingAssistance(false);
       setIsDialogOpen(false);
 
       // Show success message
@@ -146,13 +143,11 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           buyerSurname={buyerSurname}
           buyerEmail={buyerEmail}
           requestDelivery={requestDelivery}
-          requestShippingAssistance={requestShippingAssistance}
           isLoading={isLoading}
           setBuyerName={setBuyerName}
           setBuyerSurname={setBuyerSurname}
           setBuyerEmail={setBuyerEmail}
           setRequestDelivery={setRequestDelivery}
-          setRequestShippingAssistance={setRequestShippingAssistance}
           onGiftSelection={handleGiftSelection}
         >
           <Button 
