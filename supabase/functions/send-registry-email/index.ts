@@ -88,7 +88,7 @@ Wedding Registry System`;
     // Send confirmation email to buyer if email provided
     const emailPromises = [
       resend.emails.send({
-        from: "Wedding Registry <onboarding@resend.dev>",
+        from: "Wedding Registry <noreply@mndeni-and-nwabisa-ws.site>",
         to: ["titus3luvo@gmail.com"],
         subject: ownerSubject,
         text: ownerEmailBody,
@@ -118,7 +118,7 @@ Wedding Registry Team`;
 
       emailPromises.push(
         resend.emails.send({
-          from: "Wedding Registry <onboarding@resend.dev>",
+          from: "Wedding Registry <noreply@mndeni-and-nwabisa-ws.site>",
           to: [buyerEmail],
           subject: buyerSubject,
           text: buyerEmailBody,
