@@ -27,14 +27,32 @@ const RSVP = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // If not attending, just show confirmation message without email
-    if (formData.attendance === 'no') {
-      setTimeout(() => {
-        setIsLoading(false);
+    try {
+      const response = await fetch('https://yptjhzawttwkaiacpnpc.supabase.co/functions/v1/send-rsvp-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          surname: formData.surname,
+          attendance: formData.attendance,
+          guestCount: formData.guestCount,
+          guestNames: formData.guestNames,
+          songRequest: formData.songRequest
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
         toast({
-          title: "Thank you for your response",
-          description: "We're sorry you can't make it, but we appreciate you letting us know!",
+          title: "Siyabonga! (Thank you!)",
+          description: formData.attendance === 'no' 
+            ? "We're sorry you can't make it, but we appreciate you letting us know!" 
+            : "Your RSVP has been submitted successfully!",
         });
+        
         setFormData({
           fullName: '',
           surname: '',
@@ -43,53 +61,19 @@ const RSVP = () => {
           guestNames: '',
           songRequest: ''
         });
-      }, 1000);
-      return;
-    }
-
-    // Create mailto link with form data for attending guests
-    const subject = 'Wedding RSVP Response - Mndeni & Nwabisa';
-    
-    const guestText = `${formData.guestCount} guest${parseInt(formData.guestCount) !== 1 ? 's' : ''} coming`;
-
-    const guestNamesSection = formData.guestNames ? `Guest Names: ${formData.guestNames}` : '';
-    
-    const body = `Thank you for your RSVP! We look forward to seeing you there.
-
-This email has been automatically generated for you to send as confirmation of your RSVP. You can proceed to send this email now.
-
-RSVP Details:
-Full Name: ${formData.fullName}
-Surname: ${formData.surname}
-Number of Guests: ${guestText}
-${guestNamesSection}
-Song Request: ${formData.songRequest || 'None'}
-
-We can't wait to celebrate with you!
-
-Best regards,
-${formData.fullName} ${formData.surname}`;
-    
-    const mailtoLink = `mailto:dimphoparkies@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-
-    setTimeout(() => {
-      setIsLoading(false);
+      } else {
+        throw new Error(result.error || 'Failed to submit RSVP');
+      }
+    } catch (error) {
+      console.error('Error submitting RSVP:', error);
       toast({
-        title: "Siyabonga! (Thank you!)",
-        description: "Your RSVP email has been prepared. Please send it to complete your response!",
+        title: "Error",
+        description: "There was an issue submitting your RSVP. Please try again.",
+        variant: "destructive",
       });
-      setFormData({
-        fullName: '',
-        surname: '',
-        attendance: '',
-        guestCount: '1',
-        guestNames: '',
-        songRequest: ''
-      });
-    }, 1000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -255,9 +239,9 @@ ${formData.fullName} ${formData.surname}`;
 
           <div className="text-center mt-8 p-6 bg-white/50 rounded-lg">
             <p className="text-brown/80">
-              Questions? Contact Dimpho Parkies at{' '}
-              <a href="mailto:dimphoparkies@gmail.com" className="text-terracotta hover:underline">
-                dimphoparkies@gmail.com
+              Questions? Contact us at{' '}
+              <a href="mailto:titus3luvo@gmail.com" className="text-terracotta hover:underline">
+                titus3luvo@gmail.com
               </a>
             </p>
           </div>
