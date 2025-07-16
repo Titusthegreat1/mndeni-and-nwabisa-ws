@@ -56,26 +56,6 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
       </div>
       
       
-      <div>
-        <Label htmlFor="buyerEmail" className="text-brown font-semibold">
-          Your Email {requestDelivery ? '*' : '(Optional)'}
-        </Label>
-        <Input
-          id="buyerEmail"
-          type="email"
-          value={buyerEmail}
-          onChange={(e) => setBuyerEmail(e.target.value)}
-          className="mt-1 border-sand focus:border-terracotta"
-          placeholder="Enter your email for confirmation"
-        />
-        <p className="text-xs text-brown/60 mt-1">
-          {requestDelivery 
-            ? 'Required for delivery coordination and confirmation' 
-            : 'If provided, you\'ll receive a confirmation email with purchase instructions'
-          }
-        </p>
-      </div>
-
       <div className="space-y-3">
         <div className="flex items-center space-x-2">
           <Checkbox 
@@ -88,6 +68,25 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
           </Label>
         </div>
       </div>
+
+      {requestDelivery && (
+        <div>
+          <Label htmlFor="buyerEmail" className="text-brown font-semibold">
+            Please provide us with your email *
+          </Label>
+          <Input
+            id="buyerEmail"
+            type="email"
+            value={buyerEmail}
+            onChange={(e) => setBuyerEmail(e.target.value)}
+            className="mt-1 border-sand focus:border-terracotta"
+            placeholder="Enter your email for delivery coordination"
+          />
+          <p className="text-xs text-brown/60 mt-1">
+            Required for delivery coordination and confirmation
+          </p>
+        </div>
+      )}
     </div>
   );
 };
