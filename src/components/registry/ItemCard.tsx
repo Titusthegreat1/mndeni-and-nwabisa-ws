@@ -38,6 +38,16 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       return;
     }
 
+    // Require email if delivery is requested
+    if (requestDelivery && !buyerEmail.trim()) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your email address for delivery coordination.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     try {
