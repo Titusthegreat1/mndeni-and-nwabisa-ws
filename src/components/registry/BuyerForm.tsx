@@ -9,10 +9,12 @@ interface BuyerFormProps {
   buyerSurname: string;
   buyerEmail: string;
   requestDelivery: boolean;
+  requestShippingAssistance: boolean;
   setBuyerName: (name: string) => void;
   setBuyerSurname: (surname: string) => void;
   setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
+  setRequestShippingAssistance: (shipping: boolean) => void;
   showNameFields: boolean;
 }
 
@@ -21,10 +23,12 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
   buyerSurname,
   buyerEmail,
   requestDelivery,
+  requestShippingAssistance,
   setBuyerName,
   setBuyerSurname,
   setBuyerEmail,
   setRequestDelivery,
+  setRequestShippingAssistance,
   showNameFields
 }) => {
   return (
@@ -76,15 +80,28 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
         </>
       )}
 
-      <div className="flex items-center space-x-2">
-        <Checkbox 
-          id="requestDelivery" 
-          checked={requestDelivery}
-          onCheckedChange={(checked) => setRequestDelivery(checked === true)}
-        />
-        <Label htmlFor="requestDelivery" className="text-brown text-sm">
-          I would like delivery assistance from Dimpho Parkies or Zama Kunene
-        </Label>
+      <div className="space-y-3">
+        <div className="flex items-center space-x-2">
+          <Checkbox 
+            id="requestDelivery" 
+            checked={requestDelivery}
+            onCheckedChange={(checked) => setRequestDelivery(checked === true)}
+          />
+          <Label htmlFor="requestDelivery" className="text-brown text-sm">
+            I would like delivery assistance from Dimpho Parkies or Zama Kunene
+          </Label>
+        </div>
+        
+        <div className="flex items-center space-x-2">
+          <Checkbox 
+            id="requestShippingAssistance" 
+            checked={requestShippingAssistance}
+            onCheckedChange={(checked) => setRequestShippingAssistance(checked === true)}
+          />
+          <Label htmlFor="requestShippingAssistance" className="text-brown text-sm">
+            I would like assistance with shipping address arrangements
+          </Label>
+        </div>
       </div>
     </div>
   );

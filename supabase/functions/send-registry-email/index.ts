@@ -25,6 +25,8 @@ interface RegistryEmailRequest {
   buyerName: string;
   buyerSurname: string;
   buyerEmail?: string;
+  requestDelivery?: boolean;
+  requestShippingAssistance?: boolean;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -34,7 +36,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail }: RegistryEmailRequest = await req.json();
+    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery, requestShippingAssistance }: RegistryEmailRequest = await req.json();
 
     // Generate unique confirmation token
     const confirmationToken = crypto.randomUUID();
@@ -65,11 +67,23 @@ const handler = async (req: Request): Promise<Response> => {
     // Create confirmation link
     const confirmationUrl = `https://yptjhzawttwkaiacpnpc.supabase.co/functions/v1/confirm-purchase?token=${confirmationToken}`;
 
+    // Build additional requests section
+    let additionalRequests = '';
+    if (requestDelivery || requestShippingAssistance) {
+      additionalRequests = '\n\nAdditional Requests:';
+      if (requestDelivery) {
+        additionalRequests += '\n- Delivery assistance from Dimpho Parkies or Zama Kunene requested';
+      }
+      if (requestShippingAssistance) {
+        additionalRequests += '\n- Shipping address assistance requested';
+      }
+    }
+
     // Send notification email to registry owners
     const ownerSubject = `New Gift Selection - ${itemName} - Wedding Registry`;
     const ownerEmailBody = `Dear Mndeni & Nwabisa,
 
-Someone has selected an item from your wedding registry and is proceeding with the purchase:
+${buyerName} ${buyerSurname} has selected an item from your wedding registry and is proceeding with the purchase:
 
 Item: ${itemName}
 Brand: ${itemBrand}
@@ -78,7 +92,7 @@ ${itemSize ? `Size: ${itemSize}` : ''}
 ${itemColor ? `Color: ${itemColor}` : ''}
 
 Gift Buyer: ${buyerName} ${buyerSurname}
-${buyerEmail ? `Email: ${buyerEmail}` : ''}
+${buyerEmail ? `Email: ${buyerEmail}` : ''}${additionalRequests}
 
 This purchase is pending confirmation from the buyer.
 
