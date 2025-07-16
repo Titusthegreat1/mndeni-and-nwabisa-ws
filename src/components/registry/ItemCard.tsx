@@ -72,7 +72,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       setRequestDelivery(false);
       setIsDialogOpen(false);
 
-      // Show success message
+      // Show success message with redirect info
       if (buyerEmail.trim()) {
         toast({
           title: "Gift Selected!",
@@ -85,24 +85,46 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
         });
       }
 
-      // If direct URL is available, open it after short delay
-      // Enhanced for better mobile and desktop compatibility
+      // If direct URL is available, show redirect message and open it
       if (item.websiteUrl) {
+        // Show redirect message immediately
+        toast({
+          title: "Redirecting...",
+          description: "Taking you to the product page. Please wait a moment.",
+          duration: 2000,
+        });
+
+        // Shorter delay for better mobile experience
         setTimeout(() => {
-          // Try multiple methods for better cross-platform compatibility
+          // Enhanced for better mobile and desktop compatibility
           try {
             // For mobile devices, use location.href as fallback
             const newWindow = window.open(item.websiteUrl, '_blank', 'noopener,noreferrer');
             
             // Fallback for mobile devices that might block popups
             if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-              window.location.href = item.websiteUrl;
+              // Show additional message for mobile redirect
+              toast({
+                title: "Redirecting in same tab",
+                description: "Opening product page...",
+                duration: 1000,
+              });
+              setTimeout(() => {
+                window.location.href = item.websiteUrl;
+              }, 500);
             }
           } catch (error) {
-            // Final fallback
-            window.location.href = item.websiteUrl;
+            // Final fallback with user notification
+            toast({
+              title: "Opening product page",
+              description: "Redirecting to complete your purchase...",
+              duration: 1000,
+            });
+            setTimeout(() => {
+              window.location.href = item.websiteUrl;
+            }, 500);
           }
-        }, 1500);
+        }, 800); // Reduced from 1500ms to 800ms for faster experience
       }
 
     } catch (error: any) {
