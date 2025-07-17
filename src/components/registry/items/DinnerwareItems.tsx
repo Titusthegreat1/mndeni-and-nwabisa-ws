@@ -9,7 +9,7 @@ export const dinnerwareItems: RegistryItem[] = [
     size: "500W",
     color: "Green",
     available: true,
-    image: "/lovable-uploads/4afe121b-c39d-478f-acf0-04ccb7b74c63.png",
+    image: "/lovable-uploads/43941d89-82be-4c78-a23f-5691f2c86119.png",
     websiteUrl: "https://leroymerlin.co.za/garden-trimmer-500w"
   },
   {

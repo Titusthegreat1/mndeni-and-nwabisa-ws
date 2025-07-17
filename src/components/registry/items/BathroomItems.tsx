@@ -10,7 +10,7 @@ export const bathroomItems: RegistryItem[] = [
     size: "DUVET COVER SET",
     color: "Seafoam",
     available: true,
-    image: "/lovable-uploads/598894a9-e6ee-4c63-b13a-e4c02af1cb9c.png",
+    image: "/lovable-uploads/ddb17473-4d13-4a92-b523-dbc3ad538513.png",
     websiteUrl: "https://www.volpes.co.za/product/verona-seafoam-600tc-egyptian-cotton-duvet-cover-set"
   },
   {

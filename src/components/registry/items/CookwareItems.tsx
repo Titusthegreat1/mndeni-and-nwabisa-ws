@@ -10,7 +10,7 @@ export const cookwareItems: RegistryItem[] = [
     size: "2-Piece Set",
     color: "Stainless Steel",
     available: true,
-    image: "/lovable-uploads/9e913554-0a3c-4d0d-88a3-fdbfee675de0.png",
+    image: "/lovable-uploads/417fee16-5617-42c1-bbe0-bab671e165be.png",
     websiteUrl: "https://www.amcsa.co.za/en/product-range/cookware/two-piece-sets/special-combination-1/"
   },
   {
