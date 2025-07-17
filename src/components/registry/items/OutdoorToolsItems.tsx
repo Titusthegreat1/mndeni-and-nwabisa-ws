@@ -10,7 +10,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     size: "13KW",
     color: "Grey",
     available: true,
-    image: "/lovable-uploads/54028bad-bb89-44d5-a1d8-1b04280796c8.png",
+    image: "/lovable-uploads/2e4a5557-33c0-4dfa-b0a0-59c2bfe40afd.png",
     websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
   },
   {
@@ -41,7 +41,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R699.00",
     size: "32pc Set",
     available: true,
-    image: "/lovable-uploads/0312ba0b-f410-43f2-bc78-4ce8654f0391.png",
+    image: "/lovable-uploads/e909f6d9-ab99-4409-8ebe-811d2adfafa6.png",
     websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
   },
   {
@@ -61,7 +61,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R749.00",
     size: "3000W",
     available: true,
-    image: "/lovable-uploads/45f15e6f-7ed4-4530-9370-7de5e61f4633.png",
+    image: "/lovable-uploads/b3ca6bca-d1fa-420e-8ca6-c9d8251700ec.png",
     websiteUrl: "https://leroymerlin.co.za/ryobi-blower-mulching-vacuum-3000w-1"
   },
   {
@@ -71,7 +71,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R899.00",
     size: "1250W",
     available: true,
-    image: "/lovable-uploads/e84e105f-b0c5-47bf-a52f-f6d2c5aba881.png",
+    image: "/lovable-uploads/7f87d805-fb63-490b-bbf5-8ba3d7507792.png",
     websiteUrl: "https://leroymerlin.co.za/ryobi-circular-saw-1250w-81485851"
   },
   {
@@ -81,7 +81,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     price: "R1,499.00",
     size: "1700W - 120 Bar",
     available: true,
-    image: "/lovable-uploads/acbbf2ef-52f2-4000-8691-c11264c77f0e.png",
+    image: "/lovable-uploads/064b1045-a07c-4ddb-a2f9-d270d14bb4f8.png",
     websiteUrl: "https://leroymerlin.co.za/red-rhino-1700w-pressure-washer-120-bar"
   }
 ];
