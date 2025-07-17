@@ -87,7 +87,7 @@ export const cookwareItems: RegistryItem[] = [
     size: "5L",
     color: "Stainless Steel",
     available: true,
-    image: "/lovable-uploads/472f1ef6-46a6-473b-a960-195c14a47d1a.png",
+    image: "/lovable-uploads/d2d70cb7-ca9f-4f6e-ba6e-3fd438a61961.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-506308548"
   }
 ];
