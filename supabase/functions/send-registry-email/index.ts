@@ -96,7 +96,7 @@ Wedding Registry System`;
     const emailPromises = [
       resend.emails.send({
         from: "Wedding Registry <noreply@mndeni-and-nwabisa-ws.site>",
-        to: ["titus3luvo@gmail.com"],
+        to: ["dimphoparkies@gmail.com"],
         subject: ownerSubject,
         text: ownerEmailBody,
       })
