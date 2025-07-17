@@ -32,7 +32,11 @@ export const outdoorToolsItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/e9ac9646-0b35-4cbd-884e-b59e96b6bec5.png",
     websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm"
-  },
+  }
+];
+
+// New outdoor power tools that should appear on page 17
+export const newOutdoorToolsItems: RegistryItem[] = [
   {
     id: 78,
     name: "Alva Split Pole Gas Patio Heater",
