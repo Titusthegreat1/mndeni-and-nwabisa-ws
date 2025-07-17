@@ -133,5 +133,16 @@ export const homeDecorItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/1bb0fdf5-e5df-4da0-a385-ccab63c4e242.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-509120130"
+  },
+  {
+    id: 127,
+    name: "Bungalow Striped Knitted Cotton Throw",
+    brand: "WOOLWORTHS",
+    price: "R1,099.00",
+    size: "180x140cm",
+    color: "Green/Cream",
+    available: true,
+    image: "/lovable-uploads/4871543a-d21d-41ef-bff7-b715592799c3.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-508422158"
   }
 ];

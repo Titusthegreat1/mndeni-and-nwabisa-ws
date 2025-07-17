@@ -220,5 +220,15 @@ export const servewareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/0b69b727-3430-4f84-93bc-18570c987d25.png",
     websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Table-Linen/Striped-Cotton-Napkin-With-Border-Finish-4-Pack/_/A-509088350?isFromPLP=true"
+  },
+  {
+    id: 126,
+    name: "Acacia Wood Round Base Cake Stand",
+    brand: "WOOLWORTHS",
+    price: "R499.00",
+    color: "Natural Wood",
+    available: true,
+    image: "/lovable-uploads/81f17038-ebd7-4274-888d-2c33cfe036ec.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-509310190"
   }
 ];
