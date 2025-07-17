@@ -3,17 +3,6 @@ import { RegistryItem } from '../types';
 
 export const outdoorToolsItems: RegistryItem[] = [
   {
-    id: 43,
-    name: "Alva Split Pole Gas Patio Heater",
-    brand: "ALVA",
-    price: "R2,599.00",
-    size: "13KW",
-    color: "Grey",
-    available: true,
-    image: "/lovable-uploads/2e4a5557-33c0-4dfa-b0a0-59c2bfe40afd.png",
-    websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
-  },
-  {
     id: 70,
     name: "Grip 39 Piece Tool Set GT2015",
     brand: "GRIP",
@@ -35,16 +24,6 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/garden-trimmer-500w"
   },
   {
-    id: 73,
-    name: "Cordless Lithium Battery Screwdriver",
-    brand: "POWER TOOLS",
-    price: "R699.00",
-    size: "32pc Set",
-    available: true,
-    image: "/lovable-uploads/e909f6d9-ab99-4409-8ebe-811d2adfafa6.png",
-    websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
-  },
-  {
     id: 74,
     name: "Talon Petrol Brush Cutter",
     brand: "TALON",
@@ -55,7 +34,28 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm"
   },
   {
-    id: 75,
+    id: 78,
+    name: "Alva Split Pole Gas Patio Heater",
+    brand: "ALVA",
+    price: "R2,599.00",
+    size: "13KW",
+    color: "Grey",
+    available: true,
+    image: "/lovable-uploads/2e4a5557-33c0-4dfa-b0a0-59c2bfe40afd.png",
+    websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
+  },
+  {
+    id: 79,
+    name: "Cordless Lithium Battery Screwdriver",
+    brand: "POWER TOOLS",
+    price: "R699.00",
+    size: "32pc Set",
+    available: true,
+    image: "/lovable-uploads/e909f6d9-ab99-4409-8ebe-811d2adfafa6.png",
+    websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
+  },
+  {
+    id: 80,
     name: "Ryobi Blower Mulching Vacuum",
     brand: "RYOBI",
     price: "R749.00",
@@ -65,7 +65,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/ryobi-blower-mulching-vacuum-3000w-1"
   },
   {
-    id: 76,
+    id: 81,
     name: "Ryobi Circular Saw 1250W",
     brand: "RYOBI",
     price: "R899.00",
@@ -75,7 +75,7 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://leroymerlin.co.za/ryobi-circular-saw-1250w-81485851"
   },
   {
-    id: 77,
+    id: 82,
     name: "Red Rhino 1700W Pressure Washer 120 Bar",
     brand: "RED RHINO",
     price: "R1,499.00",
