@@ -161,12 +161,17 @@ const Registry = () => {
 
   // Check if item is unavailable (fully purchased)
   const isItemUnavailable = (item: RegistryItem) => {
+    // Gift cards are always available
+    if (item.id >= 9000) return false;
     // All items are now available
     return false;
   };
 
   // Get remaining quantity for an item
   const getRemainingQuantity = (item: RegistryItem) => {
+    // Gift cards always have quantity of 1 available
+    if (item.id >= 9000) return 1;
+    
     const quantityMatch = item.color?.match(/Qty:\s*(\d+)/);
     const originalQuantity = quantityMatch ? parseInt(quantityMatch[1]) : 1;
     const purchasedQuantity = itemQuantities[item.id] || 0;
