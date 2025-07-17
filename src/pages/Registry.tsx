@@ -298,6 +298,40 @@ const Registry = () => {
               >
                 Le Creuset <ExternalLink className="w-4 h-4" />
               </button>
+              <button
+                onClick={() => {
+                  const confirmed = window.confirm("Do you want to select the Leroy Merlin gift voucher? This will redirect you to their website.");
+                  if (confirmed) {
+                    toast({
+                      title: "Gift Voucher Selected!",
+                      description: "Redirecting to Leroy Merlin website...",
+                    });
+                    setTimeout(() => {
+                      window.open("https://leroymerlin.co.za/gifts-vouchers?srsltid=AfmBOooBQH6MT0-gS0IF8ve_MqBMRiCYgNsyyF_IGOxLMEoeFtqw17CS", "_blank");
+                    }, 1000);
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta/90 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                Leroy Merlin <ExternalLink className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  const confirmed = window.confirm("Do you want to select the Builders Warehouse gift card? This will redirect you to their website.");
+                  if (confirmed) {
+                    toast({
+                      title: "Gift Card Selected!",
+                      description: "Redirecting to Builders Warehouse website...",
+                    });
+                    setTimeout(() => {
+                      window.open("https://www.builders.co.za/giftcard?srsltid=AfmBOopJleIoJegMrb6CWvuDRsHNjvIXpKpgkdvert3nbQOCnNMOm3N1", "_blank");
+                    }, 1000);
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta/90 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                Builders Warehouse <ExternalLink className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
