@@ -50,6 +50,10 @@ const Registry = () => {
     localStorage.setItem('registryItemQuantities', JSON.stringify(itemQuantities));
   }, [itemQuantities]);
 
+  // Use the same featured items as homepage (items 118, 119, 120, 121, 122)
+  const featuredItemIds = [118, 119, 120, 121, 122];
+  const featuredItems = registryItems.filter(item => featuredItemIds.includes(item.id));
+
   // Check for highlight parameter and show all items if coming from homepage
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -60,20 +64,43 @@ const Registry = () => {
       setHighlightItemId(itemId);
       setShowAllItems(true);
       
-      // Find which page the highlighted item is on
-      const itemIndex = registryItems.findIndex(item => item.id === itemId);
-      if (itemIndex > 3) { // If not in featured items (first 4)
-        // Rearrange items: move first 20 to end, others move up
-        const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(0, 20)];
-        const newItemIndex = rearrangedItems.findIndex(item => item.id === itemId);
-        const pageIndex = Math.floor((newItemIndex - 4) / itemsPerPage);
-        setCurrentPage(pageIndex + 1);
-      }
+      // Find which page the highlighted item is on in the complete registry
+      const allItems = registryItems;
+      const itemIndex = allItems.findIndex(item => item.id === itemId);
       
-      // Scroll to top after a brief delay
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100);
+      if (itemIndex !== -1) {
+        // Check if item is in featured items first
+        const isFeatured = featuredItemIds.includes(itemId);
+        
+        if (!isFeatured) {
+          // For non-featured items, find the correct page in the "View All" section
+          const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
+          const filteredItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
+          const uniqueItems = filteredItems.filter((item, index, self) => 
+            index === self.findIndex(i => i.id === item.id)
+          );
+          
+          const highlightedItemIndex = uniqueItems.findIndex(item => item.id === itemId);
+          if (highlightedItemIndex !== -1) {
+            const pageIndex = Math.floor(highlightedItemIndex / itemsPerPage);
+            setCurrentPage(pageIndex + 1);
+          }
+        }
+        
+        // Scroll to the highlighted item after a brief delay
+        setTimeout(() => {
+          if (isFeatured) {
+            // Scroll to featured items section
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            // Scroll to all items section and then to the specific item
+            const allItemsSection = document.getElementById('all-registry-items');
+            if (allItemsSection) {
+              allItemsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }, 500);
+      }
     } else if (window.location.hash === '#all-registry-items') {
       setShowAllItems(true);
       setTimeout(() => {
@@ -87,10 +114,6 @@ const Registry = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, []);
-
-  // Use page 9 items as featured items (items 49, 50, 51, 52)
-  const featuredItemIds = [49, 50, 51, 52];
-  const featuredItems = registryItems.filter(item => featuredItemIds.includes(item.id));
   
   // Rearrange items: move first 20 to pages 6 and 7, others move up
   // Also exclude featured items from the "View All" section
