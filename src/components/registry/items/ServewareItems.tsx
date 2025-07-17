@@ -176,5 +176,27 @@ export const servewareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/9d9e94f2-b9af-4d0d-be8e-7b7124491bad.png",
     websiteUrl: "https://m.yuppiechef.com/le-creuset-serveware.htm?id=56067&name=Le-Creuset-Angular-Stoneware-Oil-and-Vinegar-Carafes-Set-of-2&vid=1722581"
+  },
+  {
+    id: 82,
+    name: "Signature Crystal Drink Dispenser with Wooden Stand",
+    brand: "SALISBURY & CO",
+    price: "R899.00",
+    size: "6.8L",
+    color: "Crystal",
+    available: true,
+    image: "/lovable-uploads/4d57c7b3-3ea3-4f7d-9978-951564cc6c1a.png",
+    websiteUrl: "https://m.yuppiechef.com/salisbury-and-co.htm?id=64691&name=Salisbury-and-Co-Signature-Crystal-Drink-Dispenser-with-Wooden-Stand-6.8L&vid=1737344&display=mobile&campaignid=18346911966&adgroupid=&keyword=&device=m&network=x&devm=&gad_source=1&gad_campaignid=18353141939&gclid=EAIaIQobChMI84L_sK-bjgMVeJNQBh06dAeKEAQYASABEgJuMPD_BwE"
+  },
+  {
+    id: 83,
+    name: "Glass Serveware Cake Stand 3 Feet Glass Dome",
+    brand: "@HOME",
+    price: "R636.65",
+    size: "23X28cm",
+    color: "Clear",
+    available: true,
+    image: "/lovable-uploads/b6b331ad-c4af-4f25-8219-ec93d6be3b11.png",
+    websiteUrl: "https://bash.com/glass-serveware-cake-stand-3-feet-glass-dome-23x28cm-153003aabs7/p?skuId=402940"
   }
 ];

@@ -23,5 +23,38 @@ export const bathroomItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/grace-leaf-salt-pepper-shaker.png",
     websiteUrl: "https://bash.com/grace-leaf-salt-pepper-shaker-set/p?skuId=345678"
+  },
+  {
+    id: 84,
+    name: "Layla Blanket Stitch Bath Mat",
+    brand: "POETRY STORES",
+    price: "R499.00",
+    size: "50cm x 120cm",
+    color: "Natural",
+    available: true,
+    image: "/lovable-uploads/a52e1f55-d548-4208-ba4c-7b17ab99a617.png",
+    websiteUrl: "https://www.poetrystores.co.za/products/layla-blanket-stitch-bath-mat---50cm-x-120cm/106755669-C23.html?pid=106750841"
+  },
+  {
+    id: 89,
+    name: "Layla Blanket Stitch Bath Sheet",
+    brand: "POETRY STORES",
+    price: "R549.00",
+    size: "86cm x 150cm",
+    color: "Natural",
+    available: true,
+    image: "/lovable-uploads/19bc78c2-ac0e-4e6f-b0d8-63afc921ada4.png",
+    websiteUrl: "https://www.poetrystores.co.za/products/layla-blanket-stitch-bath-sheet---86cm-x-150cm/106755665-C23.html?pid=1067556"
+  },
+  {
+    id: 90,
+    name: "Circles Resin Toilet Brush",
+    brand: "WOOLWORTHS",
+    price: "R349.00",
+    size: "TOILET BRUSH",
+    color: "Natural",
+    available: true,
+    image: "/lovable-uploads/55b1c734-8f77-4804-ae3b-b45016a50a93.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-508772224?utm_source=app&utm_medium=nativeshare&utm_campaign=appproductshare"
   }
 ];
