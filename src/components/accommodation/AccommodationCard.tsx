@@ -12,6 +12,7 @@ export interface AccommodationPlace {
   features: string[];
   image: string;
   website: string;
+  distance?: string;
   fullyBooked?: boolean;
   contact: {
     name: string;
@@ -65,6 +66,13 @@ const AccommodationCard = ({ place }: AccommodationCardProps) => {
               }`}>
                 {place.name}
               </h3>
+              {place.distance && (
+                <p className={`text-sm font-medium mb-1 ${
+                  place.fullyBooked ? 'text-brown/50' : 'text-brown/70'
+                }`}>
+                  {place.distance}
+                </p>
+              )}
               <p className={`font-medium ${
                 place.fullyBooked ? 'text-terracotta/60' : 'text-terracotta'
               }`}>{place.type}</p>
