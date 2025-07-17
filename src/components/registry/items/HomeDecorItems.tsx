@@ -120,7 +120,7 @@ export const homeDecorItems: RegistryItem[] = [
     size: "LARGE",
     color: "Rose Gold",
     available: true,
-    image: "/lovable-uploads/large-fragrance-diffuser.png",
+    image: "/lovable-uploads/3f80cff1-5bd3-4691-8dfe-67bf7d580131.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-507727340"
   },
   {
@@ -131,7 +131,7 @@ export const homeDecorItems: RegistryItem[] = [
     size: "STANDARD",
     color: "Blue Grey",
     available: true,
-    image: "/lovable-uploads/serenity-fragrance-diffuser.png",
+    image: "/lovable-uploads/1bb0fdf5-e5df-4da0-a385-ccab63c4e242.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-509120130"
   }
 ];

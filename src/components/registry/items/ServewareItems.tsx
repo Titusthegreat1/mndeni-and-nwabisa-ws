@@ -207,7 +207,7 @@ export const servewareItems: RegistryItem[] = [
     size: "4 PACK",
     color: "Beige Striped",
     available: true,
-    image: "/lovable-uploads/scalloped-trim-napkins.png",
+    image: "/lovable-uploads/21a2d522-8380-4583-8ff3-4e6481f17f53.png",
     websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Striped-Scalloped-Trim-Cotton-Gauze-Napkins-4-Pack/_/A-509088560?isFromPLP=true"
   },
   {
@@ -218,7 +218,7 @@ export const servewareItems: RegistryItem[] = [
     size: "4 PACK",
     color: "Beige Striped",
     available: true,
-    image: "/lovable-uploads/striped-cotton-napkins.png",
+    image: "/lovable-uploads/0b69b727-3430-4f84-93bc-18570c987d25.png",
     websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Table-Linen/Striped-Cotton-Napkin-With-Border-Finish-4-Pack/_/A-509088350?isFromPLP=true"
   }
 ];

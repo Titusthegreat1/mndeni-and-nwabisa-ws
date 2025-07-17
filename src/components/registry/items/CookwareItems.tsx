@@ -87,7 +87,7 @@ export const cookwareItems: RegistryItem[] = [
     size: "5L",
     color: "Stainless Steel",
     available: true,
-    image: "/lovable-uploads/stainless-steel-casserole-pot.png",
+    image: "/lovable-uploads/5afe062d-4035-4fcb-b15a-f18725c462f9.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-506308548"
   }
 ];
