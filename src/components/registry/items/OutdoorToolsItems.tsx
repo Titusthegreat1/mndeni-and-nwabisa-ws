@@ -32,5 +32,56 @@ export const outdoorToolsItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/e9ac9646-0b35-4cbd-884e-b59e96b6bec5.png",
     websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm"
+  },
+  {
+    id: 78,
+    name: "Alva Split Pole Gas Patio Heater",
+    brand: "ALVA",
+    price: "R2,599.00",
+    size: "13KW",
+    color: "Grey",
+    available: true,
+    image: "/lovable-uploads/32b55574-495e-46cb-a0fb-55e9da2cef30.png",
+    websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
+  },
+  {
+    id: 79,
+    name: "Cordless Lithium Battery Screwdriver",
+    brand: "POWER TOOLS",
+    price: "R699.00",
+    size: "32pc Set",
+    available: true,
+    image: "/lovable-uploads/d3add5ae-d4be-428a-83a9-5ca47d0a183f.png",
+    websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
+  },
+  {
+    id: 80,
+    name: "Ryobi Blower Mulching Vacuum",
+    brand: "RYOBI",
+    price: "R749.00",
+    size: "3000W",
+    available: true,
+    image: "/lovable-uploads/6b302023-e794-43e4-abf4-3c926ee90d16.png",
+    websiteUrl: "https://leroymerlin.co.za/ryobi-blower-mulching-vacuum-3000w-1"
+  },
+  {
+    id: 81,
+    name: "Ryobi Circular Saw 1250W",
+    brand: "RYOBI",
+    price: "R899.00",
+    size: "1250W",
+    available: true,
+    image: "/lovable-uploads/189fff64-9ae2-4042-afb3-1cd1854fa2ad.png",
+    websiteUrl: "https://leroymerlin.co.za/ryobi-circular-saw-1250w-81485851"
+  },
+  {
+    id: 82,
+    name: "Red Rhino 1700W Pressure Washer 120 Bar",
+    brand: "RED RHINO",
+    price: "R1,499.00",
+    size: "1700W - 120 Bar",
+    available: true,
+    image: "/lovable-uploads/6202198e-15d6-43d0-91f5-94d4e3de921e.png",
+    websiteUrl: "https://leroymerlin.co.za/red-rhino-1700w-pressure-washer-120-bar"
   }
 ];
