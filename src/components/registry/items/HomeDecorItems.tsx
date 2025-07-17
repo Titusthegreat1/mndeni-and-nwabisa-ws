@@ -111,5 +111,27 @@ export const homeDecorItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/5f3f47cf-ac59-42af-a297-38c5e396e41c.png",
     websiteUrl: "https://bash.com/grace-most-lustrous-gold-seal-certified-egyptian-cotton-400-thread-count-duvet-cover-set-silver-153301aaiy7/p?skuId=1470128"
+  },
+  {
+    id: 118,
+    name: "Large Fragrance Diffuser",
+    brand: "WOOLWORTHS",
+    price: "R599.00",
+    size: "LARGE",
+    color: "Rose Gold",
+    available: true,
+    image: "/lovable-uploads/large-fragrance-diffuser.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-507727340"
+  },
+  {
+    id: 119,
+    name: "Serenity Fragrance Diffuser",
+    brand: "WOOLWORTHS",
+    price: "R349.00",
+    size: "STANDARD",
+    color: "Blue Grey",
+    available: true,
+    image: "/lovable-uploads/serenity-fragrance-diffuser.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-509120130"
   }
 ];

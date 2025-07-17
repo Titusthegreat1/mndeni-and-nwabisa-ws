@@ -198,5 +198,27 @@ export const servewareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/b6b331ad-c4af-4f25-8219-ec93d6be3b11.png",
     websiteUrl: "https://bash.com/glass-serveware-cake-stand-3-feet-glass-dome-23x28cm-153003aabs7/p?skuId=402940"
+  },
+  {
+    id: 121,
+    name: "Striped Scalloped Trim Cotton Gauze Napkins 4 Pack",
+    brand: "WOOLWORTHS",
+    price: "R269.00",
+    size: "4 PACK",
+    color: "Beige Striped",
+    available: true,
+    image: "/lovable-uploads/scalloped-trim-napkins.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Striped-Scalloped-Trim-Cotton-Gauze-Napkins-4-Pack/_/A-509088560?isFromPLP=true"
+  },
+  {
+    id: 122,
+    name: "Striped Cotton Napkin With Border Finish 4 Pack",
+    brand: "WOOLWORTHS",
+    price: "R269.00",
+    size: "4 PACK",
+    color: "Beige Striped",
+    available: true,
+    image: "/lovable-uploads/striped-cotton-napkins.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Table-Linen/Striped-Cotton-Napkin-With-Border-Finish-4-Pack/_/A-509088350?isFromPLP=true"
   }
 ];

@@ -78,5 +78,16 @@ export const cookwareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/cff0bd85-3796-4ac1-8bc7-f5ed5a53d680.png",
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
+  },
+  {
+    id: 120,
+    name: "Stainless Steel Waterless Casserole Pot with Lid",
+    brand: "WOOLWORTHS",
+    price: "R1,649.00",
+    size: "5L",
+    color: "Stainless Steel",
+    available: true,
+    image: "/lovable-uploads/stainless-steel-casserole-pot.png",
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-506308548"
   }
 ];
