@@ -20,9 +20,9 @@ const Index = () => {
     return storedPurchasedItems ? new Set(JSON.parse(storedPurchasedItems)) : new Set();
   };
 
-  // Get featured items (expand to 7 items: 49, 50, 51, 52, plus 3 more random items)
+  // Get featured items with the new specified items
   const getFeaturedItems = () => {
-    const featuredIds = [49, 50, 51, 52, 25, 42, 70]; // Added 3 more items
+    const featuredIds = [118, 119, 120, 121, 122]; // New featured items: Large Fragrance Diffuser, Serenity Fragrance Diffuser, Stainless Steel Casserole Pot, Striped Scalloped Napkins, Striped Cotton Napkins
     return registryItems.filter(item => featuredIds.includes(item.id));
   };
 
@@ -183,7 +183,7 @@ const Index = () => {
           <p className="text-lg text-brown/80 mb-8">
             Help us start our new journey together with these special gifts
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
             {featuredRegistryItems.map((item, index) => {
               const isPurchased = purchasedItems.has(item.id);
               return (

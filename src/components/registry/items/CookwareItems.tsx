@@ -81,13 +81,13 @@ export const cookwareItems: RegistryItem[] = [
   },
   {
     id: 120,
-    name: "Stainless Steel Waterless Casserole Pot with Lid",
+    name: "Stainless Steel Waterless Casserole Pot with Lid 5L",
     brand: "WOOLWORTHS",
     price: "R1,649.00",
     size: "5L",
     color: "Stainless Steel",
     available: true,
-    image: "/lovable-uploads/5afe062d-4035-4fcb-b15a-f18725c462f9.png",
+    image: "/lovable-uploads/472f1ef6-46a6-473b-a960-195c14a47d1a.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-506308548"
   }
 ];
