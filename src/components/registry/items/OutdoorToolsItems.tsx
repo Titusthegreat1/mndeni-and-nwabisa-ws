@@ -3,7 +3,7 @@ import { RegistryItem } from '../types';
 
 export const outdoorToolsItems: RegistryItem[] = [
   {
-    id: 70,
+    id: 205,
     name: "Grip 39 Piece Tool Set GT2015",
     brand: "GRIP",
     price: "R499.00",
