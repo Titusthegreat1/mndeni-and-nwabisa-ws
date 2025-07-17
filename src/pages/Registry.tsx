@@ -8,7 +8,6 @@ import PaginatedItems from '../components/registry/PaginatedItems';
 import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
 import ThankYouMessage from '../components/registry/ThankYouMessage';
-import ItemCard from '../components/registry/ItemCard';
 import { ExternalLink } from 'lucide-react';
 
 const Registry = () => {
@@ -248,51 +247,57 @@ const Registry = () => {
               If you prefer to give a gift card, here are some wonderful options:
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
-              <ItemCard
-                item={{
-                  id: 9001,
-                  name: "@home Gift Card",
-                  brand: "@home",
-                  price: "Any Amount",
-                  image: "/placeholder.svg",
-                  color: "Digital Gift Card",
-                  available: true,
-                  websiteUrl: "https://bash.com/?utm_source=google&utm_medium=cpc&utm_campaign=SRCH_BR_Bash&gad_source=1&gad_campaignid=17758067887&gclid=Cj0KCQjwmqPDBhCAARIsADorxIZj65AOwUGh75AFcDXRREgOm86MjOVkwSor4KhDeLZ-j4qYI7FO4_gaAvYKEALw_wcB"
+              <button
+                onClick={() => {
+                  const confirmed = window.confirm("Do you want to select the @home gift card? This will redirect you to their website.");
+                  if (confirmed) {
+                    toast({
+                      title: "Gift Card Selected!",
+                      description: "Redirecting to @home website...",
+                    });
+                    setTimeout(() => {
+                      window.open("https://bash.com/?utm_source=google&utm_medium=cpc&utm_campaign=SRCH_BR_Bash&gad_source=1&gad_campaignid=17758067887&gclid=Cj0KCQjwmqPDBhCAARIsADorxIZj65AOwUGh75AFcDXRREgOm86MjOVkwSor4KhDeLZ-j4qYI7FO4_gaAvYKEALw_wcB", "_blank");
+                    }, 1000);
+                  }
                 }}
-                onPurchaseConfirm={handlePurchaseConfirm}
-                isItemUnavailable={isItemUnavailable}
-                getRemainingQuantity={getRemainingQuantity}
-              />
-              <ItemCard
-                item={{
-                  id: 9002,
-                  name: "Woolworths Gift Card",
-                  brand: "Woolworths",
-                  price: "Any Amount",
-                  image: "/placeholder.svg",
-                  color: "Digital Gift Card",
-                  available: true,
-                  websiteUrl: "https://www.woolworths.co.za"
+                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta/90 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                @home <ExternalLink className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  const confirmed = window.confirm("Do you want to select the Woolworths gift card? This will redirect you to their website.");
+                  if (confirmed) {
+                    toast({
+                      title: "Gift Card Selected!",
+                      description: "Redirecting to Woolworths website...",
+                    });
+                    setTimeout(() => {
+                      window.open("https://www.woolworths.co.za", "_blank");
+                    }, 1000);
+                  }
                 }}
-                onPurchaseConfirm={handlePurchaseConfirm}
-                isItemUnavailable={isItemUnavailable}
-                getRemainingQuantity={getRemainingQuantity}
-              />
-              <ItemCard
-                item={{
-                  id: 9003,
-                  name: "Le Creuset Gift Card",
-                  brand: "Le Creuset",
-                  price: "Any Amount",
-                  image: "/placeholder.svg",
-                  color: "Digital Gift Card",
-                  available: true,
-                  websiteUrl: "https://m.yuppiechef.com/gift-vouchers.htm?adgroupid=8093711083&campaignid=135890803&device=c&devm=&display=mobile&gad_campaignid=135890803&gad_source=1&gclid=Cj0KCQjwmqPDBhCAARIsADorxIY8hyow4hwIgPRHdWjsk9l_jPlVWef84vFlqPNuSWT0vP8b6DGIbgcaAtRREALw_wcB&keyword=le+creuset+voucher&network=g"
+                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta/90 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                Woolworths <ExternalLink className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  const confirmed = window.confirm("Do you want to select the Le Creuset gift card? This will redirect you to their website.");
+                  if (confirmed) {
+                    toast({
+                      title: "Gift Card Selected!",
+                      description: "Redirecting to Le Creuset website...",
+                    });
+                    setTimeout(() => {
+                      window.open("https://m.yuppiechef.com/gift-vouchers.htm?adgroupid=8093711083&campaignid=135890803&device=c&devm=&display=mobile&gad_campaignid=135890803&gad_source=1&gclid=Cj0KCQjwmqPDBhCAARIsADorxIY8hyow4hwIgPRHdWjsk9l_jPlVWef84vFlqPNuSWT0vP8b6DGIbgcaAtRREALw_wcB&keyword=le+creuset+voucher&network=g", "_blank");
+                    }, 1000);
+                  }
                 }}
-                onPurchaseConfirm={handlePurchaseConfirm}
-                isItemUnavailable={isItemUnavailable}
-                getRemainingQuantity={getRemainingQuantity}
-              />
+                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta/90 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                Le Creuset <ExternalLink className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
