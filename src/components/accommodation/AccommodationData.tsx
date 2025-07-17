@@ -9,6 +9,7 @@ export const accommodations: AccommodationPlace[] = [
     features: ["River views", "Modern amenities", "Peaceful location", "Comfortable rooms"],
     image: "/lovable-uploads/7465ef7a-afba-4078-bc59-cb33cb1d8438.png",
     website: "https://search.app/dQaJG12RMYdFRRhcA",
+    fullyBooked: true,
     contact: {
       name: "Amahle",
       phone: "Contact Amahle for booking inquiries",
@@ -37,6 +38,7 @@ export const accommodations: AccommodationPlace[] = [
     features: ["Personalized service", "Homely atmosphere", "Comfortable stay", "Warm hospitality"],
     image: "/lovable-uploads/6eb91dad-39c8-41bb-b1fc-0fe792818300.png",
     website: "https://www.wendyscountrylodge.com",
+    fullyBooked: true,
     contact: {
       name: "Amahle",
       phone: "Contact Amahle for booking inquiries",
