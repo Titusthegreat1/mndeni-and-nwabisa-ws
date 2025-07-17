@@ -64,6 +64,11 @@ const Registry = () => {
       setHighlightItemId(itemId);
       setShowAllItems(true);
       
+      // Clear highlight after 3 seconds
+      setTimeout(() => {
+        setHighlightItemId(null);
+      }, 3000);
+      
       // Find which page the highlighted item is on in the complete registry
       const allItems = registryItems;
       const itemIndex = allItems.findIndex(item => item.id === itemId);
