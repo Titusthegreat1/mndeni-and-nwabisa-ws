@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navigation from '../components/Navigation';
-import { useToast } from '@/hooks/use-toast';
+import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
 import RegistryFilters from '../components/registry/RegistryFilters';
 import FeaturedItems from '../components/registry/FeaturedItems';
 import PaginatedItems from '../components/registry/PaginatedItems';
 import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
+import { supabase } from '@/integrations/supabase/client';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
+import { useToast } from '@/hooks/use-toast';
 import ThankYouMessage from '../components/registry/ThankYouMessage';
 import { ExternalLink } from 'lucide-react';
 
@@ -19,26 +21,80 @@ const Registry = () => {
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
   const itemsPerPage = 6;
 
-  // Load purchased items and quantities from localStorage on component mount
-  useEffect(() => {
-    // Clear all testing data - reset everything to available
-    console.log('Resetting all items to available (clearing test purchases)');
-    localStorage.removeItem('purchasedRegistryItems');
-    localStorage.removeItem('registryItemQuantities');
-    
-    // Ensure state is cleared
-    setPurchasedItems(new Set());
-    setItemQuantities({});
+  // Load purchase data from Supabase
+  const loadPurchaseDataFromSupabase = useCallback(async () => {
+    try {
+      const { data, error } = await supabase
+        .from('registry_items')
+        .select('*');
+      
+      if (error) {
+        console.error('Error loading purchase data:', error);
+        return;
+      }
+
+      // Convert Supabase data to local state format
+      const quantities: Record<number, number> = {};
+      const purchased = new Set<number>();
+
+      data?.forEach((dbItem) => {
+        // Match database items to registry items by name and brand
+        const registryItem = registryItems.find(item => 
+          item.name === dbItem.name && item.brand === dbItem.brand
+        );
+        
+        if (registryItem) {
+          quantities[registryItem.id] = dbItem.purchased_quantity || 0;
+          
+          // Mark as purchased if fully bought
+          const totalQuantity = registryItem.quantity || 1;
+          if ((dbItem.purchased_quantity || 0) >= totalQuantity) {
+            purchased.add(registryItem.id);
+          }
+        }
+      });
+
+      setItemQuantities(quantities);
+      setPurchasedItems(purchased);
+      
+      console.log('Loaded purchase data from Supabase:', { quantities, purchased: Array.from(purchased) });
+    } catch (error) {
+      console.error('Error in loadPurchaseDataFromSupabase:', error);
+    }
   }, []);
 
-  // Save purchased items and quantities to localStorage
-  useEffect(() => {
-    localStorage.setItem('purchasedRegistryItems', JSON.stringify(Array.from(purchasedItems)));
-  }, [purchasedItems]);
+  // Setup real-time subscription for cross-device synchronization
+  const setupRealtimeSubscription = useCallback(() => {
+    console.log('Setting up realtime subscription...');
+    
+    const channel = supabase
+      .channel('registry-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'registry_items'
+        },
+        (payload) => {
+          console.log('Real-time update received:', payload);
+          // Reload data when changes occur
+          loadPurchaseDataFromSupabase();
+        }
+      )
+      .subscribe();
 
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [loadPurchaseDataFromSupabase]);
+
+  // Load purchased items and quantities from Supabase on component mount
   useEffect(() => {
-    localStorage.setItem('registryItemQuantities', JSON.stringify(itemQuantities));
-  }, [itemQuantities]);
+    loadPurchaseDataFromSupabase();
+    const cleanup = setupRealtimeSubscription();
+    return cleanup;
+  }, [loadPurchaseDataFromSupabase, setupRealtimeSubscription]);
 
   // Use the same featured items as homepage (items 118, 119, 120, 121, 122)
   const featuredItemIds = [118, 119, 120, 121, 122];
@@ -122,29 +178,42 @@ const Registry = () => {
   
   const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
 
-  const handlePurchaseConfirm = (item: RegistryItem, buyerName: string, buyerSurname: string) => {
-    // Get total quantity available for this item
-    const totalQuantity = item.quantity || 1;
-    
-    // Get current purchased quantity for this item
-    const currentPurchased = itemQuantities[item.id] || 0;
-    const newPurchased = currentPurchased + 1;
-    
-    // Update quantities
-    setItemQuantities(prev => ({
-      ...prev,
-      [item.id]: newPurchased
-    }));
-    
-    // If all quantity is purchased, mark as fully purchased
-    if (newPurchased >= totalQuantity) {
-      setPurchasedItems(prev => new Set([...prev, item.id]));
+  const handlePurchaseConfirm = async (item: RegistryItem, buyerName: string, buyerSurname: string) => {
+    try {
+      console.log('Processing purchase for:', item.name, 'by', buyerName, buyerSurname);
+      
+      // Update Supabase database to track purchase across all devices
+      const { error } = await supabase.rpc('update_registry_item_quantity', {
+        item_name: item.name,
+        item_brand: item.brand,
+        increment_amount: 1
+      });
+
+      if (error) {
+        console.error('Error updating purchase in Supabase:', error);
+        toast({
+          title: "Error",
+          description: "Failed to record purchase. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // The real-time subscription will automatically update the UI
+      toast({
+        title: "Gift Selected!",
+        description: "Email client opened. Thank you for selecting this gift!",
+      });
+      
+      console.log('Purchase recorded successfully in Supabase');
+    } catch (error) {
+      console.error('Error in handlePurchaseConfirm:', error);
+      toast({
+        title: "Error",
+        description: "Failed to record purchase. Please try again.",
+        variant: "destructive",
+      });
     }
-    
-    toast({
-      title: "Gift Selected!",
-      description: "Email client opened. Thank you for selecting this gift!",
-    });
   };
 
   // Check if item is unavailable (fully purchased)

@@ -21,6 +21,7 @@ export type Database = {
           created_at: string
           id: number
           image_url: string | null
+          item_name_unique: string | null
           name: string
           price: string
           purchased_quantity: number
@@ -35,6 +36,7 @@ export type Database = {
           created_at?: string
           id: number
           image_url?: string | null
+          item_name_unique?: string | null
           name: string
           price: string
           purchased_quantity?: number
@@ -49,6 +51,7 @@ export type Database = {
           created_at?: string
           id?: number
           image_url?: string | null
+          item_name_unique?: string | null
           name?: string
           price?: string
           purchased_quantity?: number
@@ -118,7 +121,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      update_registry_item_quantity: {
+        Args: {
+          item_name: string
+          item_brand: string
+          increment_amount?: number
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
