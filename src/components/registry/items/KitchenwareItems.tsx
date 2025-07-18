@@ -4,12 +4,13 @@ import { RegistryItem } from '../types';
 export const kitchenwareItems: RegistryItem[] = [
   {
     id: 3,
-    name: "Grater Square 4 Sided w/Storage Container",
-    brand: "@HOME",
-    price: "R249.00",
-    color: "Metallic",
+    name: "Amanda-Jayne Fresh Zest Reed Diffuser",
+    brand: "AMANDA JAYNE",
+    price: "R669.00",
+    color: "Natural",
     available: true,
-    image: "/lovable-uploads/0312ba0b-f410-43f2-bc78-4ce8654f0391.png"
+    image: "/lovable-uploads/4b267b77-4a65-44ae-9dc9-3c3539793c24.png",
+    websiteUrl: "https://bash.com/amanda-jayne-fresh-zest-reed-diffuser-000181aabc4/p"
   },
   {
     id: 4,

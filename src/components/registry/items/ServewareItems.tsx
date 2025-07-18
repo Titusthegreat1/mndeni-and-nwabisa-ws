@@ -59,13 +59,14 @@ export const servewareItems: RegistryItem[] = [
   },
   {
     id: 19,
-    name: "@Home Lacasa Serveware Divided Platter",
-    brand: "@HOME",
-    price: "R1,198.00",
-    size: "PLATTER",
-    color: "White",
+    name: "Amanda-Jayne Fresh Zest Ambient Mist",
+    brand: "AMANDA JAYNE",
+    price: "R279.00",
+    size: "AMBIENT MIST",
+    color: "Natural",
     available: true,
-    image: "/lovable-uploads/741216e2-43e1-49a0-a4ac-1d08de30df86.png"
+    image: "/lovable-uploads/65876d63-0dcd-4bb6-b1f1-a11d98ac0866.png",
+    websiteUrl: "https://bash.com/amanda-jayne-fresh-zest-ambient-mist-000181aabc3/p"
   },
   {
     id: 20,
