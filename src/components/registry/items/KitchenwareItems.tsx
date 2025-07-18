@@ -55,10 +55,11 @@ export const kitchenwareItems: RegistryItem[] = [
     id: 10,
     name: "Oven Glove Long Arm Single Silicone Grey",
     brand: "@HOME",
-    price: "R558.00",
+    price: "R279.00",
     color: "Grey",
     available: true,
-    image: "/lovable-uploads/d174729d-db71-4fb2-9b63-4287176cbb7d.png"
+    image: "/lovable-uploads/957a5efa-7ef0-4a10-982e-bac30d762b63.png",
+    websiteUrl: "https://bash.com/oven-glove-long-arm-single-silicone-grey-154701aaae4/p"
   },
   {
     id: 17,

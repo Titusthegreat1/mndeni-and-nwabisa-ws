@@ -6,41 +6,45 @@ export const servewareItems: RegistryItem[] = [
     id: 11,
     name: "Lacasa Sugar Pot w/Gold Rim White",
     brand: "@HOME",
-    price: "R258.00",
+    price: "R109.00",
     size: "SUGAR POT",
     color: "White",
     available: true,
-    image: "/lovable-uploads/d063d28f-a5fd-4311-8257-7454f027ea33.png"
+    image: "/lovable-uploads/64503c98-a1d6-4dc9-8e2e-b28dadd0633c.png",
+    websiteUrl: "https://bash.com/lacasa-sugar-pot-w-gold-rim-white-153004aaba9/p"
   },
   {
     id: 12,
     name: "Lacasa Pourer w/Gold Rim White",
     brand: "@HOME",
-    price: "R119.00",
+    price: "R101.15",
     size: "MARTINI",
     color: "White",
     available: true,
-    image: "/lovable-uploads/4cb67d97-c1a4-4170-92e7-b96983bf118b.png"
+    image: "/lovable-uploads/22e03e44-6b22-472b-aa80-1608fdd870a0.png",
+    websiteUrl: "https://bash.com/lacasa-pourer-w-gold-rim-white-153004aabb0/p"
   },
   {
     id: 13,
     name: "Lacasa Teapot With Gold Trim 1100ml",
     brand: "@HOME",
-    price: "R798.00",
+    price: "R399.00",
     size: "TEAPOT",
     color: "White",
     available: true,
-    image: "/lovable-uploads/9ea0a517-b19d-4e36-a859-b5a5946ed10d.png"
+    image: "/lovable-uploads/56832df3-9b6b-45bd-8dc3-cc732af5de2e.png",
+    websiteUrl: "https://bash.com/lacasa-teapot-with-gold-trim-1100ml-153004aabb4/p"
   },
   {
     id: 14,
     name: "Lacasa Cup and Saucer With Gold Trim",
     brand: "@HOME",
-    price: "R1,590.00",
+    price: "R135.15",
     size: "CUP & SAUC",
     color: "White",
     available: true,
-    image: "/lovable-uploads/1c2a29ff-e458-4aaf-aab4-563e844586f0.png"
+    image: "/lovable-uploads/e210f303-8b53-4aba-a970-58e95f607f79.png",
+    websiteUrl: "https://bash.com/lacasa-cup-and-saucer-with-gold-trim-180ml-153004aabb1/p"
   },
   {
     id: 18,
