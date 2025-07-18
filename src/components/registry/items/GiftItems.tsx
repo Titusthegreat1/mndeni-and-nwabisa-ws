@@ -164,8 +164,9 @@ export const giftItems: RegistryItem[] = [
     image: "/lovable-uploads/0f5d5829-58a6-420c-a2e8-11e576a324e4.png",
     available: true,
     size: "30cm",
-    color: "White, Qty: 2",
-    websiteUrl: "https://bash.com/aurora-round-porcelain-casserole-with-lid-30cm-153002aabl9/p?skuId=401732"
+    color: "White",
+    websiteUrl: "https://bash.com/aurora-round-porcelain-casserole-with-lid-30cm-153002aabl9/p?skuId=401732",
+    quantity: 2
   },
   {
     id: 1016,

@@ -66,7 +66,8 @@ export const homeDecorItems: RegistryItem[] = [
     color: "Multi Colour",
     available: true,
     image: "/lovable-uploads/29bffd66-b0a7-4719-a725-374f8d22fe36.png",
-    websiteUrl: "https://bash.com/multi-colour-maize-basket-large-153300aaop3/p?skuId=1576022"
+    websiteUrl: "https://bash.com/multi-colour-maize-basket-large-153300aaop3/p?skuId=1576022",
+    quantity: 2
   },
   {
     id: 85,

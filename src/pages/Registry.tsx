@@ -133,9 +133,8 @@ const Registry = () => {
   const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = (item: RegistryItem, buyerName: string, buyerSurname: string) => {
-    // Extract quantity from color field if it exists
-    const quantityMatch = item.color?.match(/Qty:\s*(\d+)/);
-    const originalQuantity = quantityMatch ? parseInt(quantityMatch[1]) : 1;
+    // Get total quantity available for this item
+    const totalQuantity = item.quantity || 1;
     
     // Get current purchased quantity for this item
     const currentPurchased = itemQuantities[item.id] || 0;
@@ -148,7 +147,7 @@ const Registry = () => {
     }));
     
     // If all quantity is purchased, mark as fully purchased
-    if (newPurchased >= originalQuantity) {
+    if (newPurchased >= totalQuantity) {
       setPurchasedItems(prev => new Set([...prev, item.id]));
     }
     
@@ -162,8 +161,11 @@ const Registry = () => {
   const isItemUnavailable = (item: RegistryItem) => {
     // Gift cards are always available
     if (item.id >= 9000) return false;
-    // All items are now available
-    return false;
+    
+    // Check if item is fully purchased based on quantity
+    const totalQuantity = item.quantity || 1;
+    const purchasedQuantity = itemQuantities[item.id] || 0;
+    return purchasedQuantity >= totalQuantity;
   };
 
   // Get remaining quantity for an item
@@ -171,10 +173,9 @@ const Registry = () => {
     // Gift cards always have quantity of 1 available
     if (item.id >= 9000) return 1;
     
-    const quantityMatch = item.color?.match(/Qty:\s*(\d+)/);
-    const originalQuantity = quantityMatch ? parseInt(quantityMatch[1]) : 1;
+    const totalQuantity = item.quantity || 1;
     const purchasedQuantity = itemQuantities[item.id] || 0;
-    return Math.max(0, originalQuantity - purchasedQuantity);
+    return Math.max(0, totalQuantity - purchasedQuantity);
   };
 
   const scrollToAllItems = () => {

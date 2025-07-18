@@ -9,4 +9,5 @@ export interface RegistryItem {
   available: boolean;
   image: string;
   websiteUrl?: string;
+  quantity?: number;
 }

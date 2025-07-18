@@ -25,7 +25,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
 
   const isUnavailable = isItemUnavailable(item);
   const remainingQuantity = getRemainingQuantity(item);
-  const hasQuantity = item.color?.includes('Qty:');
+  const hasQuantity = (item.quantity && item.quantity > 1) || item.color?.includes('Qty:');
 
   const handleGiftSelection = async () => {
     // Always require name/surname
@@ -150,26 +150,40 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:scale-105">
-      <div className="mb-4 h-40 bg-gray-100 rounded-lg overflow-hidden">
+    <div className={`bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:scale-105 ${isUnavailable ? 'opacity-50' : ''}`}>
+      <div className="mb-4 h-40 bg-gray-100 rounded-lg overflow-hidden relative">
         <img 
           src={item.image} 
           alt={item.name}
           className="w-full h-full object-contain"
         />
+        {isUnavailable && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <span className="text-white font-bold text-lg">UNAVAILABLE</span>
+          </div>
+        )}
       </div>
       <h3 className="font-playfair text-lg font-bold text-brown mb-2">{item.name}</h3>
       <p className="text-sm text-brown/70 mb-1">{item.brand}</p>
       {item.size && <p className="text-sm text-brown/60 mb-1">Size: {item.size}</p>}
       {item.color && (
         <p className="text-sm text-brown/60 mb-2">
-          Color: {hasQuantity ? item.color.replace(/,\s*Qty:\s*\d+/, `, Qty: ${remainingQuantity}`) : item.color}
+          Color: {item.color.replace(/,\s*Qty:\s*\d+/, '')}
         </p>
       )}
       <div className="flex justify-between items-center mb-4">
         <span className="font-bold text-xl text-brown">{item.price}</span>
-        <span className="px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
-          {hasQuantity ? `${remainingQuantity} Available` : 'Available'}
+        <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+          isUnavailable 
+            ? 'bg-red-100 text-red-800' 
+            : 'bg-green-100 text-green-800'
+        }`}>
+          {isUnavailable 
+            ? 'Unavailable' 
+            : hasQuantity 
+              ? `${remainingQuantity} Available` 
+              : 'Available'
+          }
         </span>
       </div>
       
@@ -190,11 +204,11 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           onGiftSelection={handleGiftSelection}
         >
           <Button 
-            className="w-full bg-terracotta hover:bg-terracotta/90 text-white"
-            disabled={false}
+            className="w-full bg-terracotta hover:bg-terracotta/90 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+            disabled={isUnavailable}
           >
             <Gift className="w-4 h-4 mr-2" />
-            Select Gift
+            {isUnavailable ? 'Unavailable' : 'Select Gift'}
           </Button>
         </GiftSelectionDialog>
       </div>
