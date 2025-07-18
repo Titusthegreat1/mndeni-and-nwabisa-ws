@@ -64,17 +64,19 @@ export const kitchenwareItems: RegistryItem[] = [
     size: "ACCESSORY",
     color: "Metallic",
     available: true,
-    image: "/lovable-uploads/87d8efc7-b306-49ef-9075-f0f86791d3ac.png"
+    image: "/lovable-uploads/f1d5b1fb-cbe2-4f85-8336-7c909cd0ba53.png",
+    websiteUrl: "https://bash.com/ciroa-set-of-2-sieve-154606aaaa5/p"
   },
   {
     id: 25,
     name: "Cuisine::pro Sabre Knife Block 9Pc",
     brand: "CUISINE::PRO",
-    price: "R1,199.40",
+    price: "R1,699.15",
     size: "KNIVES",
     color: "Multicolour",
     available: true,
-    image: "/lovable-uploads/30f78a3b-92c8-4ee8-b724-271213ed3cc5.png"
+    image: "/lovable-uploads/8ecb6fcf-3ffe-47a4-aa61-95b2e17c1f2b.png",
+    websiteUrl: "https://bash.com/cuisine-pro-sabre-knife-block-9pc-153300aapk4/p"
   },
   {
     id: 42,

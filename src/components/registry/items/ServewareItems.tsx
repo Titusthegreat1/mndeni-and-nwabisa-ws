@@ -46,11 +46,12 @@ export const servewareItems: RegistryItem[] = [
     id: 18,
     name: "Fluente Serveware Salad Bowl Porcelain",
     brand: "@HOME",
-    price: "R897.00",
+    price: "R299.00",
     size: "SALAD BOWL",
     color: "White",
     available: true,
-    image: "/lovable-uploads/190d6f6f-0068-42ec-8be1-7dcd24f9e3d4.png"
+    image: "/lovable-uploads/f58a7750-c5a4-41c9-97d8-1361d4ecefbb.png",
+    websiteUrl: "https://bash.com/fluente-serveware-salad-bowl-porcelain-white-30cm-153003aadq4/p"
   },
   {
     id: 19,
@@ -64,12 +65,13 @@ export const servewareItems: RegistryItem[] = [
   },
   {
     id: 20,
-    name: "Fluted Butter Dish White 22cm Fluted P",
+    name: "Fluted Butter Dish White 22cm Fluted",
     brand: "@HOME",
     price: "R249.00",
     color: "White",
     available: true,
-    image: "/lovable-uploads/224bd2cd-d9ed-4333-838c-df59fe3800db.png"
+    image: "/lovable-uploads/9ba5e17c-49c6-4138-9e26-6864da98b0ee.png",
+    websiteUrl: "https://bash.com/fluted-butter-dish-white-22cm-153300aarn9/p"
   },
   {
     id: 21,
@@ -79,7 +81,8 @@ export const servewareItems: RegistryItem[] = [
     size: "MUG",
     color: "White",
     available: true,
-    image: "/lovable-uploads/153f5fe7-22d6-43b2-9080-cb67ff38ad40.png"
+    image: "/lovable-uploads/d91af1bb-2156-4ef4-bded-a8cda1af0422.png",
+    websiteUrl: "https://bash.com/lacasa-mug-with-gold-trim-420ml-153004aaba8/p"
   },
   {
     id: 23,
@@ -89,7 +92,8 @@ export const servewareItems: RegistryItem[] = [
     size: "PLATTER",
     color: "White",
     available: true,
-    image: "/lovable-uploads/c08030a5-28ad-4921-be33-950fb37faeab.png"
+    image: "/lovable-uploads/53bf54ba-e149-41c0-8039-e54ed26e7a87.png",
+    websiteUrl: "https://bash.com/rectangular-serveware-platter-white-30x20cm-153003aaco1/p"
   },
   {
     id: 24,
@@ -99,7 +103,8 @@ export const servewareItems: RegistryItem[] = [
     size: "COASTER",
     color: "Natural",
     available: true,
-    image: "/lovable-uploads/0f556c0b-7a52-41bc-b809-c5bc1ee128b2.png"
+    image: "/lovable-uploads/072c4fad-7764-4d20-b409-e0a7ba353b02.png",
+    websiteUrl: "https://bash.com/fossil-marble-wine-coaster-beige-153300aalt5/p"
   },
   {
     id: 32,

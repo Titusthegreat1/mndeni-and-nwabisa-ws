@@ -10,7 +10,8 @@ export const appliancesItems: RegistryItem[] = [
     size: "TOASTER",
     color: "Natural",
     available: true,
-    image: "/lovable-uploads/5d8cddd1-0af0-41ec-80a2-392d1cb8013b.png"
+    image: "/lovable-uploads/07bd61bd-7184-446b-ae2e-e23370581527.png",
+    websiteUrl: "https://bash.com/smeg-2-slice-toaster-cream-151412aaaf1/p?idsku=364610&utm_source=google&utm_medium=cpc&utm_campaign=SHOP_NB_Store_Home_Appliances_BF_Desktop&gad_source=1&gad_campaignid=21720471338&gclid=CjwKCAjw4efDBhATEiwAaDBpbi1wJ1PiFmZZjRZ2Sb5WB1idBUhGKK7WoQ9KH4F77FKMSHLFZFjUUxoCakkQAvD_BwE"
   },
   {
     id: 29,
@@ -20,7 +21,8 @@ export const appliancesItems: RegistryItem[] = [
     size: "TOASTER",
     color: "Metallic",
     available: true,
-    image: "/lovable-uploads/7284a365-9f5a-423b-9b07-8ef15c535959.png"
+    image: "/lovable-uploads/0bcec5e8-f2e8-4461-ab09-8ef45d4ac93d.png",
+    websiteUrl: "https://bash.com/delonghi-icona-metallics-4-slice-toaster-beige-153301aaqs1/p"
   },
   {
     id: 30,

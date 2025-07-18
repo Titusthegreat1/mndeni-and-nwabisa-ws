@@ -44,13 +44,14 @@ export const dinnerwareItems: RegistryItem[] = [
   },
   {
     id: 28,
-    name: "Guesthouse Champagne Crystal Glass",
+    name: "Guesthouse Champagne Crystal Glasses",
     brand: "GUEST HOUSE COLLECTION",
     price: "R798.00",
     size: "CHAMPAGNE",
     color: "Clear",
     available: true,
-    image: "/lovable-uploads/fa099386-0893-4322-b9a2-79e8065e87e8.png"
+    image: "/lovable-uploads/86e09bf5-7ac0-46a5-b28a-d0eb649709f5.png",
+    websiteUrl: "https://bash.com/guesthouse-champagne-crystal-glasses-4-pack-250ml-153300aakp5/p"
   },
   {
     id: 48,
