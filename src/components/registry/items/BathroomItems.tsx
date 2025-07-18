@@ -75,7 +75,8 @@ export const bathroomItems: RegistryItem[] = [
     color: "Beige",
     available: true,
     image: "/lovable-uploads/8e2ed405-ad05-4b0f-9204-74289f0ac43d.png",
-    websiteUrl: "https://www.woolworths.co.za/prod/_/A-508770158"
+    websiteUrl: "https://www.woolworths.co.za/prod/_/A-508770158",
+    quantity: 2
   },
   {
     id: 125,
