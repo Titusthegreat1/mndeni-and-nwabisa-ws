@@ -8,12 +8,12 @@ import PaginatedItems from '../components/registry/PaginatedItems';
 import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
 import { supabase } from '@/integrations/supabase/client';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
-import { useToast } from '@/hooks/use-toast';
+import { useToast, toast } from '@/hooks/use-toast';
 import ThankYouMessage from '../components/registry/ThankYouMessage';
 import { ExternalLink } from 'lucide-react';
 
 const Registry = () => {
-  const { toast } = useToast();
+  // Using useToast hook for toast management
   const [showAllItems, setShowAllItems] = useState(false);
   const [itemQuantities, setItemQuantities] = useState<Record<number, number>>({});
   const [purchasedItems, setPurchasedItems] = useState(new Set());
