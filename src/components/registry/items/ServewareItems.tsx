@@ -114,7 +114,8 @@ export const servewareItems: RegistryItem[] = [
     size: "COASTER",
     color: "Black",
     available: true,
-    image: "/lovable-uploads/49326a5b-87bb-4424-8691-ed73e56cc35b.png"
+    image: "/lovable-uploads/524f741f-e6db-47f5-beb8-6e8b6e5dd441.png",
+    websiteUrl: "https://bash.com/estilo-4-piece-printed-coaster-set-158601aaan0/p"
   },
   {
     id: 34,

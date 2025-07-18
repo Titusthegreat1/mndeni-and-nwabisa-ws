@@ -31,7 +31,8 @@ export const appliancesItems: RegistryItem[] = [
     price: "R1,599.00",
     color: "Metallic",
     available: true,
-    image: "/lovable-uploads/ac2f7afb-b8c5-4758-8d5e-ea47ab9a35ae.png"
+    image: "/lovable-uploads/99ad6274-023a-4a06-b163-2484040a586c.png",
+    websiteUrl: "https://bash.com/delonghi-icona-metallics-electric-kettle-grey-1-7l-153301aaqr5/p"
   },
   {
     id: 31,
@@ -41,7 +42,8 @@ export const appliancesItems: RegistryItem[] = [
     size: "AIRFRYER",
     color: "Black",
     available: true,
-    image: "/lovable-uploads/97d4b3f0-993b-4689-afd7-f306cca678ec.png"
+    image: "/lovable-uploads/253b58f1-7d8d-4caa-8ff0-23b7152b25d9.png",
+    websiteUrl: "https://bash.com/philips-3000-series-9l-dual-basket-air-fryer-153301aamn0/p"
   },
   {
     id: 41,

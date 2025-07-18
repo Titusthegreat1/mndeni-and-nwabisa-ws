@@ -20,27 +20,30 @@ export const dinnerwareItems: RegistryItem[] = [
     size: "CUTLERY",
     color: "Silver",
     available: true,
-    image: "/lovable-uploads/e19d5600-5a96-44f4-a0c6-290f4b4f58fa.png"
+    image: "/lovable-uploads/698d6c80-a68e-40bc-8d77-af509229a736.png",
+    websiteUrl: "https://bash.com/laguna-cutlery-16-piece-set-silver-153101aaba6/p"
   },
   {
     id: 7,
     name: "Guesthouse Crystal White Wine Glasses",
     brand: "GUEST HOUSE COLLECTION",
-    price: "R798.00",
+    price: "R399.00",
     size: "WHITE WINE",
     color: "Clear",
     available: true,
-    image: "/lovable-uploads/e612db67-5af2-4bbb-9676-3499d0f980ec.png"
+    image: "/lovable-uploads/471196d0-f3c0-4dfe-8f92-babe37eb4af8.png",
+    websiteUrl: "https://bash.com/guesthouse-crystal-white-wine-glasses-4-pack-540ml-153300aakp2/p"
   },
   {
     id: 8,
     name: "Leela Crystal Red Wine Glasses 4 Pack",
     brand: "@HOME",
-    price: "R698.00",
+    price: "R296.65",
     size: "RED WINE",
     color: "Clear",
     available: true,
-    image: "/lovable-uploads/9510c378-db73-482e-bb5c-1eda0e91a038.png"
+    image: "/lovable-uploads/96d8462a-6765-4085-8572-6ddbc9db3110.png",
+    websiteUrl: "https://bash.com/leela-crystal-red-wine-glasses-4-pack-580ml-153300aakp6/p"
   },
   {
     id: 28,

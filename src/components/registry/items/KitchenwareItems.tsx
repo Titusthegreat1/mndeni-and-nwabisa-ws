@@ -18,25 +18,28 @@ export const kitchenwareItems: RegistryItem[] = [
     price: "R399.00",
     color: "Green",
     available: true,
-    image: "/lovable-uploads/cf841809-1fd0-45a0-bf0c-4785adbfe09a.png"
+    image: "/lovable-uploads/13b6e4be-2134-4776-a921-f1a0425ee258.png",
+    websiteUrl: "https://bash.com/progressive-onion-chopper-154601aacp2/p"
   },
   {
     id: 5,
     name: "@home Extendable Pot Stand",
     brand: "@HOME",
-    price: "R498.00", 
+    price: "R249.00", 
     color: "Metallic",
     available: true,
-    image: "/lovable-uploads/c922899a-1d5f-4633-a700-0a28cdfa2493.png"
+    image: "/lovable-uploads/25430f9c-05cc-4119-a1f6-87f68fb2c2a0.png",
+    websiteUrl: "https://bash.com/home-extendable-pot-stand-154601aacq9/p"
   },
   {
     id: 6,
     name: "Joie Regular Ice Cube Tray Green",
     brand: "JOIE",
-    price: "R258.00",
+    price: "R129.00",
     color: "Green", 
     available: true,
-    image: "/lovable-uploads/23050d27-a9bc-4780-b4a4-35aac12b6b8e.png"
+    image: "/lovable-uploads/6d684d0a-87d7-4448-b8f5-20f35c4467d1.png",
+    websiteUrl: "https://bash.com/joie-regular-ice-cube-tray-green-154601aabv2/p"
   },
   {
     id: 9,
@@ -45,7 +48,8 @@ export const kitchenwareItems: RegistryItem[] = [
     price: "R749.00",
     color: "White",
     available: true,
-    image: "/lovable-uploads/354c5ba2-054f-4d27-bed7-5436e8311070.png"
+    image: "/lovable-uploads/ce85542f-8b07-4e0e-a8f8-e48494a07416.png",
+    websiteUrl: "https://bash.com/home-lara-10pc-utensil-set-with-holder-154601aabi2/p"
   },
   {
     id: 10,
