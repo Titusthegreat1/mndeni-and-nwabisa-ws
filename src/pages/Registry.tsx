@@ -21,28 +21,14 @@ const Registry = () => {
 
   // Load purchased items and quantities from localStorage on component mount
   useEffect(() => {
-    const storedPurchasedItems = localStorage.getItem('purchasedRegistryItems');
-    const storedItemQuantities = localStorage.getItem('registryItemQuantities');
+    // Clear all testing data - reset everything to available
+    console.log('Resetting all items to available (clearing test purchases)');
+    localStorage.removeItem('purchasedRegistryItems');
+    localStorage.removeItem('registryItemQuantities');
     
-    console.log('Loading from localStorage:', { storedPurchasedItems, storedItemQuantities });
-    
-    if (storedPurchasedItems) {
-      const purchasedSet = new Set(JSON.parse(storedPurchasedItems));
-      console.log('Purchased items from storage:', Array.from(purchasedSet));
-      // Remove item 62 (Mug Set of 4 – Let's Face It) to make it available
-      purchasedSet.delete(62);
-      setPurchasedItems(purchasedSet);
-    }
-    
-    if (storedItemQuantities) {
-      const quantities = JSON.parse(storedItemQuantities);
-      console.log('Item quantities from storage:', quantities);
-      // Reset item 62 quantity to full if it exists
-      if (quantities[62] !== undefined) {
-        quantities[62] = 0; // Reset to show full quantity
-      }
-      setItemQuantities(quantities);
-    }
+    // Ensure state is cleared
+    setPurchasedItems(new Set());
+    setItemQuantities({});
   }, []);
 
   // Save purchased items and quantities to localStorage
