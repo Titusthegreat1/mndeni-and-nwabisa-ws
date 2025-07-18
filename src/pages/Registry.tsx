@@ -24,8 +24,11 @@ const Registry = () => {
     const storedPurchasedItems = localStorage.getItem('purchasedRegistryItems');
     const storedItemQuantities = localStorage.getItem('registryItemQuantities');
     
+    console.log('Loading from localStorage:', { storedPurchasedItems, storedItemQuantities });
+    
     if (storedPurchasedItems) {
       const purchasedSet = new Set(JSON.parse(storedPurchasedItems));
+      console.log('Purchased items from storage:', Array.from(purchasedSet));
       // Remove item 62 (Mug Set of 4 – Let's Face It) to make it available
       purchasedSet.delete(62);
       setPurchasedItems(purchasedSet);
@@ -33,6 +36,7 @@ const Registry = () => {
     
     if (storedItemQuantities) {
       const quantities = JSON.parse(storedItemQuantities);
+      console.log('Item quantities from storage:', quantities);
       // Reset item 62 quantity to full if it exists
       if (quantities[62] !== undefined) {
         quantities[62] = 0; // Reset to show full quantity
@@ -165,7 +169,13 @@ const Registry = () => {
     // Check if item is fully purchased based on quantity
     const totalQuantity = item.quantity || 1;
     const purchasedQuantity = itemQuantities[item.id] || 0;
-    return purchasedQuantity >= totalQuantity;
+    const isUnavailable = purchasedQuantity >= totalQuantity;
+    
+    if (isUnavailable) {
+      console.log(`Item ${item.id} (${item.name}) is unavailable: ${purchasedQuantity}/${totalQuantity} purchased`);
+    }
+    
+    return isUnavailable;
   };
 
   // Get remaining quantity for an item
