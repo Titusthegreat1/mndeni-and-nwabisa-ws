@@ -14,6 +14,9 @@ interface BuyerFormProps {
   setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
   showNameFields: boolean;
+  itemName?: string;
+  requestFlintColor: boolean;
+  setRequestFlintColor: (flint: boolean) => void;
 }
 
 const BuyerForm: React.FC<BuyerFormProps> = ({
@@ -25,8 +28,12 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
   setBuyerSurname,
   setBuyerEmail,
   setRequestDelivery,
-  showNameFields
+  showNameFields,
+  itemName,
+  requestFlintColor,
+  setRequestFlintColor
 }) => {
+  const isSpoonRestItem = itemName === "Stoneware Oval Spoon Rest";
   return (
     <div className="space-y-4">
       <div>
@@ -57,6 +64,19 @@ const BuyerForm: React.FC<BuyerFormProps> = ({
       
       
       <div className="space-y-3">
+        {isSpoonRestItem && (
+          <div className="flex items-center space-x-2">
+            <Checkbox 
+              id="requestFlintColor" 
+              checked={requestFlintColor}
+              onCheckedChange={(checked) => setRequestFlintColor(checked === true)}
+            />
+            <Label htmlFor="requestFlintColor" className="text-brown text-sm font-semibold">
+              I would like to request the Flint color option *
+            </Label>
+          </div>
+        )}
+        
         <div className="flex items-center space-x-2">
           <Checkbox 
             id="requestDelivery" 

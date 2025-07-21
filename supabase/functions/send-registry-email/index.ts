@@ -26,6 +26,7 @@ interface RegistryEmailRequest {
   buyerSurname: string;
   buyerEmail?: string;
   requestDelivery?: boolean;
+  requestFlintColor?: boolean;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -35,7 +36,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery }: RegistryEmailRequest = await req.json();
+    const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery, requestFlintColor }: RegistryEmailRequest = await req.json();
 
     // Generate unique confirmation token
     const confirmationToken = crypto.randomUUID();
@@ -68,8 +69,18 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Build additional requests section
     let additionalRequests = '';
+    const requests = [];
+    
     if (requestDelivery) {
-      additionalRequests = '\n\nAdditional Requests:\n- Delivery assistance from Dimpho Parkies or Zama Kunene requested';
+      requests.push('- Delivery assistance from Dimpho Parkies or Zama Kunene requested');
+    }
+    
+    if (requestFlintColor && itemName === "Stoneware Oval Spoon Rest") {
+      requests.push(`- ${buyerName} ${buyerSurname} is requesting the Flint color option`);
+    }
+    
+    if (requests.length > 0) {
+      additionalRequests = '\n\nAdditional Requests:\n' + requests.join('\n');
     }
 
     // Send notification email to registry owners
