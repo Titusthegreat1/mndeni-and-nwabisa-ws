@@ -243,7 +243,7 @@ export const servewareItems: RegistryItem[] = [
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-509310190"
   },
   {
-    id: 210,
+    id: 220,
     name: "Jute Edge Placemat Black 38cm",
     brand: "@HOME",
     price: "R126.65",
@@ -251,7 +251,7 @@ export const servewareItems: RegistryItem[] = [
     color: "Black",
     quantity: 6,
     available: true,
-    image: "/lovable-uploads/ea2cc12b-cf90-4b9f-9346-aa9aa68ecfc1.png",
+    image: "/lovable-uploads/41184b7a-3e07-4806-93a9-c6267f50299c.png",
     websiteUrl: "https://bash.com/jute-edge-placemat-black-38cm-153302aahp9/p?skuId=1426576"
   }
 ];
