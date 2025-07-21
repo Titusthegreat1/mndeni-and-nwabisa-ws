@@ -339,7 +339,7 @@ const Registry = () => {
                       description: "Redirecting to Woolworths website...",
                     });
                     setTimeout(() => {
-                      window.open("https://www.woolworths.co.za", "_blank");
+                      window.open("https://www.woolworths.co.za/cat/Beauty/Gift-Cards/Woolworths-Gift-Cards/_/N-cwusbe?gad_source=1&gad_campaignid=22709387004&gbraid=0AAAAA-WTlypSbevNxGnBCKTcXn3oR8uDI&gclid=CjwKCAjw4efDBhATEiwAaDBpbjUw_I2w34Bzeq6V0Qi91EblJqYFv_sGxZOL_AFHYGjpjo3wrwM82BoC4b4QAvD_BwE", "_blank");
                     }, 1000);
                   }
                 }}
@@ -356,7 +356,7 @@ const Registry = () => {
                       description: "Redirecting to Le Creuset website...",
                     });
                     setTimeout(() => {
-                      window.open("https://m.yuppiechef.com/gift-vouchers.htm?adgroupid=8093711083&campaignid=135890803&device=c&devm=&display=mobile&gad_campaignid=135890803&gad_source=1&gclid=Cj0KCQjwmqPDBhCAARIsADorxIY8hyow4hwIgPRHdWjsk9l_jPlVWef84vFlqPNuSWT0vP8b6DGIbgcaAtRREALw_wcB&keyword=le+creuset+voucher&network=g", "_blank");
+                      window.open("https://www.lecreuset.co.za/giftcard?srsltid=AfmBOorqw5GykpZPq05v4NGO-n3u44rovqVAiPIMPIWgE3N1cmsQo_B2", "_blank");
                     }, 1000);
                   }
                 }}
