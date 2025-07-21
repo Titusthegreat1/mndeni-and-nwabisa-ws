@@ -129,17 +129,6 @@ export const kitchenwareItems: RegistryItem[] = [
     websiteUrl: "https://m.yuppiechef.com/le-creuset-prep-and-storage.htm?id=65485&name=Le-Creuset-Sea-Salt-Stoneware-Butter-Crock-170ml"
   },
   {
-    id: 72,
-    name: "Taurus Spicesync Battery Operated Salt & Pepper Grinder",
-    brand: "TAURUS",
-    price: "R999.00",
-    size: "GRINDER SET",
-    color: "Stainless Steel",
-    available: true,
-    image: "/lovable-uploads/d768bc5c-9c92-4386-864f-6653602b8bd1.png",
-    websiteUrl: "https://bash.com/taurus-spicesync-battery-operated-salt-and-pepper-grinder-153301aant3/p?skuId=1625862"
-  },
-  {
     id: 73,
     name: "Villa Wicker Picnic Basket with Cotton Lining",
     brand: "WOOLWORTHS",

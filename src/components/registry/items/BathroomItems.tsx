@@ -87,5 +87,27 @@ export const bathroomItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/d39ea923-d632-4c75-9391-b6acc5c4e9ec.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-508772232"
+  },
+  {
+    id: 200,
+    name: "WHITE 600TC EGYPTIAN COTTON FITTED SHEET",
+    brand: "VOLPES",
+    price: "R1,099.00 - R1,599.00",
+    size: "FITTED SHEET",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/4766269c-d752-4e22-8f62-9df79d32a03d.png",
+    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
+  },
+  {
+    id: 201,
+    name: "WHITE 600TC EGYPTIAN COTTON FLAT SHEET",
+    brand: "VOLPES",
+    price: "R1,199.00 - R1,299.00",
+    size: "FLAT SHEET",
+    color: "White",
+    available: true,
+    image: "/lovable-uploads/7eebc4ca-baae-4c9c-b24f-3c091bac9320.png",
+    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
   }
 ];

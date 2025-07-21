@@ -47,28 +47,6 @@ export const cookwareItems: RegistryItem[] = [
     websiteUrl: "https://www.lecreuset.co.za/cast-iron-signature-shallow-casserole/21180.html"
   },
   {
-    id: 78,
-    name: "WHITE 600TC EGYPTIAN COTTON FITTED SHEET",
-    brand: "VOLPES",
-    price: "R1,099.00 - R1,599.00",
-    size: "FITTED SHEET",
-    color: "White",
-    available: true,
-    image: "/lovable-uploads/4766269c-d752-4e22-8f62-9df79d32a03d.png",
-    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
-  },
-  {
-    id: 79,
-    name: "WHITE 600TC EGYPTIAN COTTON FLAT SHEET",
-    brand: "VOLPES",
-    price: "R1,199.00 - R1,299.00",
-    size: "FLAT SHEET",
-    color: "White",
-    available: true,
-    image: "/lovable-uploads/7eebc4ca-baae-4c9c-b24f-3c091bac9320.png",
-    websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
-  },
-  {
     id: 120,
     name: "Stainless Steel Waterless Casserole Pot with Lid 5L",
     brand: "WOOLWORTHS",
