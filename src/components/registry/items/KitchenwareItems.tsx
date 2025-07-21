@@ -108,14 +108,14 @@ export const kitchenwareItems: RegistryItem[] = [
   },
   {
     id: 70,
-    name: "Le Creuset Sea Salt Classic Salt & Pepper Mill 11cm",
-    brand: "LE CREUSET",
-    price: "R1,249.00",
-    size: "11CM",
-    color: "Sea Salt",
+    name: "Willow Picnic Basket 4 Person",
+    brand: "@home",
+    price: "R1,104.15",
+    size: "4 PERSON",
+    color: "Natural",
     available: true,
-    image: "/lovable-uploads/2ed388c4-680f-4852-a840-58de6107e2cb.png",
-    websiteUrl: "https://m.yuppiechef.com/le-creuset-mills.htm?id=65488&name=Le-Creuset-Sea-Salt-Classic-Salt-and-Pepper-Mill-11cm"
+    image: "/lovable-uploads/7eb75d30-4de9-41cf-b260-de543b770e73.png",
+    websiteUrl: "https://bash.com/willow-picnic-basket-4-person-153300aaiu6/p?skuId=1262442"
   },
   {
     id: 71,

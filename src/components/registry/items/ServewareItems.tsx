@@ -179,14 +179,14 @@ export const servewareItems: RegistryItem[] = [
   },
   {
     id: 49,
-    name: "Le Creuset Angular Stoneware Oil and Vinegar Carafes (Set of 2)",
-    brand: "LE CREUSET",
-    price: "R999.00",
-    size: "SET OF 2",
-    color: "Blue",
+    name: "Stoneware Oval Spoon Rest",
+    brand: "Le Creuset",
+    price: "R349.00",
+    size: "SPOON REST",
+    color: "Cream",
     available: true,
-    image: "/lovable-uploads/9d9e94f2-b9af-4d0d-be8e-7b7124491bad.png",
-    websiteUrl: "https://m.yuppiechef.com/le-creuset-serveware.htm?id=56067&name=Le-Creuset-Angular-Stoneware-Oil-and-Vinegar-Carafes-Set-of-2&vid=1722581"
+    image: "/lovable-uploads/ba16ba42-cbc5-490e-b5ae-6be80966c423.png",
+    websiteUrl: "https://www.lecreuset.co.za/stoneware-oval-spoon-rest/71507.html"
   },
   {
     id: 82,
@@ -223,14 +223,14 @@ export const servewareItems: RegistryItem[] = [
   },
   {
     id: 122,
-    name: "Striped Cotton Napkin With Border Finish 4 Pack",
-    brand: "WOOLWORTHS",
-    price: "R269.00",
-    size: "4 PACK",
-    color: "Beige Striped",
+    name: "Abigail Marc Stripe Cotton Placemats, Set of 6",
+    brand: "DSA",
+    price: "R449.00",
+    size: "SET OF 6",
+    color: "Striped",
     available: true,
-    image: "/lovable-uploads/0b69b727-3430-4f84-93bc-18570c987d25.png",
-    websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Table-Linen/Striped-Cotton-Napkin-With-Border-Finish-4-Pack/_/A-509088350?isFromPLP=true"
+    image: "/lovable-uploads/ea2cc12b-cf90-4b9f-9346-aa9aa68ecfc1.png",
+    websiteUrl: "https://m.yuppiechef.com/dsa-placemats.htm?id=62174&name=DSA-Abigail-Marc-Stripe-Cotton-Placemats-Set-of-6&vid=1733567"
   },
   {
     id: 126,

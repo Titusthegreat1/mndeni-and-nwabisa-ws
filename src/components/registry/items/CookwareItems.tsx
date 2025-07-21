@@ -4,14 +4,14 @@ import { RegistryItem } from '../types';
 export const cookwareItems: RegistryItem[] = [
   {
     id: 40,
-    name: "AMC Special Combination 1 (2-Piece Set)",
-    brand: "AMC",
-    price: "R16,264.00",
-    size: "2-Piece Set",
-    color: "Stainless Steel",
+    name: "Nouvelle Cast Iron 8-Piece Cookware Set - Matt Black",
+    brand: "Nouvelle",
+    price: "R2,999.00",
+    size: "8-Piece Set",
+    color: "Matt Black",
     available: true,
-    image: "/lovable-uploads/417fee16-5617-42c1-bbe0-bab671e165be.png",
-    websiteUrl: "https://www.amcsa.co.za/en/product-range/cookware/two-piece-sets/special-combination-1/"
+    image: "/lovable-uploads/97e9e6fb-eb66-4f94-8ae4-d16d2bd731eb.png",
+    websiteUrl: "https://www.cielo.co.za/nouvelle-cast-iron-sets/nouvelle-cast-iron-8-piece-cookware-set-matt-black"
   },
   {
     id: 41,
@@ -25,58 +25,47 @@ export const cookwareItems: RegistryItem[] = [
     websiteUrl: "https://verimark.co.za/bastille-8-pc-set"
   },
   {
-    id: 42,
-    name: "Nouvelle Cast Iron 8-Piece Cookware Set Matt Black",
-    brand: "NOUVELLE",
-    price: "R3,999.00",
-    size: "8-Piece Set",
-    color: "Matt Black",
-    available: true,
-    image: "/lovable-uploads/9d6be5a0-d7b7-4d6f-b541-327f1b9a1da7.png",
-    websiteUrl: "https://www.cielo.co.za/nouvelle-cast-iron-sets/nouvelle-cast-iron-8-piece-cookware-set-matt-black"
-  },
-  {
     id: 45,
-    name: "Le Creuset Square Skillet Grill 26cm Bamboo",
-    brand: "LE CREUSET",
-    price: "R2,500.00",
+    name: "Cast Iron Signature Square Skillet Grill",
+    brand: "Le Creuset",
+    price: "R3,399.00",
     size: "26CM",
-    color: "Bamboo",
+    color: "Red",
     available: true,
-    image: "/lovable-uploads/07b96045-7a0b-484c-9dbc-961834aa4d25.png",
-    websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
+    image: "/lovable-uploads/d80213e6-4c0f-4ba5-9603-919ea90af48f.png",
+    websiteUrl: "https://www.lecreuset.co.za/cast-iron-signature-square-skillet-grill/20183.html"
   },
   {
     id: 46,
-    name: "Le Creuset Shallow Casserole Bamboo 30cm",
-    brand: "LE CREUSET",
-    price: "R4,500.00",
+    name: "Cast Iron Signature Shallow Casserole",
+    brand: "Le Creuset",
+    price: "R3,419.00 - R7,899.00",
     size: "30CM",
-    color: "Bamboo",
+    color: "Red",
     available: true,
-    image: "/lovable-uploads/35070010-72b4-4e39-b1db-1bdd282e174b.png",
-    websiteUrl: "https://bash.com/le-creuset-shallow-casserole-bamboo-30cm-154103aaal8/p?skuId=403978"
+    image: "/lovable-uploads/1deee7f5-09e6-4f49-8cd3-3d76a3e0bdfb.png",
+    websiteUrl: "https://www.lecreuset.co.za/cast-iron-signature-shallow-casserole/21180.html"
   },
   {
     id: 78,
-    name: "White 600TC Egyptian Cotton Fitted Sheet",
+    name: "WHITE 600TC EGYPTIAN COTTON FITTED SHEET",
     brand: "VOLPES",
     price: "R1,099.00 - R1,599.00",
     size: "FITTED SHEET",
     color: "White",
     available: true,
-    image: "/lovable-uploads/cac8f62e-319b-499e-9bdf-33cba239819b.png",
+    image: "/lovable-uploads/4766269c-d752-4e22-8f62-9df79d32a03d.png",
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-fitted-sheet"
   },
   {
     id: 79,
-    name: "White 600TC Egyptian Cotton Flat Sheet",
+    name: "WHITE 600TC EGYPTIAN COTTON FLAT SHEET",
     brand: "VOLPES",
     price: "R1,199.00 - R1,299.00",
     size: "FLAT SHEET",
     color: "White",
     available: true,
-    image: "/lovable-uploads/cff0bd85-3796-4ac1-8bc7-f5ed5a53d680.png",
+    image: "/lovable-uploads/7eebc4ca-baae-4c9c-b24f-3c091bac9320.png",
     websiteUrl: "https://www.volpes.co.za/product/white-600tc-egyptian-cotton-flat-sheet"
   },
   {

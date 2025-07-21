@@ -4,14 +4,14 @@ import { RegistryItem } from '../types';
 export const appliancesItems: RegistryItem[] = [
   {
     id: 15,
-    name: "Smeg 2 Slice Toaster Cream",
-    brand: "SMEG",
-    price: "R3,399.00",
-    size: "TOASTER",
-    color: "Natural",
+    name: "Cuisine::pro Electric Knife Sharpener",
+    brand: "Cuisine::pro",
+    price: "R1,359.15",
+    size: "ELECTRIC",
+    color: "Grey",
     available: true,
-    image: "/lovable-uploads/07bd61bd-7184-446b-ae2e-e23370581527.png",
-    websiteUrl: "https://bash.com/smeg-2-slice-toaster-cream-151412aaaf1/p?idsku=364610&utm_source=google&utm_medium=cpc&utm_campaign=SHOP_NB_Store_Home_Appliances_BF_Desktop&gad_source=1&gad_campaignid=21720471338&gclid=CjwKCAjw4efDBhATEiwAaDBpbi1wJ1PiFmZZjRZ2Sb5WB1idBUhGKK7WoQ9KH4F77FKMSHLFZFjUUxoCakkQAvD_BwE"
+    image: "/lovable-uploads/13f2a416-1a82-4227-b37f-ec3204469901.png",
+    websiteUrl: "https://bash.com/cuisine-pro-electric-knife-sharpener-153301aanm6/p?skuId=1676399"
   },
   {
     id: 29,
