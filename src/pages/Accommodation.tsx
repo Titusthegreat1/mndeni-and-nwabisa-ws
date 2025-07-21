@@ -62,7 +62,7 @@ const Accommodation = () => {
             <h3 className="font-playfair text-2xl font-bold text-brown mb-4">
               For More Information
             </h3>
-            <div className="flex flex-col md:flex-row justify-center gap-8">
+            <div className="flex flex-col md:flex-row justify-center gap-8 mb-6">
               <div>
                 <p className="text-brown font-medium">Amahle Makiwane</p>
                 <p className="text-brown/80">+27 72 064 4631</p>
@@ -70,6 +70,18 @@ const Accommodation = () => {
               <div>
                 <p className="text-brown font-medium">Sibabalwe Songca</p>
                 <p className="text-brown/80">+27 76 739 6163</p>
+              </div>
+            </div>
+            
+            {/* Travel Notes */}
+            <div className="border-t border-brown/20 pt-6">
+              <h4 className="font-playfair text-lg font-semibold text-brown mb-3">
+                Travel Times to Lindo's
+              </h4>
+              <div className="text-brown/80 space-y-1">
+                <p>• Mtubatuba to Lindo's is about 35min</p>
+                <p>• St Lucia to Lindo's is about 55min</p>
+                <p>• Richard's bay to Lindo's is about 1hr 15min</p>
               </div>
             </div>
           </div>
