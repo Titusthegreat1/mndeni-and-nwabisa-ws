@@ -14,16 +14,6 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
   },
   {
-    id: 72,
-    name: "Garden Trimmer",
-    brand: "GARDEN TOOLS",
-    price: "R999.00",
-    size: "500W",
-    available: true,
-    image: "/lovable-uploads/4afe121b-c39d-478f-acf0-04ccb7b74c63.png",
-    websiteUrl: "https://leroymerlin.co.za/garden-trimmer-500w"
-  },
-  {
     id: 74,
     name: "Talon Petrol Brush Cutter",
     brand: "TALON",
