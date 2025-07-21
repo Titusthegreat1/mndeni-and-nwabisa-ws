@@ -37,7 +37,7 @@ export const servewareItems: RegistryItem[] = [
   },
   {
     id: 14,
-    name: "Lacasa Cup and Saucer With Gold Trim",
+    name: "Lacasa Cup and Saucer With Gold Trim 4 set",
     brand: "@HOME",
     price: "R135.15",
     size: "CUP & SAUC",
