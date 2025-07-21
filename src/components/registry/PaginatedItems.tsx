@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ItemCard from './ItemCard';
 import { RegistryItem } from './types';
@@ -29,15 +29,19 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
   onPreviousPage,
   onNextPage
 }) => {
-  // Ensure unique items by removing duplicates based on ID
-  const uniqueItems = items.filter((item, index, self) => 
-    index === self.findIndex(i => i.id === item.id)
+  // Memoize unique items filtering for better performance
+  const uniqueItems = useMemo(() => 
+    items.filter((item, index, self) => 
+      index === self.findIndex(i => i.id === item.id)
+    ), [items]
   );
 
-  // Pagination logic
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPageItems = uniqueItems.slice(startIndex, endIndex);
+  // Memoize pagination logic
+  const currentPageItems = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return uniqueItems.slice(startIndex, endIndex);
+  }, [uniqueItems, currentPage, itemsPerPage]);
 
   return (
     <div className="animate-fade-in">

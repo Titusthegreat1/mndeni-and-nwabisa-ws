@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Navigation from '../components/Navigation';
 import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
@@ -57,7 +57,7 @@ const Registry = () => {
       setItemQuantities(quantities);
       setPurchasedItems(purchased);
       
-      console.log('Loaded purchase data from Supabase:', { quantities, purchased: Array.from(purchased) });
+      
     } catch (error) {
       console.error('Error in loadPurchaseDataFromSupabase:', error);
     }
@@ -65,7 +65,7 @@ const Registry = () => {
 
   // Setup real-time subscription for cross-device synchronization
   const setupRealtimeSubscription = useCallback(() => {
-    console.log('Setting up realtime subscription...');
+    
     
     const channel = supabase
       .channel('registry-changes')
@@ -77,7 +77,7 @@ const Registry = () => {
           table: 'registry_items'
         },
         (payload) => {
-          console.log('Real-time update received:', payload);
+          
           // Reload data when changes occur
           loadPurchaseDataFromSupabase();
         }
@@ -166,21 +166,21 @@ const Registry = () => {
     }
   }, []);
   
-  // Rearrange items: move first 20 to pages 6 and 7, others move up
-  // Also exclude featured items from the "View All" section
-  const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
-  const remainingItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
+  // Memoize the rearranged items to avoid recalculating on every render
+  const rearrangedItems = useMemo(() => {
+    const items = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
+    const filtered = items.filter(item => !featuredItemIds.includes(item.id));
+    // Remove duplicates based on ID to prevent repetition
+    return filtered.filter((item, index, self) => 
+      index === self.findIndex(i => i.id === item.id)
+    );
+  }, [featuredItemIds]);
   
-  // Remove duplicates based on ID to prevent repetition
-  const uniqueRemainingItems = remainingItems.filter((item, index, self) => 
-    index === self.findIndex(i => i.id === item.id)
-  );
-  
-  const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
+  const totalPages = Math.ceil(rearrangedItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = async (item: RegistryItem, buyerName: string, buyerSurname: string) => {
     try {
-      console.log('Processing purchase for:', item.name, 'by', buyerName, buyerSurname);
+      
       
       // Update Supabase database to track purchase across all devices
       const { error } = await supabase.rpc('update_registry_item_quantity', {
@@ -205,7 +205,7 @@ const Registry = () => {
         description: "Email client opened. Thank you for selecting this gift!",
       });
       
-      console.log('Purchase recorded successfully in Supabase');
+      
     } catch (error) {
       console.error('Error in handlePurchaseConfirm:', error);
       toast({
@@ -225,10 +225,6 @@ const Registry = () => {
     const totalQuantity = item.quantity || 1;
     const purchasedQuantity = itemQuantities[item.id] || 0;
     const isUnavailable = purchasedQuantity >= totalQuantity;
-    
-    if (isUnavailable) {
-      console.log(`Item ${item.id} (${item.name}) is unavailable: ${purchasedQuantity}/${totalQuantity} purchased`);
-    }
     
     return isUnavailable;
   };
@@ -289,7 +285,7 @@ const Registry = () => {
 
           {showAllItems && (
             <PaginatedItems 
-              items={uniqueRemainingItems}
+              items={rearrangedItems}
               currentPage={currentPage}
               totalPages={totalPages}
               itemsPerPage={itemsPerPage}
