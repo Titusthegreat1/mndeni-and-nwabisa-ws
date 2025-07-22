@@ -104,16 +104,27 @@ const Index = () => {
           <p className="text-lg text-brown/80 mb-8">
             Join us at this beautiful location for our special day
           </p>
-          <a 
-            href="https://maps.google.com/?q=-28.279469,32.148525"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-brown hover:bg-brown/90 text-cream px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-          >
-            <MapPin className="w-5 h-5" />
-            <span>View Location on Google Maps</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="https://maps.google.com/?q=-28.279469,32.148525"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-brown hover:bg-brown/90 text-cream px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+            >
+              <MapPin className="w-5 h-5" />
+              <span>View Location on Google Maps</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+            <Link 
+              to="/accommodation"
+              className="inline-flex items-center gap-3 bg-cream hover:bg-cream/90 text-brown border-2 border-brown px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+            >
+              <span>View Accommodation Options</span>
+            </Link>
+          </div>
+          <p className="text-brown/70 mt-6 text-sm">
+            Need a place to stay? Check out our recommended accommodations in the area.
+          </p>
         </div>
       </section>
 
