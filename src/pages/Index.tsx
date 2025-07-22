@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import CountdownTimer from '../components/CountdownTimer';
 import { Skeleton } from '@/components/ui/skeleton';
-import { MapPin, Calendar, ExternalLink, Gift } from 'lucide-react';
+import { MapPin, Calendar, ExternalLink, Gift, Heart } from 'lucide-react';
 import { registryItems } from '../components/registry/RegistryItems';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const [contentLoaded, setContentLoaded] = useState({
     hero: false,
     location: false,
@@ -17,19 +19,36 @@ const Index = () => {
   });
 
   useEffect(() => {
+    // Loading sequence with progress
+    const totalDuration = 3000;
+    const progressInterval = totalDuration / 100;
+    
+    const progressTimer = setInterval(() => {
+      setLoadingProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressTimer);
+          setTimeout(() => setIsLoading(false), 500);
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, progressInterval);
+
     // Progressive loading with realistic delays
     const loadSection = (section: keyof typeof contentLoaded, delay: number) => {
       setTimeout(() => {
         setContentLoaded(prev => ({ ...prev, [section]: true }));
-      }, delay);
+      }, delay + totalDuration);
     };
 
-    loadSection('hero', 500);
-    loadSection('location', 800);
-    loadSection('schedule', 1100);
-    loadSection('photos', 1400);
-    loadSection('registry', 1700);
-    loadSection('celebration', 2000);
+    loadSection('hero', 200);
+    loadSection('location', 400);
+    loadSection('schedule', 600);
+    loadSection('photos', 800);
+    loadSection('registry', 1000);
+    loadSection('celebration', 1200);
+
+    return () => clearInterval(progressTimer);
   }, []);
 
   const previewImages = [
@@ -52,9 +71,95 @@ const Index = () => {
   const purchasedItems = getPurchasedItems();
   const featuredRegistryItems = getFeaturedItems().filter(item => !purchasedItems.has(item.id));
 
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-gradient-to-br from-cream via-sand to-terracotta flex items-center justify-center z-50">
+        {/* Floating elements */}
+        <div className="floating-hearts">
+          {[...Array(8)].map((_, i) => (
+            <Heart 
+              key={`heart-${i}`}
+              className={`floating-element heart-${i + 1} text-terracotta/30`}
+              size={20 + Math.random() * 20}
+            />
+          ))}
+        </div>
+        
+        <div className="floating-sparkles">
+          {[...Array(12)].map((_, i) => (
+            <div 
+              key={`sparkle-${i}`}
+              className={`floating-element sparkle-${i + 1} w-2 h-2 bg-brown/20 rounded-full`}
+            />
+          ))}
+        </div>
+
+        <div className="floating-petals">
+          {[...Array(6)].map((_, i) => (
+            <div 
+              key={`petal-${i}`}
+              className={`floating-element petal-${i + 1} w-4 h-4 bg-sand/40 rounded-full`}
+            />
+          ))}
+        </div>
+
+        {/* Loading content */}
+        <div className="text-center relative z-10">
+          <div className="mb-8">
+            <div className="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+              <div className="text-4xl font-playfair text-brown font-bold">M&N</div>
+            </div>
+            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-brown mb-4 animate-fade-in-up">
+              Mndeni & Nwabisa
+            </h1>
+            <p className="text-xl text-brown/80 mb-2 animate-fade-in-up delay-300">
+              27 September 2025
+            </p>
+            <p className="text-lg text-brown/70 animate-fade-in-up delay-500">
+              Preparing something beautiful...
+            </p>
+          </div>
+          
+          {/* Progress bar */}
+          <div className="w-80 max-w-full mx-auto">
+            <div className="bg-white/20 backdrop-blur-sm rounded-full h-2 overflow-hidden shadow-lg">
+              <div 
+                className="h-full bg-gradient-to-r from-terracotta to-brown transition-all duration-300 ease-out rounded-full"
+                style={{ width: `${loadingProgress}%` }}
+              />
+            </div>
+            <p className="text-brown/60 text-sm mt-3 font-medium">
+              {loadingProgress}% Complete
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-cream">
-      <Navigation />
+    <div className="min-h-screen bg-cream relative overflow-hidden">
+      {/* Persistent floating elements */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="persistent-floating">
+          {[...Array(5)].map((_, i) => (
+            <Heart 
+              key={`persistent-heart-${i}`}
+              className={`persistent-heart-${i + 1} text-terracotta/10`}
+              size={16}
+            />
+          ))}
+          {[...Array(8)].map((_, i) => (
+            <div 
+              key={`persistent-sparkle-${i}`}
+              className={`persistent-sparkle-${i + 1} w-1 h-1 bg-brown/10 rounded-full`}
+            />
+          ))}
+        </div>
+      </div>
+      
+      <div className="relative z-10">
+        <Navigation />
       
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center">
@@ -374,6 +479,7 @@ const Index = () => {
           <p className="text-sm text-cream/60 mt-4">Made with love for our special day</p>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
