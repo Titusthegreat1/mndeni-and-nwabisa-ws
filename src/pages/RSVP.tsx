@@ -185,7 +185,7 @@ const RSVP = () => {
                     <option value="3">3 guests coming</option>
                     <option value="4">4 guests coming</option>
                     <option value="5">5 guests coming</option>
-                    <option value="6">6+ guests coming</option>
+                    <option value="6">6 guests coming</option>
                   </select>
                 </div>
 
