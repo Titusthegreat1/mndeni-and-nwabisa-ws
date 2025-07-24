@@ -149,12 +149,13 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
+/* Subtle glow effect for registry items */
+@keyframes gentle-glow {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(107, 78, 59, 0.1);
   }
-  100% {
-    background-position: calc(200px + 100%) 0;
+  50% {
+    box-shadow: 0 4px 16px rgba(233, 118, 91, 0.15);
   }
 }
 
@@ -167,17 +168,26 @@
   animation: elegant-pulse 2s ease-in-out infinite;
 }
 
-/* Fix for white bars issue - disable problematic shimmer animation */
-.animate-shimmer {
-  /* Temporarily disabled to fix white bars covering prices */
+/* Subtle glow animation instead of shimmer */
+.animate-gentle-glow {
+  animation: gentle-glow 3s ease-in-out infinite;
 }
 
-/* Ensure no pseudo-elements interfere with registry items */
+/* Remove any interfering pseudo-elements completely */
+*::before,
+*::after {
+  z-index: auto !important;
+}
+
+/* Ensure no overlay elements interfere with registry items */
 .registry-item-card::after,
 .registry-item-card::before,
 [class*="shimmer"]::after,
-[class*="shimmer"]::before {
+[class*="shimmer"]::before,
+[class*="fade"]::after,
+[class*="fade"]::before {
   display: none !important;
+  content: none !important;
 }
 
 /* Delay utilities */
@@ -192,8 +202,8 @@
 }
 
 .hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(107, 78, 59, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(107, 78, 59, 0.12);
 }
 
 /* Smooth page transitions */

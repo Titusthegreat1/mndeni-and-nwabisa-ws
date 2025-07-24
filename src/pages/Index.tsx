@@ -230,7 +230,7 @@ const Index = () => {
                     >
                       <Link 
                         to={`/registry?highlight=${item.id}`}
-                        className={`bg-white rounded-lg p-3 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
+                        className={`bg-white rounded-lg p-3 shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer animate-gentle-glow ${
                           isPurchased ? 'opacity-50 grayscale' : ''
                         }`}
                       >
