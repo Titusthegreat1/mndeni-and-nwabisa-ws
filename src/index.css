@@ -167,10 +167,17 @@
   animation: elegant-pulse 2s ease-in-out infinite;
 }
 
+/* Fix for white bars issue - disable problematic shimmer animation */
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(233, 118, 91, 0.2), transparent);
-  background-size: 200px 100%;
-  animation: shimmer 2s infinite;
+  /* Temporarily disabled to fix white bars covering prices */
+}
+
+/* Ensure no pseudo-elements interfere with registry items */
+.registry-item-card::after,
+.registry-item-card::before,
+[class*="shimmer"]::after,
+[class*="shimmer"]::before {
+  display: none !important;
 }
 
 /* Delay utilities */
