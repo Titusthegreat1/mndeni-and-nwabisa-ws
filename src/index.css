@@ -168,9 +168,9 @@
   animation: elegant-pulse 2s ease-in-out infinite;
 }
 
-/* Subtle glow animation instead of shimmer */
+/* Remove gentle glow animation completely */
 .animate-gentle-glow {
-  animation: gentle-glow 3s ease-in-out infinite;
+  /* Disabled to prevent white bars over prices */
 }
 
 /* Completely remove all problematic pseudo-elements and overlays */
