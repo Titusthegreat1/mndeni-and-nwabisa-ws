@@ -173,13 +173,36 @@
   animation: gentle-glow 3s ease-in-out infinite;
 }
 
-/* Remove any interfering pseudo-elements completely */
+/* Completely remove all problematic pseudo-elements and overlays */
 *::before,
-*::after {
-  z-index: auto !important;
+*::after,
+.bg-white::before,
+.bg-white::after,
+.shadow-lg::before,
+.shadow-lg::after,
+.rounded-lg::before,
+.rounded-lg::after,
+.hover\:scale-105::before,
+.hover\:scale-105::after,
+.transition-all::before,
+.transition-all::after,
+.animate-gentle-glow::before,
+.animate-gentle-glow::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  position: static !important;
 }
 
 /* Ensure no overlay elements interfere with registry items */
+.registry-item-card,
+.registry-item-card *,
+[class*="shimmer"],
+[class*="fade"],
+[class*="animate"] {
+  position: relative !important;
+}
+
 .registry-item-card::after,
 .registry-item-card::before,
 [class*="shimmer"]::after,
