@@ -19,7 +19,7 @@ const Registry = () => {
   const [purchasedItems, setPurchasedItems] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
 
   // Load purchase data from Supabase
   const loadPurchaseDataFromSupabase = useCallback(async () => {

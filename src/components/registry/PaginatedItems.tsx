@@ -219,6 +219,12 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
       : Math.min(currentTabPage + 1, maxPages);
     
     setTabPages(prev => ({ ...prev, [tabKey]: newPage }));
+    
+    // Scroll to top of registry items
+    const registryElement = document.getElementById('all-registry-items');
+    if (registryElement) {
+      registryElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const currentTabItems = getCurrentTabItems(activeTab);
@@ -231,18 +237,18 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
       </h2>
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-6 lg:grid-cols-11 mb-8 text-xs">
-          <TabsTrigger value="all" className="text-xs">All</TabsTrigger>
-          <TabsTrigger value="appliances" className="text-xs">Appliances</TabsTrigger>
-          <TabsTrigger value="bathroom" className="text-xs">Bathroom</TabsTrigger>
-          <TabsTrigger value="cookware" className="text-xs">Cookware</TabsTrigger>
-          <TabsTrigger value="tableware" className="text-xs">Tableware</TabsTrigger>
-          <TabsTrigger value="serveware" className="text-xs">Serveware</TabsTrigger>
-          <TabsTrigger value="utensils" className="text-xs">Utensils</TabsTrigger>
-          <TabsTrigger value="outdoor" className="text-xs">Outdoor</TabsTrigger>
-          <TabsTrigger value="glassware" className="text-xs">Glassware</TabsTrigger>
-          <TabsTrigger value="bedding" className="text-xs">Bedding</TabsTrigger>
-          <TabsTrigger value="homeDecor" className="text-xs">Home Decor</TabsTrigger>
+        <TabsList className="flex flex-wrap justify-center gap-2 mb-8 bg-transparent p-0 h-auto">
+          <TabsTrigger value="all" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">All</TabsTrigger>
+          <TabsTrigger value="appliances" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Appliances</TabsTrigger>
+          <TabsTrigger value="bathroom" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Bathroom</TabsTrigger>
+          <TabsTrigger value="cookware" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Cookware</TabsTrigger>
+          <TabsTrigger value="tableware" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Tableware</TabsTrigger>
+          <TabsTrigger value="serveware" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Serveware</TabsTrigger>
+          <TabsTrigger value="utensils" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Utensils</TabsTrigger>
+          <TabsTrigger value="outdoor" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Outdoor</TabsTrigger>
+          <TabsTrigger value="glassware" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Glassware</TabsTrigger>
+          <TabsTrigger value="bedding" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Bedding</TabsTrigger>
+          <TabsTrigger value="homeDecor" className="bg-terracotta hover:bg-terracotta/90 text-white data-[state=active]:bg-terracotta/90 text-xs px-4 py-2 rounded-lg">Home Decor</TabsTrigger>
         </TabsList>
 
         {["all", "appliances", "bathroom", "cookware", "tableware", "serveware", "utensils", "outdoor", "glassware", "bedding", "homeDecor"].map((tabKey) => (
