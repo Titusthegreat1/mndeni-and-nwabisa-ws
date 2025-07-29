@@ -182,17 +182,17 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
     );
 
     return {
-      all: uniqueItems,
-      appliances: uniqueItems.filter(item => applianceNames.includes(item.name)),
-      bathroom: uniqueItems.filter(item => bathroomNames.includes(item.name)),
-      cookware: uniqueItems.filter(item => cookwareNames.includes(item.name)),
-      tableware: uniqueItems.filter(item => tablewareNames.includes(item.name)),
-      serveware: uniqueItems.filter(item => servewareNames.includes(item.name)),
-      utensils: uniqueItems.filter(item => utensilNames.includes(item.name)),
-      outdoor: uniqueItems.filter(item => outdoorNames.includes(item.name)),
-      glassware: uniqueItems.filter(item => glasswareNames.includes(item.name)),
-      bedding: uniqueItems.filter(item => beddingNames.includes(item.name)),
-      homeDecor: uniqueItems.filter(item => homeDecorNames.includes(item.name))
+      all: uniqueItems.sort((a, b) => a.name.localeCompare(b.name)),
+      appliances: uniqueItems.filter(item => applianceNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      bathroom: uniqueItems.filter(item => bathroomNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      cookware: uniqueItems.filter(item => cookwareNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      tableware: uniqueItems.filter(item => tablewareNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      serveware: uniqueItems.filter(item => servewareNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      utensils: uniqueItems.filter(item => utensilNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      outdoor: uniqueItems.filter(item => outdoorNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      glassware: uniqueItems.filter(item => glasswareNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      bedding: uniqueItems.filter(item => beddingNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name)),
+      homeDecor: uniqueItems.filter(item => homeDecorNames.includes(item.name)).sort((a, b) => a.name.localeCompare(b.name))
     };
   }, [items]);
 
