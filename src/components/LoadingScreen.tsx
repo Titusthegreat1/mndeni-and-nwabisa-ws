@@ -4,36 +4,8 @@ import React, { useEffect, useState } from 'react';
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
-  
-  // Wedding date
-  const weddingDate = new Date('2025-09-27T00:00:00');
-  
-  // Calculate countdown
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
 
   useEffect(() => {
-    const updateCountdown = () => {
-      const now = new Date();
-      const difference = weddingDate.getTime() - now.getTime();
-      
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      }
-    };
-
-    updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000);
-
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -44,79 +16,92 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           }, 500);
           return 100;
         }
-        return prev + 3;
+        return prev + 2;
       });
-    }, 40);
+    }, 50);
 
     return () => {
       clearInterval(progressInterval);
-      clearInterval(countdownInterval);
     };
   }, [onLoadingComplete]);
 
   return (
     <div 
-      className={`fixed inset-0 bg-cream z-50 flex items-center justify-center transition-opacity duration-800 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-800 ${
         fadeOut ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      <div className="text-center max-w-md mx-auto px-4">
-        {/* Wedding Logo Animation */}
+      {/* Hero Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-no-repeat bg-center"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/b7524053-2a59-4e20-b6b4-0d4a86adb211.png)',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/70"></div>
+      </div>
+
+      {/* Background positioning styles */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @media (max-width: 768px) {
+            .absolute.inset-0.bg-cover {
+              background-position: calc(50% - 25%) center !important;
+            }
+          }
+          @media (min-width: 769px) {
+            .absolute.inset-0.bg-cover {
+              background-position: calc(50% + 0%) calc(50% - 50%) !important;
+            }
+          }
+        `
+      }} />
+      
+      <div className="relative z-10 text-center max-w-md mx-auto px-4 text-white">
+        {/* Couple's Initials with elegant animation */}
         <div className="mb-8 animate-scale-in">
-          <div className="w-24 h-24 mx-auto mb-4 bg-terracotta rounded-full flex items-center justify-center animate-pulse">
-            <span className="text-cream font-playfair text-2xl font-bold">M&N</span>
+          <div className="w-32 h-32 mx-auto mb-6 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full flex items-center justify-center animate-pulse">
+            <span className="text-white font-playfair text-4xl font-bold">M&N</span>
           </div>
         </div>
 
-        {/* Names with staggered animation */}
-        <div className="mb-8">
-          <h1 className="font-playfair text-4xl font-bold text-brown mb-2 animate-fade-in-up delay-300">
-            Mndeni & Nwabisa
+        {/* Heartwarming Message */}
+        <div className="mb-8 animate-fade-in delay-300">
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-4">
+            Welcome to Our Love Story
           </h1>
-          <p className="text-brown/70 animate-fade-in-up delay-500">
+          <p className="text-white/90 text-lg leading-relaxed">
+            We're so grateful you're here to celebrate this beautiful journey with us. 
+            Your presence makes our special day complete.
+          </p>
+        </div>
+
+        {/* Names and Date */}
+        <div className="mb-8 animate-fade-in delay-500">
+          <h2 className="font-playfair text-2xl font-semibold text-white mb-2">
+            Mndeni & Nwabisa
+          </h2>
+          <p className="text-white/80">
             27 September 2025
           </p>
         </div>
 
-        {/* Wedding Countdown */}
-        <div className="mb-8 animate-fade-in-up delay-700">
-          <p className="text-brown/60 text-sm mb-4">Counting down to our special day</p>
-          <div className="grid grid-cols-4 gap-4 mb-4">
-            <div className="bg-white/80 rounded-lg p-3 shadow-sm">
-              <div className="text-2xl font-bold text-terracotta font-playfair">{timeLeft.days}</div>
-              <div className="text-xs text-brown/60 uppercase tracking-wide">Days</div>
-            </div>
-            <div className="bg-white/80 rounded-lg p-3 shadow-sm">
-              <div className="text-2xl font-bold text-terracotta font-playfair">{timeLeft.hours}</div>
-              <div className="text-xs text-brown/60 uppercase tracking-wide">Hours</div>
-            </div>
-            <div className="bg-white/80 rounded-lg p-3 shadow-sm">
-              <div className="text-2xl font-bold text-terracotta font-playfair">{timeLeft.minutes}</div>
-              <div className="text-xs text-brown/60 uppercase tracking-wide">Min</div>
-            </div>
-            <div className="bg-white/80 rounded-lg p-3 shadow-sm">
-              <div className="text-2xl font-bold text-terracotta font-playfair">{timeLeft.seconds}</div>
-              <div className="text-xs text-brown/60 uppercase tracking-wide">Sec</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Traditional Pattern Loading Bar */}
-        <div className="w-64 mx-auto animate-fade-in-up delay-1000">
-          <div className="h-2 bg-sand rounded-full overflow-hidden mb-2">
+        {/* Elegant Loading Bar */}
+        <div className="w-72 mx-auto animate-fade-in delay-700">
+          <div className="h-1 bg-white/20 rounded-full overflow-hidden mb-3">
             <div 
-              className="h-full bg-gradient-to-r from-terracotta to-brown transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-white/70 to-white transition-all duration-300 ease-out rounded-full"
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="text-brown/60 text-sm">
-            Preparing your celebration... {progress}%
+          <p className="text-white/70 text-sm font-light">
+            Preparing your celebration experience...
           </p>
         </div>
 
-        {/* Traditional Pattern Decoration */}
+        {/* Decorative Element */}
         <div className="mt-8 animate-fade-in delay-1000">
-          <div className="ndebele-pattern h-6 w-24 mx-auto opacity-50 rounded"></div>
+          <div className="w-16 h-0.5 bg-white/40 mx-auto rounded-full"></div>
         </div>
       </div>
     </div>

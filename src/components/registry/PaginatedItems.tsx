@@ -220,7 +220,8 @@ const PaginatedItems: React.FC<PaginatedItemsProps> = ({
     
     setTabPages(prev => ({ ...prev, [tabKey]: newPage }));
     
-    // Scroll to top of registry items
+    // Scroll to top of registry items - always when navigating pages
+    // or when reaching the last page and clicking next (which doesn't change page but should still scroll)
     const registryElement = document.getElementById('all-registry-items');
     if (registryElement) {
       registryElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
