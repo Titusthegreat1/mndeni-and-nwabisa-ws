@@ -37,10 +37,7 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery }: RegistryEmailRequest = await req.json();
 
-    // Generate unique confirmation token
-    const confirmationToken = crypto.randomUUID();
-
-    // Store purchase intent in database
+    // Store the confirmed purchase in database
     const { error: dbError } = await supabase
       .from('registry_purchases')
       .insert({
@@ -54,17 +51,13 @@ const handler = async (req: Request): Promise<Response> => {
         buyer_surname: buyerSurname,
         buyer_email: buyerEmail,
         redirect_url: itemWebsiteUrl,
-        confirmation_token: confirmationToken,
-        purchase_confirmed: false
+        purchase_confirmed: true
       });
 
     if (dbError) {
       console.error("Database error:", dbError);
       throw new Error("Failed to store purchase information");
     }
-
-    // Create confirmation link
-    const confirmationUrl = `https://yptjhzawttwkaiacpnpc.supabase.co/functions/v1/confirm-purchase?token=${confirmationToken}`;
 
     // Build additional requests section
     let additionalRequests = '';
@@ -73,10 +66,10 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Send notification email to registry owners
-    const ownerSubject = `Gift Registry Selection from ${buyerName} ${buyerSurname} - ${itemName}`;
+    const ownerSubject = `Gift Purchase Confirmed - ${buyerName} ${buyerSurname}`;
     const ownerEmailBody = `Dear Mndeni & Nwabisa,
 
-${buyerName} ${buyerSurname} has selected an item from your wedding registry and is proceeding with the purchase:
+${buyerName} ${buyerSurname} has confirmed they are purchasing a gift from your wedding registry:
 
 Item: ${itemName}
 Brand: ${itemBrand}
@@ -87,45 +80,44 @@ ${itemColor ? `Color: ${itemColor}` : ''}
 Gift Buyer: ${buyerName} ${buyerSurname}
 ${buyerEmail ? `Email: ${buyerEmail}` : ''}${additionalRequests}
 
-This purchase is pending confirmation from the buyer.
+They have been directed to complete their purchase from the retailer.
 
 Best regards,
 Wedding Registry System`;
 
-    // Send confirmation email to buyer if email provided
+    // Send emails
     const emailPromises = [
       resend.emails.send({
-        from: "Wedding Registry <noreply@mndeni-and-nwabisa-ws.site>",
-        to: ["dimphoparkies@gmail.com"],
+        from: "Wedding Registry <onboarding@resend.dev>",
+        to: ["titus3luvo@gmail.com"],
         subject: ownerSubject,
         text: ownerEmailBody,
       })
     ];
 
     if (buyerEmail) {
-      const buyerSubject = `Confirm Your Gift Purchase - ${itemName}`;
+      const buyerSubject = `Thank You - ${itemName}`;
       const buyerEmailBody = `Dear ${buyerName},
 
-Thank you for selecting a gift from Mndeni & Nwabisa's wedding registry!
+Thank you for confirming your gift selection from Mndeni & Nwabisa's wedding registry!
 
-Please confirm your gift selection by clicking the link below:
-${confirmationUrl}
-
-Item Details:
+Your purchase details:
 - Item: ${itemName}
 - Brand: ${itemBrand}
 - Price: ${itemPrice}
 ${itemSize ? `- Size: ${itemSize}` : ''}
 ${itemColor ? `- Color: ${itemColor}` : ''}
 
-After confirming, you'll be redirected to complete your purchase.
+You will now be redirected to complete your purchase from the retailer.
+
+Thank you for celebrating with Mndeni & Nwabisa!
 
 Best regards,
 Wedding Registry Team`;
 
       emailPromises.push(
         resend.emails.send({
-          from: "Wedding Registry <noreply@mndeni-and-nwabisa-ws.site>",
+          from: "Wedding Registry <onboarding@resend.dev>",
           to: [buyerEmail],
           subject: buyerSubject,
           text: buyerEmailBody,
@@ -137,10 +129,8 @@ Wedding Registry Team`;
     console.log("Emails sent successfully:", emailResponses);
 
     return new Response(JSON.stringify({ 
-      success: true, 
-      confirmationToken,
-      confirmationUrl: buyerEmail ? confirmationUrl : null,
-      message: buyerEmail ? "Confirmation email sent to buyer" : "Registry owners notified"
+      success: true,
+      message: "Purchase confirmed and registry owners notified"
     }), {
       status: 200,
       headers: {
