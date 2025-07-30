@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { RegistryItem } from './types';
 import ItemDetails from './ItemDetails';
 import BuyerForm from './BuyerForm';
@@ -22,7 +22,6 @@ interface GiftSelectionDialogProps {
   setRequestDelivery: (delivery: boolean) => void;
   setRequestFlintColor: (flint: boolean) => void;
   onGiftSelection: () => void;
-  children: React.ReactNode;
 }
 
 const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
@@ -41,14 +40,10 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
   setRequestDelivery,
   setRequestFlintColor,
   onGiftSelection,
-  children
 }) => {
   const isSpoonRestItem = item.name === "Stoneware Oval Spoon Rest";
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Select Gift</DialogTitle>

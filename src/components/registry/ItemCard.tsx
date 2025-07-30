@@ -201,6 +201,15 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       </div>
       
       <div className="space-y-2">
+        <Button 
+          className="w-full bg-terracotta hover:bg-terracotta/90 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+          disabled={isUnavailable}
+          onClick={() => setIsDialogOpen(true)}
+        >
+          <Gift className="w-4 h-4 mr-2" />
+          {isUnavailable ? 'Unavailable' : item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift'}
+        </Button>
+
         <GiftSelectionDialog
           item={item}
           isDialogOpen={isDialogOpen}
@@ -217,15 +226,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           setRequestDelivery={setRequestDelivery}
           setRequestFlintColor={setRequestFlintColor}
           onGiftSelection={handleGiftSelection}
-        >
-          <Button 
-            className="w-full bg-terracotta hover:bg-terracotta/90 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
-            disabled={isUnavailable}
-          >
-            <Gift className="w-4 h-4 mr-2" />
-            {isUnavailable ? 'Unavailable' : 'Select Gift'}
-          </Button>
-        </GiftSelectionDialog>
+        />
       </div>
     </div>
   );
