@@ -10,19 +10,22 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
-    // Simulate loading progress
+    // Simulate loading progress - extended by 4 seconds (4000ms)
+    const totalDuration = 6000; // Original was ~2000ms, now 6000ms for 4 extra seconds
+    const intervalDelay = 150; // Slower progress updates
+    
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           setTimeout(() => {
             onLoadingComplete();
-          }, 500);
+          }, 1000); // Extra time to read final message
           return 100;
         }
-        return prev + Math.random() * 15;
+        return prev + (100 / (totalDuration / intervalDelay));
       });
-    }, 100);
+    }, intervalDelay);
 
     // Show welcoming message after a short delay
     const messageTimeout = setTimeout(() => {
@@ -36,13 +39,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   }, [onLoadingComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Hero background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.05),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_50%)]"></div>
-      </div>
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{
+        backgroundImage: 'url(/lovable-uploads/b7524053-2a59-4e20-b6b4-0d4a86adb211.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-8 max-w-2xl mx-auto">
@@ -61,7 +68,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         <div className={`transition-all duration-1000 ${showMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Welcome to Our
-            <span className="block text-rose-400">Wedding Registry</span>
+            <span className="block text-rose-400">Wedding Website</span>
           </h1>
           
           <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
