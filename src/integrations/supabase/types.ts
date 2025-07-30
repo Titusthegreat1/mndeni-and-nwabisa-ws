@@ -121,6 +121,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      cleanup_unconfirmed_purchases: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       update_registry_item_quantity: {
         Args: {
           item_name: string
