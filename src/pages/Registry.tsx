@@ -4,7 +4,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
 import RegistryFilters from '../components/registry/RegistryFilters';
 import FeaturedItems from '../components/registry/FeaturedItems';
-import PaginatedItems from '../components/registry/PaginatedItems';
+import CategoryTabs from '../components/registry/CategoryTabs';
 import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
 import { supabase } from '@/integrations/supabase/client';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
@@ -17,9 +17,7 @@ const Registry = () => {
   const [showAllItems, setShowAllItems] = useState(false);
   const [itemQuantities, setItemQuantities] = useState<Record<number, number>>({});
   const [purchasedItems, setPurchasedItems] = useState(new Set());
-  const [currentPage, setCurrentPage] = useState(1);
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
-  const itemsPerPage = 6;
 
   // Load purchase data from Supabase
   const loadPurchaseDataFromSupabase = useCallback(async () => {
@@ -123,20 +121,7 @@ const Registry = () => {
         // Check if item is in featured items first
         const isFeatured = featuredItemIds.includes(itemId);
         
-        if (!isFeatured) {
-          // For non-featured items, find the correct page in the "View All" section
-          const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
-          const filteredItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
-          const uniqueItems = filteredItems.filter((item, index, self) => 
-            index === self.findIndex(i => i.id === item.id)
-          );
-          
-          const highlightedItemIndex = uniqueItems.findIndex(item => item.id === itemId);
-          if (highlightedItemIndex !== -1) {
-            const pageIndex = Math.floor(highlightedItemIndex / itemsPerPage);
-            setCurrentPage(pageIndex + 1);
-          }
-        }
+        // CategoryTabs will handle pagination internally
         
         // Scroll to the highlighted item after a brief delay
         setTimeout(() => {
@@ -166,17 +151,7 @@ const Registry = () => {
     }
   }, []);
   
-  // Rearrange items: move first 20 to pages 6 and 7, others move up
-  // Also exclude featured items from the "View All" section
-  const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
-  const remainingItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
-  
-  // Remove duplicates based on ID to prevent repetition
-  const uniqueRemainingItems = remainingItems.filter((item, index, self) => 
-    index === self.findIndex(i => i.id === item.id)
-  );
-  
-  const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
+  // CategoryTabs component handles item organization and pagination
 
   const handlePurchaseConfirm = async (item: RegistryItem, buyerName: string, buyerSurname: string) => {
     try {
@@ -243,28 +218,7 @@ const Registry = () => {
     return Math.max(0, totalQuantity - purchasedQuantity);
   };
 
-  const scrollToAllItems = () => {
-    const allItemsSection = document.getElementById('all-registry-items');
-    if (allItemsSection) {
-      allItemsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handlePreviousPage = () => {
-    const newPage = Math.max(currentPage - 1, 1);
-    setCurrentPage(newPage);
-    setTimeout(() => {
-      scrollToAllItems();
-    }, 100);
-  };
-
-  const handleNextPage = () => {
-    const newPage = Math.min(currentPage + 1, totalPages);
-    setCurrentPage(newPage);
-    setTimeout(() => {
-      scrollToAllItems();
-    }, 100);
-  };
+  // Pagination is now handled by CategoryTabs component
 
   return (
     <div id="top" className="min-h-screen bg-cream">
@@ -288,17 +242,11 @@ const Registry = () => {
           />
 
           {showAllItems && (
-            <PaginatedItems 
-              items={uniqueRemainingItems}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              itemsPerPage={itemsPerPage}
+            <CategoryTabs
               highlightItemId={highlightItemId}
               onPurchaseConfirm={handlePurchaseConfirm}
               isItemUnavailable={isItemUnavailable}
               getRemainingQuantity={getRemainingQuantity}
-              onPreviousPage={handlePreviousPage}
-              onNextPage={handleNextPage}
             />
           )}
 
