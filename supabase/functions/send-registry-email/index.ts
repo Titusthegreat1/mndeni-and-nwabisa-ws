@@ -89,7 +89,7 @@ Wedding Registry System`;
     const emailPromises = [
       resend.emails.send({
         from: "Wedding Registry <onboarding@resend.dev>",
-        to: ["titus3luvo@gmail.com"],
+        to: ["titus2luvo@gmail.com"],
         subject: ownerSubject,
         text: ownerEmailBody,
       })
