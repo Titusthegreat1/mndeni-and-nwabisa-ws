@@ -221,6 +221,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           <Button 
             className="w-full bg-terracotta hover:bg-terracotta/90 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
             disabled={isUnavailable}
+            onClick={() => setIsDialogOpen(true)}
           >
             <Gift className="w-4 h-4 mr-2" />
             {isUnavailable ? 'Unavailable' : 'Select Gift'}
