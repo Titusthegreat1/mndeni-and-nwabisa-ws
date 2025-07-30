@@ -107,7 +107,7 @@ export const homeDecorItems: RegistryItem[] = [
     name: "Grace Most Lustrous Gold Seal Certified Egyptian Cotton 400 Thread Count Duvet Cover Set Silver",
     brand: "GRACE COLLECTION",
     price: "R1,784.15",
-    size: "Queen sized",
+    size: "DUVET COVER SET",
     color: "Silver",
     available: true,
     image: "/lovable-uploads/5f3f47cf-ac59-42af-a297-38c5e396e41c.png",

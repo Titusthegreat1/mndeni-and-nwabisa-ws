@@ -185,7 +185,7 @@ const RSVP = () => {
                     <option value="3">3 guests coming</option>
                     <option value="4">4 guests coming</option>
                     <option value="5">5 guests coming</option>
-                    <option value="6">6 guests coming</option>
+                    <option value="6">6+ guests coming</option>
                   </select>
                 </div>
 
@@ -240,8 +240,8 @@ const RSVP = () => {
           <div className="text-center mt-8 p-6 bg-white/50 rounded-lg">
             <p className="text-brown/80">
               Questions? Contact us at{' '}
-              <a href="mailto:dimphoparkies@gmail.com" className="text-terracotta hover:underline">
-                dimphoparkies@gmail.com
+              <a href="mailto:titus3luvo@gmail.com" className="text-terracotta hover:underline">
+                titus3luvo@gmail.com
               </a>
             </p>
           </div>

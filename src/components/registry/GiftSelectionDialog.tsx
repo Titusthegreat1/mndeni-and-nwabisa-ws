@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { RegistryItem } from './types';
 import ItemDetails from './ItemDetails';
 import BuyerForm from './BuyerForm';
@@ -14,14 +14,13 @@ interface GiftSelectionDialogProps {
   buyerSurname: string;
   buyerEmail: string;
   requestDelivery: boolean;
-  requestFlintColor: boolean;
   isLoading: boolean;
   setBuyerName: (name: string) => void;
   setBuyerSurname: (surname: string) => void;
   setBuyerEmail: (email: string) => void;
   setRequestDelivery: (delivery: boolean) => void;
-  setRequestFlintColor: (flint: boolean) => void;
   onGiftSelection: () => void;
+  children: React.ReactNode;
 }
 
 const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
@@ -32,18 +31,19 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
   buyerSurname,
   buyerEmail,
   requestDelivery,
-  requestFlintColor,
   isLoading,
   setBuyerName,
   setBuyerSurname,
   setBuyerEmail,
   setRequestDelivery,
-  setRequestFlintColor,
   onGiftSelection,
+  children
 }) => {
-  const isSpoonRestItem = item.name === "Stoneware Oval Spoon Rest";
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+      <DialogTrigger asChild>
+        {children}
+      </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Select Gift</DialogTitle>
@@ -67,9 +67,6 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
             setBuyerEmail={setBuyerEmail}
             setRequestDelivery={setRequestDelivery}
             showNameFields={true}
-            itemName={item.name}
-            requestFlintColor={requestFlintColor}
-            setRequestFlintColor={setRequestFlintColor}
           />
         </div>
         <DialogFooter className="flex flex-col sm:flex-row gap-2">
@@ -78,7 +75,7 @@ const GiftSelectionDialog: React.FC<GiftSelectionDialogProps> = ({
           </Button>
           <Button 
             className="bg-terracotta hover:bg-terracotta/90"
-            disabled={isLoading || (!buyerName.trim() || !buyerSurname.trim() || (requestDelivery && !buyerEmail.trim()) || (isSpoonRestItem && !requestFlintColor))}
+            disabled={isLoading || (!buyerName.trim() || !buyerSurname.trim() || (requestDelivery && !buyerEmail.trim()))}
             onClick={onGiftSelection}
           >
             {isLoading ? 'Processing...' : (item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift')}

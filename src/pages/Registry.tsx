@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navigation from '../components/Navigation';
 import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
@@ -19,7 +19,7 @@ const Registry = () => {
   const [purchasedItems, setPurchasedItems] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
-  const itemsPerPage = 10;
+  const itemsPerPage = 6;
 
   // Load purchase data from Supabase
   const loadPurchaseDataFromSupabase = useCallback(async () => {
@@ -57,7 +57,7 @@ const Registry = () => {
       setItemQuantities(quantities);
       setPurchasedItems(purchased);
       
-      
+      console.log('Loaded purchase data from Supabase:', { quantities, purchased: Array.from(purchased) });
     } catch (error) {
       console.error('Error in loadPurchaseDataFromSupabase:', error);
     }
@@ -65,7 +65,7 @@ const Registry = () => {
 
   // Setup real-time subscription for cross-device synchronization
   const setupRealtimeSubscription = useCallback(() => {
-    
+    console.log('Setting up realtime subscription...');
     
     const channel = supabase
       .channel('registry-changes')
@@ -77,7 +77,7 @@ const Registry = () => {
           table: 'registry_items'
         },
         (payload) => {
-          
+          console.log('Real-time update received:', payload);
           // Reload data when changes occur
           loadPurchaseDataFromSupabase();
         }
@@ -166,21 +166,21 @@ const Registry = () => {
     }
   }, []);
   
-  // Memoize the rearranged items to avoid recalculating on every render
-  const rearrangedItems = useMemo(() => {
-    const items = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
-    const filtered = items.filter(item => !featuredItemIds.includes(item.id));
-    // Remove duplicates based on ID to prevent repetition
-    return filtered.filter((item, index, self) => 
-      index === self.findIndex(i => i.id === item.id)
-    );
-  }, [featuredItemIds]);
+  // Rearrange items: move first 20 to pages 6 and 7, others move up
+  // Also exclude featured items from the "View All" section
+  const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
+  const remainingItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
   
-  const totalPages = Math.ceil(rearrangedItems.length / itemsPerPage);
+  // Remove duplicates based on ID to prevent repetition
+  const uniqueRemainingItems = remainingItems.filter((item, index, self) => 
+    index === self.findIndex(i => i.id === item.id)
+  );
+  
+  const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = async (item: RegistryItem, buyerName: string, buyerSurname: string) => {
     try {
-      
+      console.log('Processing purchase for:', item.name, 'by', buyerName, buyerSurname);
       
       // Update Supabase database to track purchase across all devices
       const { error } = await supabase.rpc('update_registry_item_quantity', {
@@ -205,7 +205,7 @@ const Registry = () => {
         description: "Email client opened. Thank you for selecting this gift!",
       });
       
-      
+      console.log('Purchase recorded successfully in Supabase');
     } catch (error) {
       console.error('Error in handlePurchaseConfirm:', error);
       toast({
@@ -225,6 +225,10 @@ const Registry = () => {
     const totalQuantity = item.quantity || 1;
     const purchasedQuantity = itemQuantities[item.id] || 0;
     const isUnavailable = purchasedQuantity >= totalQuantity;
+    
+    if (isUnavailable) {
+      console.log(`Item ${item.id} (${item.name}) is unavailable: ${purchasedQuantity}/${totalQuantity} purchased`);
+    }
     
     return isUnavailable;
   };
@@ -285,7 +289,7 @@ const Registry = () => {
 
           {showAllItems && (
             <PaginatedItems 
-              items={rearrangedItems}
+              items={uniqueRemainingItems}
               currentPage={currentPage}
               totalPages={totalPages}
               itemsPerPage={itemsPerPage}
@@ -335,7 +339,7 @@ const Registry = () => {
                       description: "Redirecting to Woolworths website...",
                     });
                     setTimeout(() => {
-                      window.open("https://www.woolworths.co.za/cat/Beauty/Gift-Cards/Woolworths-Gift-Cards/_/N-cwusbe?gad_source=1&gad_campaignid=22709387004&gbraid=0AAAAA-WTlypSbevNxGnBCKTcXn3oR8uDI&gclid=CjwKCAjw4efDBhATEiwAaDBpbjUw_I2w34Bzeq6V0Qi91EblJqYFv_sGxZOL_AFHYGjpjo3wrwM82BoC4b4QAvD_BwE", "_blank");
+                      window.open("https://www.woolworths.co.za", "_blank");
                     }, 1000);
                   }
                 }}
@@ -352,7 +356,7 @@ const Registry = () => {
                       description: "Redirecting to Le Creuset website...",
                     });
                     setTimeout(() => {
-                      window.open("https://www.lecreuset.co.za/giftcard?srsltid=AfmBOorqw5GykpZPq05v4NGO-n3u44rovqVAiPIMPIWgE3N1cmsQo_B2", "_blank");
+                      window.open("https://m.yuppiechef.com/gift-vouchers.htm?adgroupid=8093711083&campaignid=135890803&device=c&devm=&display=mobile&gad_campaignid=135890803&gad_source=1&gclid=Cj0KCQjwmqPDBhCAARIsADorxIY8hyow4hwIgPRHdWjsk9l_jPlVWef84vFlqPNuSWT0vP8b6DGIbgcaAtRREALw_wcB&keyword=le+creuset+voucher&network=g", "_blank");
                     }, 1000);
                   }
                 }}

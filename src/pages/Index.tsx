@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
@@ -61,13 +62,13 @@ const Index = () => {
         }} />
         
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className="font-playfair text-6xl md:text-8xl font-bold mb-6">
+          <h1 className="font-playfair text-6xl md:text-8xl font-bold mb-6 animate-fade-in">
             Mndeni & Nwabisa
           </h1>
-          <p className="text-xl md:text-2xl mb-8">
+          <p className="text-xl md:text-2xl mb-8 animate-fade-in">
             Join Us for Our Traditional Wedding Celebration
           </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 text-lg">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 text-lg animate-fade-in">
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
               <span>27 September 2025</span>
@@ -77,7 +78,7 @@ const Index = () => {
               <span>Mtubatuba</span>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
             <Link 
               to="/rsvp" 
               className="bg-terracotta hover:bg-terracotta/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
@@ -103,27 +104,16 @@ const Index = () => {
           <p className="text-lg text-brown/80 mb-8">
             Join us at this beautiful location for our special day
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a 
-              href="https://maps.google.com/?q=-28.279469,32.148525"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-brown hover:bg-brown/90 text-cream px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-            >
-              <MapPin className="w-5 h-5" />
-              <span>View Location on Google Maps</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
-            <Link 
-              to="/accommodation"
-              className="inline-flex items-center gap-3 bg-cream hover:bg-cream/90 text-brown border-2 border-brown px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-            >
-              <span>View Accommodation Options</span>
-            </Link>
-          </div>
-          <p className="text-brown/70 mt-6 text-sm">
-            Need a place to stay? Check out our recommended accommodations in the area.
-          </p>
+          <a 
+            href="https://maps.google.com/?q=-28.279469,32.148525"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-brown hover:bg-brown/90 text-cream px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+          >
+            <MapPin className="w-5 h-5" />
+            <span>View Location on Google Maps</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
       </section>
 
@@ -170,7 +160,7 @@ const Index = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {previewImages.map((img, index) => (
               <div 
-                key={index}
+                key={index} 
                 className="aspect-square overflow-hidden rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               >
                 <img 
@@ -198,9 +188,9 @@ const Index = () => {
               const isPurchased = purchasedItems.has(item.id);
               return (
                 <Link 
-                  key={index}
+                  key={index} 
                   to={`/registry?highlight=${item.id}`}
-                  className={`bg-white rounded-lg p-3 shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer ${
+                  className={`bg-white rounded-lg p-3 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
                     isPurchased ? 'opacity-50 grayscale' : ''
                   }`}
                 >

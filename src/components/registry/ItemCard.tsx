@@ -19,7 +19,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
   const [buyerSurname, setBuyerSurname] = useState('');
   const [buyerEmail, setBuyerEmail] = useState('');
   const [requestDelivery, setRequestDelivery] = useState(false);
-  const [requestFlintColor, setRequestFlintColor] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -49,16 +48,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       return;
     }
 
-    // Require Flint color selection for Stoneware Oval Spoon Rest
-    if (item.name === "Stoneware Oval Spoon Rest" && !requestFlintColor) {
-      toast({
-        title: "Color Selection Required",
-        description: "Please confirm you would like the Flint color option for this item.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setIsLoading(true);
 
     try {
@@ -76,7 +65,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           buyerSurname: buyerSurname.trim(),
           buyerEmail: buyerEmail.trim() || undefined,
           requestDelivery,
-          requestFlintColor: requestFlintColor && item.name === "Stoneware Oval Spoon Rest",
         },
       });
 
@@ -92,7 +80,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       setBuyerSurname('');
       setBuyerEmail('');
       setRequestDelivery(false);
-      setRequestFlintColor(false);
       setIsDialogOpen(false);
 
       // Show success message with redirect info
@@ -201,15 +188,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
       </div>
       
       <div className="space-y-2">
-        <Button 
-          className="w-full bg-terracotta hover:bg-terracotta/90 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
-          disabled={isUnavailable}
-          onClick={() => setIsDialogOpen(true)}
-        >
-          <Gift className="w-4 h-4 mr-2" />
-          {isUnavailable ? 'Unavailable' : item.websiteUrl ? 'Proceed to Purchase' : 'Select Gift'}
-        </Button>
-
         <GiftSelectionDialog
           item={item}
           isDialogOpen={isDialogOpen}
@@ -218,15 +196,21 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
           buyerSurname={buyerSurname}
           buyerEmail={buyerEmail}
           requestDelivery={requestDelivery}
-          requestFlintColor={requestFlintColor}
           isLoading={isLoading}
           setBuyerName={setBuyerName}
           setBuyerSurname={setBuyerSurname}
           setBuyerEmail={setBuyerEmail}
           setRequestDelivery={setRequestDelivery}
-          setRequestFlintColor={setRequestFlintColor}
           onGiftSelection={handleGiftSelection}
-        />
+        >
+          <Button 
+            className="w-full bg-terracotta hover:bg-terracotta/90 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+            disabled={isUnavailable}
+          >
+            <Gift className="w-4 h-4 mr-2" />
+            {isUnavailable ? 'Unavailable' : 'Select Gift'}
+          </Button>
+        </GiftSelectionDialog>
       </div>
     </div>
   );
