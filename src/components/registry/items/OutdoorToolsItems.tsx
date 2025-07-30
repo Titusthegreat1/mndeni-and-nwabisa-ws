@@ -14,36 +14,36 @@ export const outdoorToolsItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/le-creuset-square-skillet-grill-26cm-bamboo-154103aaam9/p?skuId=405828"
   },
   {
-    id: 74,
-    name: "Talon Petrol Brush Cutter",
-    brand: "TALON",
-    price: "R2,100.00",
-    size: "2-Stroke 43cm",
-    available: true,
-    image: "/lovable-uploads/e9ac9646-0b35-4cbd-884e-b59e96b6bec5.png",
-    websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm"
-  },
-  {
-    id: 200,
+    id: 9001,
     name: "Alva Split Pole Gas Patio Heater Grey 13KW",
     brand: "ALVA",
     price: "R2,599.00",
     size: "13KW",
     color: "Grey",
     available: true,
-    image: "/lovable-uploads/32b55574-495e-46cb-a0fb-55e9da2cef30.png",
+    image: "/lovable-uploads/c1191390-3ede-429b-bd6d-b5dd37ca4d3c.png",
     websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
   },
   {
-    id: 201,
+    id: 9002,
     name: "Cordless Lithium Battery Screwdriver 32pc Set",
     brand: "GENERIC",
     price: "R699.00",
     size: "32pc Set",
     color: "Black",
     available: true,
-    image: "/lovable-uploads/d3add5ae-d4be-428a-83a9-5ca47d0a183f.png",
+    image: "/lovable-uploads/6e40cd4a-01f0-4e04-ab1b-fb1266a3e5f9.png",
     websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
+  },
+  {
+    id: 9046,
+    name: "Talon Petrol Brush Cutter 2 Stroke 43cm³",
+    brand: "TALON",
+    price: "R3,450.00",
+    size: "2-Stroke 43cm³",
+    available: true,
+    image: "/lovable-uploads/dd6be71c-67c1-4548-a39d-2d1bf0c54530.png",
+    websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm?sfdr_ptcid=32806_617_682124952&sfdr_hash=5c4e60925f7ddffa851201e7c26d5dd5&gad_source=1&gad_campaignid=17335597113&gbraid=0AAAAADD-EFXwbgO0Nk0ifR1fMOFKIe2oy&gclid=Cj0KCQjw64jDBhDXARIsABkk8J7qkAkpZ2HA7eQVtqZ4uiIIX4FCgEyGIoQTGYO3yyE-Zdg47g-u24AaAkcmEALw_wcB"
   },
   {
     id: 202,
