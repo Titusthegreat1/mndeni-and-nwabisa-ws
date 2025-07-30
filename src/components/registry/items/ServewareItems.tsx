@@ -253,16 +253,5 @@ export const servewareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/41184b7a-3e07-4806-93a9-c6267f50299c.png",
     websiteUrl: "https://bash.com/jute-edge-placemat-black-38cm-153302aahp9/p?skuId=1426576"
-  },
-  {
-    id: 233,
-    name: "Nolan Tongs",
-    brand: "COUNTRY ROAD",
-    price: "R299.00",
-    size: "TONGS",
-    color: "Black",
-    available: true,
-    image: "/lovable-uploads/d96f1ddd-e270-4cf9-bf98-1ece5eca2110.png",
-    websiteUrl: "https://www.woolworths.co.za/prod/Home/Dining/Cutlery/Country-Road-Nolan-Tongs/_/A-504988168"
   }
 ];

@@ -1,31 +1,44 @@
-import { giftItems } from './items/GiftItems';
-import { dinnerwareItems } from './items/DinnerwareItems';
-import { kitchenwareItems } from './items/KitchenwareItems';
-import { servewareItems } from './items/ServewareItems';
-import { appliancesItems } from './items/AppliancesItems';
-import { cookwareItems } from './items/CookwareItems';
-import { homeDecorItems } from './items/HomeDecorItems';
-import { bathroomItems } from './items/BathroomItems';
-import { outdoorToolsItems } from './items/OutdoorToolsItems';
+import { appliancesCategory } from './categories/AppliancesCategory';
+import { bathroomCategory } from './categories/BathroomCategory';
+import { cookwareCategory } from './categories/CookwareCategory';
+import { tablewareCategory } from './categories/Tableware';
+import { servewareCategory } from './categories/ServewareCategory';
+import { utensilsCategory } from './categories/UtensilsCategory';
+import { outdoorCategory } from './categories/OutdoorCategory';
+import { glasswareCategory } from './categories/GlasswareCategory';
+import { beddingCategory } from './categories/BeddingCategory';
+import { homeDecorCategory } from './categories/HomeDecorCategory';
 
 export type { RegistryItem } from './types';
 
-// Combine all registry items with gift items at the beginning
-const allOtherItems = [
-  ...dinnerwareItems,
-  ...kitchenwareItems,
-  ...servewareItems,
-  ...appliancesItems,
-  ...cookwareItems,
-  ...homeDecorItems,
-  ...bathroomItems,
-  ...outdoorToolsItems
+// All items combined for "All" tab
+export const allRegistryItems = [
+  ...appliancesCategory,
+  ...bathroomCategory,
+  ...cookwareCategory,
+  ...tablewareCategory,
+  ...servewareCategory,
+  ...utensilsCategory,
+  ...outdoorCategory,
+  ...glasswareCategory,
+  ...beddingCategory,
+  ...homeDecorCategory
 ].sort((a, b) => a.id - b.id);
 
-// Put gift items at the beginning, then rearrange other items: move pages 3-4 to front, pages 1-2 to end
-export const registryItems = [
-  ...giftItems,              // New gift items come first
-  ...allOtherItems.slice(12, 24), // Original pages 3-4 (items 13-24) become new pages 1-2
-  ...allOtherItems.slice(24),     // Everything after page 4 stays in order
-  ...allOtherItems.slice(0, 12)   // Original pages 1-2 (items 1-12) go to the end
-];
+// Export categories for tabs
+export const registryCategories = {
+  all: allRegistryItems,
+  appliances: appliancesCategory,
+  bathroom: bathroomCategory,
+  cookware: cookwareCategory,
+  tableware: tablewareCategory,
+  serveware: servewareCategory,
+  utensils: utensilsCategory,
+  outdoor: outdoorCategory,
+  glassware: glasswareCategory,
+  bedding: beddingCategory,
+  homedecor: homeDecorCategory
+};
+
+// Keep backward compatibility
+export const registryItems = allRegistryItems;

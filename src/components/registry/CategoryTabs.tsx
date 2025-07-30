@@ -1,24 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ItemCard from './ItemCard';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { RegistryItem } from './types';
-import { appliancesCategory } from './categories/AppliancesCategory';
-import { bathroomCategory } from './categories/BathroomCategory';
-import { cookwareCategory } from './categories/CookwareCategory';
-import { tablewareCategory } from './categories/TablewareCategory';
-import { servewareCategory } from './categories/ServewareCategory';
-import { utensilsCategory } from './categories/UtensilsCategory';
-import { outdoorCategory } from './categories/OutdoorCategory';
-import { glasswareCategory } from './categories/GlasswareCategory';
-import { beddingCategory } from './categories/BeddingCategory';
-import { homeDecorCategory } from './categories/HomeDecorCategory';
-import { registryItems } from './RegistryItems';
+import { registryCategories } from './RegistryItems';
 
 interface CategoryTabsProps {
   highlightItemId: number | null;
-  onPurchaseConfirm: (item: RegistryItem, buyerName: string, buyerSurname: string) => Promise<void>;
+  onPurchaseConfirm: (item: RegistryItem, buyerName: string, buyerSurname: string) => void;
   isItemUnavailable: (item: RegistryItem) => boolean;
   getRemainingQuantity: (item: RegistryItem) => number;
 }
@@ -29,119 +17,59 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
   isItemUnavailable,
   getRemainingQuantity
 }) => {
-  const [currentPages, setCurrentPages] = useState<Record<string, number>>({
-    all: 1,
-    appliances: 1,
-    bathroom: 1,
-    cookware: 1,
-    tableware: 1,
-    serveware: 1,
-    utensils: 1,
-    outdoor: 1,
-    glassware: 1,
-    bedding: 1,
-    homeDecor: 1
-  });
-
+  const [currentPages, setCurrentPages] = React.useState<Record<string, number>>({});
   const itemsPerPage = 10;
 
-  // All items (excluding gift items from registryItems)
-  const allItems = registryItems.filter(item => item.id < 1000);
-
-  const categories = {
-    all: allItems,
-    appliances: appliancesCategory,
-    bathroom: bathroomCategory,
-    cookware: cookwareCategory,
-    tableware: tablewareCategory,
-    serveware: servewareCategory,
-    utensils: utensilsCategory,
-    outdoor: outdoorCategory,
-    glassware: glasswareCategory,
-    bedding: beddingCategory,
-    homeDecor: homeDecorCategory
-  };
-
-  const categoryLabels = {
-    all: 'All',
-    appliances: 'Appliances',
-    bathroom: 'Bathroom',
-    cookware: 'Cookware',
-    tableware: 'Tableware',
-    serveware: 'Serveware',
-    utensils: 'Utensils',
-    outdoor: 'Outdoor',
-    glassware: 'Glassware',
-    bedding: 'Bedding',
-    homeDecor: 'Home Decor'
-  };
-
-  const handlePageChange = (category: string, direction: 'prev' | 'next') => {
-    setCurrentPages(prev => {
-      const categoryItems = categories[category as keyof typeof categories];
-      const totalPages = Math.ceil(categoryItems.length / itemsPerPage);
-      const currentPage = prev[category];
-      
-      let newPage = currentPage;
-      if (direction === 'prev' && currentPage > 1) {
-        newPage = currentPage - 1;
-      } else if (direction === 'next' && currentPage < totalPages) {
-        newPage = currentPage + 1;
-      }
-      
-      return { ...prev, [category]: newPage };
-    });
-  };
-
-  const renderCategoryContent = (categoryKey: string) => {
-    const categoryItems = categories[categoryKey as keyof typeof categories];
-    const currentPage = currentPages[categoryKey];
-    const totalPages = Math.ceil(categoryItems.length / itemsPerPage);
-    
+  const renderCategoryItems = (categoryKey: string, items: RegistryItem[]) => {
+    const currentPage = currentPages[categoryKey] || 1;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentPageItems = categoryItems.slice(startIndex, endIndex);
+    const pageItems = items.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(items.length / itemsPerPage);
 
     return (
-      <div className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {currentPageItems.map((item) => (
-            <ItemCard
+      <div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {pageItems.map((item) => (
+            <div 
               key={item.id}
-              item={item}
-              onPurchaseConfirm={onPurchaseConfirm}
-              isItemUnavailable={isItemUnavailable}
-              getRemainingQuantity={getRemainingQuantity}
-            />
+              className={highlightItemId === item.id ? 'ring-4 ring-terracotta rounded-lg' : ''}
+            >
+              <ItemCard 
+                item={item} 
+                onPurchaseConfirm={onPurchaseConfirm}
+                isItemUnavailable={isItemUnavailable}
+                getRemainingQuantity={getRemainingQuantity}
+              />
+            </div>
           ))}
         </div>
-
-        {/* Pagination */}
+        
         {totalPages > 1 && (
-          <div className="flex justify-between items-center mt-8">
-            <Button
-              variant="outline"
-              onClick={() => handlePageChange(categoryKey, 'prev')}
+          <div className="flex justify-center items-center gap-4 mb-8">
+            <button
+              onClick={() => setCurrentPages(prev => ({ 
+                ...prev, 
+                [categoryKey]: Math.max((prev[categoryKey] || 1) - 1, 1) 
+              }))}
               disabled={currentPage === 1}
-              className="flex items-center gap-2"
+              className="px-4 py-2 bg-brown hover:bg-brown/90 text-cream rounded-lg disabled:opacity-50"
             >
-              <ChevronLeft className="w-4 h-4" />
               Previous
-            </Button>
-            
-            <span className="text-brown/80">
+            </button>
+            <span className="text-brown font-semibold">
               Page {currentPage} of {totalPages}
             </span>
-            
-            <Button
-              variant="outline"
-              onClick={() => handlePageChange(categoryKey, 'next')}
+            <button
+              onClick={() => setCurrentPages(prev => ({ 
+                ...prev, 
+                [categoryKey]: Math.min((prev[categoryKey] || 1) + 1, totalPages) 
+              }))}
               disabled={currentPage === totalPages}
-              className="flex items-center gap-2"
+              className="px-4 py-2 bg-brown hover:bg-brown/90 text-cream rounded-lg disabled:opacity-50"
             >
               Next
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+            </button>
           </div>
         )}
       </div>
@@ -149,27 +77,27 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
   };
 
   return (
-    <div className="mt-8">
-      <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 xl:grid-cols-11 gap-1 mb-8">
-          {Object.entries(categoryLabels).map(([key, label]) => (
-            <TabsTrigger 
-              key={key} 
-              value={key}
-              className="text-xs px-2 py-1 data-[state=active]:bg-terracotta data-[state=active]:text-white"
-            >
-              {label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        
-        {Object.keys(categories).map((categoryKey) => (
-          <TabsContent key={categoryKey} value={categoryKey}>
-            {renderCategoryContent(categoryKey)}
-          </TabsContent>
-        ))}
-      </Tabs>
-    </div>
+    <Tabs defaultValue="all" className="w-full">
+      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-1 h-auto p-1 mb-8">
+        <TabsTrigger value="all" className="text-xs md:text-sm">All</TabsTrigger>
+        <TabsTrigger value="appliances" className="text-xs md:text-sm">Appliances</TabsTrigger>
+        <TabsTrigger value="bathroom" className="text-xs md:text-sm">Bathroom</TabsTrigger>
+        <TabsTrigger value="cookware" className="text-xs md:text-sm">Cookware</TabsTrigger>
+        <TabsTrigger value="tableware" className="text-xs md:text-sm">Tableware</TabsTrigger>
+        <TabsTrigger value="serveware" className="text-xs md:text-sm">Serveware</TabsTrigger>
+        <TabsTrigger value="utensils" className="text-xs md:text-sm">Utensils</TabsTrigger>
+        <TabsTrigger value="outdoor" className="text-xs md:text-sm">Outdoor</TabsTrigger>
+        <TabsTrigger value="glassware" className="text-xs md:text-sm">Glassware</TabsTrigger>
+        <TabsTrigger value="bedding" className="text-xs md:text-sm">Bedding</TabsTrigger>
+        <TabsTrigger value="homedecor" className="text-xs md:text-sm">Home Decor</TabsTrigger>
+      </TabsList>
+
+      {Object.entries(registryCategories).map(([key, items]) => (
+        <TabsContent key={key} value={key}>
+          {renderCategoryItems(key, items)}
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 };
 

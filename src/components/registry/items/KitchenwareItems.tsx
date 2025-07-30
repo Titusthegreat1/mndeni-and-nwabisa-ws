@@ -193,27 +193,5 @@ export const kitchenwareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/2c9d9640-5ef8-48ef-9a02-21f76913c7c0.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-509169222"
-  },
-  {
-    id: 231,
-    name: "CR Stripe Verified Australian Cotton Tea Towel Pack",
-    brand: "COUNTRY ROAD",
-    price: "R399.00",
-    size: "PACK",
-    color: "Striped",
-    available: true,
-    image: "/lovable-uploads/98c15b0f-d7b7-40c0-b7a9-f394cd8eeb3e.png",
-    websiteUrl: "https://www.woolworths.co.za/prod/_/A-505580190"
-  },
-  {
-    id: 232,
-    name: "Wooden Grinder Set 2 Piece",
-    brand: "WOOLWORTHS",
-    price: "R479.00",
-    size: "2 PIECE",
-    color: "Wood",
-    available: true,
-    image: "/lovable-uploads/eec05005-0377-4b95-af22-4fde90cec616.png",
-    websiteUrl: "https://www.woolworths.co.za/prod/_/A-506354638"
   }
 ];
