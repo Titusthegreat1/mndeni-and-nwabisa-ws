@@ -21,7 +21,10 @@ const outdoorNames = [
   "Ryobi Blower Mulching Vacuum 3000W",
   "Ryobi Circular Saw 1250W",
   "Red Rhino 1700W Pressure Washer 120 Bar",
-  "Garden Trimmer 500W"
+  "Garden Trimmer 500W",
+  "Alva Split Pole Gas Patio Heater Grey 13KW",
+  "Talon Petrol Brush Cutter 2 Stroke 43cmᵌ",
+  "Cordless Lithium Battery Screwdriver 32pc Set"
 ];
 
 export const outdoorCategory: RegistryItem[] = findItemsByNames(outdoorNames);

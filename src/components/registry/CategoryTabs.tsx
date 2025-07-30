@@ -45,8 +45,8 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
 
   const itemsPerPage = 10;
 
-  // All items (excluding gift items from registryItems)
-  const allItems = registryItems.filter(item => item.id < 1000);
+  // All items (excluding gift items from registryItems, including new outdoor items)
+  const allItems = registryItems.filter(item => item.id < 9000);
 
   const categories = {
     all: allItems,
@@ -151,12 +151,12 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
   return (
     <div className="mt-8">
       <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 xl:grid-cols-11 gap-1 mb-8">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-2 mb-8 p-1 bg-brown/5">
           {Object.entries(categoryLabels).map(([key, label]) => (
             <TabsTrigger 
               key={key} 
               value={key}
-              className="text-xs px-2 py-1 data-[state=active]:bg-terracotta data-[state=active]:text-white"
+              className="text-sm font-medium px-4 py-3 rounded-md transition-all duration-200 hover:bg-brown/10 data-[state=active]:bg-terracotta data-[state=active]:text-white data-[state=active]:shadow-md border-0"
             >
               {label}
             </TabsTrigger>

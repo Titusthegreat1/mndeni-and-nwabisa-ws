@@ -3,6 +3,33 @@ import { RegistryItem } from '../types';
 
 export const outdoorToolsItems: RegistryItem[] = [
   {
+    id: 1001,
+    name: "Alva Split Pole Gas Patio Heater Grey 13KW",
+    brand: "Alva",
+    price: "R2,599",
+    available: true,
+    image: "/lovable-uploads/fcaec585-0d63-4517-ab76-ab87aa7a717d.png",
+    websiteUrl: "https://leroymerlin.co.za/alva-split-pole-gas-patio-heater-grey-13kw-81465890"
+  },
+  {
+    id: 1002,
+    name: "Talon Petrol Brush Cutter 2 Stroke 43cmᵌ",
+    brand: "Talon",
+    price: "R3,450",
+    available: true,
+    image: "/lovable-uploads/c041e8d0-6f83-4308-9746-e8bfdb22344a.png",
+    websiteUrl: "https://leroymerlin.co.za/talon-petrol-brush-cutter-2-stroke-43cm?sfdr_ptcid=32806_617_682124952&sfdr_hash=5c4e60925f7ddffa851201e7c26d5dd5&gad_source=1&gad_campaignid=17335597113&gbraid=0AAAAADD-EFXwbgO0Nk0ifR1fMOFKIe2oy&gclid=Cj0KCQjw64jDBhDXARIsABkk8J7qkAkpZ2HA7eQVtqZ4uiIIX4FCgEyGIoQTGYO3yyE-Zdg47g-u24AaAkcmEALw_wcB"
+  },
+  {
+    id: 1003,
+    name: "Cordless Lithium Battery Screwdriver 32pc Set",
+    brand: "Generic",
+    price: "R699",
+    available: true,
+    image: "/lovable-uploads/736d9f57-3386-4fb5-bb10-d538bb9d9c19.png",
+    websiteUrl: "https://leroymerlin.co.za/cordless-lithium-battery-screwdriver-32pc-set"
+  },
+  {
     id: 205,
     name: "Grip 39 Piece Tool Set GT2015",
     brand: "GRIP",
