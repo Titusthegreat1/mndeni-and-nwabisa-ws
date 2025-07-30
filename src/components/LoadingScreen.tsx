@@ -44,7 +44,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
       style={{
         backgroundImage: 'url(/lovable-uploads/b7524053-2a59-4e20-b6b4-0d4a86adb211.png)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center 80%', // Moved down by 60% (from center 50% to 80%)
+        backgroundPosition: 'center 10%', // Moved up by 90% (from center 50% to 10%)
         backgroundRepeat: 'no-repeat'
       }}
     >
