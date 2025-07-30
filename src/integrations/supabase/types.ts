@@ -34,7 +34,7 @@ export type Database = {
           brand: string
           color?: string | null
           created_at?: string
-          id: number
+          id?: number
           image_url?: string | null
           item_name_unique?: string | null
           name: string
