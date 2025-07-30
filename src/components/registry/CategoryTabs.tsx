@@ -78,18 +78,18 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
 
   return (
     <Tabs defaultValue="all" className="w-full">
-      <TabsList className="grid w-full grid-cols-5 lg:grid-cols-11 mb-8">
-        <TabsTrigger value="all">All</TabsTrigger>
-        <TabsTrigger value="appliances">Appliances</TabsTrigger>
-        <TabsTrigger value="bathroom">Bathroom</TabsTrigger>
-        <TabsTrigger value="cookware">Cookware</TabsTrigger>
-        <TabsTrigger value="tableware">Tableware</TabsTrigger>
-        <TabsTrigger value="serveware">Serveware</TabsTrigger>
-        <TabsTrigger value="utensils">Utensils</TabsTrigger>
-        <TabsTrigger value="outdoor">Outdoor</TabsTrigger>
-        <TabsTrigger value="glassware">Glassware</TabsTrigger>
-        <TabsTrigger value="bedding">Bedding</TabsTrigger>
-        <TabsTrigger value="homedecor">Home Decor</TabsTrigger>
+      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-1 h-auto p-1 mb-8">
+        <TabsTrigger value="all" className="text-xs md:text-sm">All</TabsTrigger>
+        <TabsTrigger value="appliances" className="text-xs md:text-sm">Appliances</TabsTrigger>
+        <TabsTrigger value="bathroom" className="text-xs md:text-sm">Bathroom</TabsTrigger>
+        <TabsTrigger value="cookware" className="text-xs md:text-sm">Cookware</TabsTrigger>
+        <TabsTrigger value="tableware" className="text-xs md:text-sm">Tableware</TabsTrigger>
+        <TabsTrigger value="serveware" className="text-xs md:text-sm">Serveware</TabsTrigger>
+        <TabsTrigger value="utensils" className="text-xs md:text-sm">Utensils</TabsTrigger>
+        <TabsTrigger value="outdoor" className="text-xs md:text-sm">Outdoor</TabsTrigger>
+        <TabsTrigger value="glassware" className="text-xs md:text-sm">Glassware</TabsTrigger>
+        <TabsTrigger value="bedding" className="text-xs md:text-sm">Bedding</TabsTrigger>
+        <TabsTrigger value="homedecor" className="text-xs md:text-sm">Home Decor</TabsTrigger>
       </TabsList>
 
       {Object.entries(registryCategories).map(([key, items]) => (
