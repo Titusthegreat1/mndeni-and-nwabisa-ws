@@ -51,7 +51,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onPurchaseConfirm, isItemUnav
     setIsLoading(true);
 
     try {
-      // Call the enhanced email function
+      // First, immediately mark item as selected in the database for cross-device sync
+      console.log('Immediately marking item as selected for cross-device sync...');
+      
+      // Call the enhanced email function which will trigger the database update
       const { data, error } = await supabase.functions.invoke('send-registry-email', {
         body: {
           itemId: item.id,
