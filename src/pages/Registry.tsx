@@ -4,7 +4,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
 import RegistryFilters from '../components/registry/RegistryFilters';
 import FeaturedItems from '../components/registry/FeaturedItems';
-import PaginatedItems from '../components/registry/PaginatedItems';
+import CategoryTabs from '../components/registry/CategoryTabs';
 import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
 import { supabase } from '@/integrations/supabase/client';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
@@ -288,17 +288,11 @@ const Registry = () => {
           />
 
           {showAllItems && (
-            <PaginatedItems 
-              items={uniqueRemainingItems}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              itemsPerPage={itemsPerPage}
+            <CategoryTabs 
               highlightItemId={highlightItemId}
               onPurchaseConfirm={handlePurchaseConfirm}
               isItemUnavailable={isItemUnavailable}
               getRemainingQuantity={getRemainingQuantity}
-              onPreviousPage={handlePreviousPage}
-              onNextPage={handleNextPage}
             />
           )}
 
