@@ -1,0 +1,118 @@
+import React, { useEffect, useState } from 'react';
+import { Heart } from 'lucide-react';
+
+interface LoadingScreenProps {
+  onLoadingComplete: () => void;
+}
+
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
+  const [progress, setProgress] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading progress
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          setTimeout(() => {
+            onLoadingComplete();
+          }, 500);
+          return 100;
+        }
+        return prev + Math.random() * 15;
+      });
+    }, 100);
+
+    // Show welcoming message after a short delay
+    const messageTimeout = setTimeout(() => {
+      setShowMessage(true);
+    }, 800);
+
+    return () => {
+      clearInterval(progressInterval);
+      clearTimeout(messageTimeout);
+    };
+  }, [onLoadingComplete]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Hero background pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.05),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_50%)]"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-8 max-w-2xl mx-auto">
+        {/* Heart icon with animation */}
+        <div className="mb-8 flex justify-center">
+          <div className="relative">
+            <Heart 
+              className="w-16 h-16 text-rose-400 animate-pulse" 
+              fill="currentColor"
+            />
+            <div className="absolute inset-0 w-16 h-16 bg-rose-400/20 rounded-full animate-ping"></div>
+          </div>
+        </div>
+
+        {/* Welcoming message */}
+        <div className={`transition-all duration-1000 ${showMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Welcome to Our
+            <span className="block text-rose-400">Wedding Registry</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+            Thank you for being such an important part of our journey. Your presence in our lives means the world to us, and we're so grateful to have you celebrate this special moment with us.
+          </p>
+
+          <p className="text-base text-slate-400 italic">
+            "Love is not just about finding the right person, but creating a right relationship with the people who matter most..."
+          </p>
+        </div>
+
+        {/* Loading progress */}
+        <div className="mt-12">
+          <div className="w-full bg-slate-700/50 rounded-full h-2 mb-4 overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-rose-400 to-pink-400 rounded-full transition-all duration-300 ease-out relative"
+              style={{ width: `${Math.min(progress, 100)}%` }}
+            >
+              <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+            </div>
+          </div>
+          
+          <p className="text-slate-400 text-sm">
+            Preparing our special day for you... {Math.round(Math.min(progress, 100))}%
+          </p>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute -top-8 -left-8 w-32 h-32 bg-rose-400/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-pink-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+      </div>
+
+      {/* Floating hearts animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <Heart
+            key={i}
+            className="absolute w-4 h-4 text-rose-400/20 animate-pulse"
+            fill="currentColor"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${20 + (i % 3) * 20}%`,
+              animationDelay: `${i * 0.5}s`,
+              animation: `pulse 2s ease-in-out infinite`
+            }}
+          />
+        ))}
+      </div>
+
+    </div>
+  );
+};
+
+export default LoadingScreen;
