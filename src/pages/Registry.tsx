@@ -2,10 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Navigation from '../components/Navigation';
 import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
-import RegistryFilters from '../components/registry/RegistryFilters';
-import FeaturedItems from '../components/registry/FeaturedItems';
-import PaginatedItems from '../components/registry/PaginatedItems';
-import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
+import CategoryTabs from '../components/registry/CategoryTabs';
+import { allRegistryItems, RegistryItem } from '../components/registry/RegistryItems';
 import { supabase } from '@/integrations/supabase/client';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
 import { useToast } from '@/hooks/use-toast';
@@ -14,12 +12,9 @@ import { ExternalLink } from 'lucide-react';
 
 const Registry = () => {
   const { toast } = useToast();
-  const [showAllItems, setShowAllItems] = useState(false);
   const [itemQuantities, setItemQuantities] = useState<Record<number, number>>({});
   const [purchasedItems, setPurchasedItems] = useState(new Set());
-  const [currentPage, setCurrentPage] = useState(1);
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
-  const itemsPerPage = 6;
 
   // Load purchase data from Supabase
   const loadPurchaseDataFromSupabase = useCallback(async () => {
@@ -39,7 +34,7 @@ const Registry = () => {
 
       data?.forEach((dbItem) => {
         // Match database items to registry items by name and brand
-        const registryItem = registryItems.find(item => 
+        const registryItem = allRegistryItems.find(item => 
           item.name === dbItem.name && item.brand === dbItem.brand
         );
         
@@ -98,7 +93,7 @@ const Registry = () => {
 
   // Use the same featured items as homepage (items 118, 119, 120, 121, 122)
   const featuredItemIds = [118, 119, 120, 121, 122];
-  const featuredItems = registryItems.filter(item => featuredItemIds.includes(item.id));
+  const featuredItems = allRegistryItems.filter(item => featuredItemIds.includes(item.id));
 
   // Check for highlight parameter and show all items if coming from homepage
   useEffect(() => {
@@ -282,25 +277,12 @@ const Registry = () => {
             getRemainingQuantity={getRemainingQuantity}
           />
 
-          <RegistryFilters 
-            showAllItems={showAllItems}
-            onToggleShowAll={() => setShowAllItems(!showAllItems)}
+          <CategoryTabs
+            highlightItemId={highlightItemId}
+            onPurchaseConfirm={handlePurchaseConfirm}
+            isItemUnavailable={isItemUnavailable}
+            getRemainingQuantity={getRemainingQuantity}
           />
-
-          {showAllItems && (
-            <PaginatedItems 
-              items={uniqueRemainingItems}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              itemsPerPage={itemsPerPage}
-              highlightItemId={highlightItemId}
-              onPurchaseConfirm={handlePurchaseConfirm}
-              isItemUnavailable={isItemUnavailable}
-              getRemainingQuantity={getRemainingQuantity}
-              onPreviousPage={handlePreviousPage}
-              onNextPage={handleNextPage}
-            />
-          )}
 
           <PurchaseInfo />
 
