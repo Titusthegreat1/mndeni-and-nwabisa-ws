@@ -2,9 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Navigation from '../components/Navigation';
 import ScrollToTop from '@/components/ScrollToTop';
 import RegistryHeader from '../components/registry/RegistryHeader';
-import CategoryTabs from '../components/registry/CategoryTabs';
+import RegistryFilters from '../components/registry/RegistryFilters';
 import FeaturedItems from '../components/registry/FeaturedItems';
-import { allRegistryItems, RegistryItem } from '../components/registry/RegistryItems';
+import PaginatedItems from '../components/registry/PaginatedItems';
+import { registryItems, RegistryItem } from '../components/registry/RegistryItems';
 import { supabase } from '@/integrations/supabase/client';
 import PurchaseInfo from '../components/registry/PurchaseInfo';
 import { useToast } from '@/hooks/use-toast';
@@ -13,9 +14,12 @@ import { ExternalLink } from 'lucide-react';
 
 const Registry = () => {
   const { toast } = useToast();
+  const [showAllItems, setShowAllItems] = useState(false);
   const [itemQuantities, setItemQuantities] = useState<Record<number, number>>({});
   const [purchasedItems, setPurchasedItems] = useState(new Set());
+  const [currentPage, setCurrentPage] = useState(1);
   const [highlightItemId, setHighlightItemId] = useState<number | null>(null);
+  const itemsPerPage = 6;
 
   // Load purchase data from Supabase
   const loadPurchaseDataFromSupabase = useCallback(async () => {
@@ -35,7 +39,7 @@ const Registry = () => {
 
       data?.forEach((dbItem) => {
         // Match database items to registry items by name and brand
-        const registryItem = allRegistryItems.find(item => 
+        const registryItem = registryItems.find(item => 
           item.name === dbItem.name && item.brand === dbItem.brand
         );
         
@@ -94,9 +98,9 @@ const Registry = () => {
 
   // Use the same featured items as homepage (items 118, 119, 120, 121, 122)
   const featuredItemIds = [118, 119, 120, 121, 122];
-  const featuredItems = allRegistryItems.filter(item => featuredItemIds.includes(item.id));
+  const featuredItems = registryItems.filter(item => featuredItemIds.includes(item.id));
 
-  // Check for highlight parameter from homepage
+  // Check for highlight parameter and show all items if coming from homepage
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const highlightId = urlParams.get('highlight');
@@ -104,24 +108,56 @@ const Registry = () => {
     if (highlightId) {
       const itemId = parseInt(highlightId);
       setHighlightItemId(itemId);
+      setShowAllItems(true);
       
       // Clear highlight after 3 seconds
       setTimeout(() => {
         setHighlightItemId(null);
       }, 3000);
       
-      // Scroll to registry section after brief delay
-      setTimeout(() => {
-        const registrySection = document.getElementById('registry-section');
-        if (registrySection) {
-          registrySection.scrollIntoView({ behavior: 'smooth' });
+      // Find which page the highlighted item is on in the complete registry
+      const allItems = registryItems;
+      const itemIndex = allItems.findIndex(item => item.id === itemId);
+      
+      if (itemIndex !== -1) {
+        // Check if item is in featured items first
+        const isFeatured = featuredItemIds.includes(itemId);
+        
+        if (!isFeatured) {
+          // For non-featured items, find the correct page in the "View All" section
+          const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
+          const filteredItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
+          const uniqueItems = filteredItems.filter((item, index, self) => 
+            index === self.findIndex(i => i.id === item.id)
+          );
+          
+          const highlightedItemIndex = uniqueItems.findIndex(item => item.id === itemId);
+          if (highlightedItemIndex !== -1) {
+            const pageIndex = Math.floor(highlightedItemIndex / itemsPerPage);
+            setCurrentPage(pageIndex + 1);
+          }
         }
-      }, 500);
-    } else if (window.location.hash === '#registry-section') {
+        
+        // Scroll to the highlighted item after a brief delay
+        setTimeout(() => {
+          if (isFeatured) {
+            // Scroll to featured items section
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            // Scroll to all items section and then to the specific item
+            const allItemsSection = document.getElementById('all-registry-items');
+            if (allItemsSection) {
+              allItemsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }, 500);
+      }
+    } else if (window.location.hash === '#all-registry-items') {
+      setShowAllItems(true);
       setTimeout(() => {
-        const registrySection = document.getElementById('registry-section');
-        if (registrySection) {
-          registrySection.scrollIntoView({ behavior: 'smooth' });
+        const allItemsSection = document.getElementById('all-registry-items');
+        if (allItemsSection) {
+          allItemsSection.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
     } else {
@@ -129,6 +165,18 @@ const Registry = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, []);
+  
+  // Rearrange items: move first 20 to pages 6 and 7, others move up
+  // Also exclude featured items from the "View All" section
+  const rearrangedItems = [...registryItems.slice(20), ...registryItems.slice(4, 20)];
+  const remainingItems = rearrangedItems.filter(item => !featuredItemIds.includes(item.id));
+  
+  // Remove duplicates based on ID to prevent repetition
+  const uniqueRemainingItems = remainingItems.filter((item, index, self) => 
+    index === self.findIndex(i => i.id === item.id)
+  );
+  
+  const totalPages = Math.ceil(uniqueRemainingItems.length / itemsPerPage);
 
   const handlePurchaseConfirm = async (item: RegistryItem, buyerName: string, buyerSurname: string) => {
     try {
@@ -195,6 +243,28 @@ const Registry = () => {
     return Math.max(0, totalQuantity - purchasedQuantity);
   };
 
+  const scrollToAllItems = () => {
+    const allItemsSection = document.getElementById('all-registry-items');
+    if (allItemsSection) {
+      allItemsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handlePreviousPage = () => {
+    const newPage = Math.max(currentPage - 1, 1);
+    setCurrentPage(newPage);
+    setTimeout(() => {
+      scrollToAllItems();
+    }, 100);
+  };
+
+  const handleNextPage = () => {
+    const newPage = Math.min(currentPage + 1, totalPages);
+    setCurrentPage(newPage);
+    setTimeout(() => {
+      scrollToAllItems();
+    }, 100);
+  };
 
   return (
     <div id="top" className="min-h-screen bg-cream">
@@ -212,14 +282,25 @@ const Registry = () => {
             getRemainingQuantity={getRemainingQuantity}
           />
 
-          <div id="registry-section">
-            <CategoryTabs
+          <RegistryFilters 
+            showAllItems={showAllItems}
+            onToggleShowAll={() => setShowAllItems(!showAllItems)}
+          />
+
+          {showAllItems && (
+            <PaginatedItems 
+              items={uniqueRemainingItems}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              itemsPerPage={itemsPerPage}
               highlightItemId={highlightItemId}
               onPurchaseConfirm={handlePurchaseConfirm}
               isItemUnavailable={isItemUnavailable}
               getRemainingQuantity={getRemainingQuantity}
+              onPreviousPage={handlePreviousPage}
+              onNextPage={handleNextPage}
             />
-          </div>
+          )}
 
           <PurchaseInfo />
 

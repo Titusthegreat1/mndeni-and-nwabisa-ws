@@ -56,5 +56,16 @@ export const cookwareItems: RegistryItem[] = [
     available: true,
     image: "/lovable-uploads/211093bd-3b08-475c-a63a-314b18b8cf0b.png",
     websiteUrl: "https://www.woolworths.co.za/prod/_/A-506308548"
+  },
+  {
+    id: 230,
+    name: "Bastille 8 Piece Set | 18/10 Stainless Steel Pot Set",
+    brand: "BASTILLE",
+    price: "R3,999.00",
+    size: "8-Piece Set",
+    color: "Stainless Steel",
+    available: true,
+    image: "/lovable-uploads/fb703eab-4440-465f-9545-6c5d9b636596.png",
+    websiteUrl: "https://verimark.co.za/bastille-8-pc-set"
   }
 ];
