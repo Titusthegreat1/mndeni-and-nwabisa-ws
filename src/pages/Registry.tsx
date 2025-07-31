@@ -63,7 +63,7 @@ const Registry = () => {
 
   // Setup real-time subscription for cross-device synchronization
   const setupRealtimeSubscription = useCallback(() => {
-    console.log('Setting up realtime subscription...');
+    console.log('Setting up realtime subscription for cross-platform monitoring...');
     
     const channel = supabase
       .channel('registry-changes')
@@ -75,14 +75,24 @@ const Registry = () => {
           table: 'registry_items'
         },
         (payload) => {
-          console.log('Real-time update received:', payload);
-          // Reload data when changes occur
+          console.log('Real-time update received - cross-platform sync:', payload);
+          
+          // Immediately reload data when changes occur to ensure sync across devices
           loadPurchaseDataFromSupabase();
+          
+          // Show toast notification for real-time updates
+          if (payload.eventType === 'UPDATE' && payload.new?.purchased_quantity !== payload.old?.purchased_quantity) {
+            toast({
+              title: "Item Updated",
+              description: `${payload.new.name} availability updated across all devices`,
+            });
+          }
         }
       )
       .subscribe();
 
     return () => {
+      console.log('Cleaning up realtime subscription');
       supabase.removeChannel(channel);
     };
   }, [loadPurchaseDataFromSupabase]);

@@ -37,26 +37,46 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { itemId, itemName, itemBrand, itemPrice, itemSize, itemColor, itemWebsiteUrl, buyerName, buyerSurname, buyerEmail, requestDelivery }: RegistryEmailRequest = await req.json();
 
-    // Store the confirmed purchase in database
-    const { error: dbError } = await supabase
-      .from('registry_purchases')
-      .insert({
-        item_id: itemId,
-        item_name: itemName,
-        item_brand: itemBrand,
-        item_price: itemPrice,
-        item_size: itemSize,
-        item_color: itemColor,
-        buyer_name: buyerName,
-        buyer_surname: buyerSurname,
-        buyer_email: buyerEmail,
-        redirect_url: itemWebsiteUrl,
-        purchase_confirmed: true
-      });
+    // Store the confirmed purchase in database with retry logic for robustness
+    let dbAttempts = 0;
+    let dbError;
+    const maxDbRetries = 3;
+    
+    while (dbAttempts < maxDbRetries) {
+      const { error } = await supabase
+        .from('registry_purchases')
+        .insert({
+          item_id: itemId,
+          item_name: itemName,
+          item_brand: itemBrand,
+          item_price: itemPrice,
+          item_size: itemSize,
+          item_color: itemColor,
+          buyer_name: buyerName,
+          buyer_surname: buyerSurname,
+          buyer_email: buyerEmail,
+          redirect_url: itemWebsiteUrl,
+          purchase_confirmed: true
+        });
+
+      if (!error) {
+        console.log("Purchase successfully stored in database");
+        break;
+      }
+      
+      dbError = error;
+      dbAttempts++;
+      console.error(`Database error (attempt ${dbAttempts}/${maxDbRetries}):`, error);
+      
+      if (dbAttempts < maxDbRetries) {
+        console.log(`Retrying database operation in 1 second...`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
 
     if (dbError) {
-      console.error("Database error:", dbError);
-      throw new Error("Failed to store purchase information");
+      console.error("Failed to store purchase after all retries:", dbError);
+      throw new Error("Failed to store purchase information - cross-platform sync may be affected");
     }
 
     // Build additional requests section
@@ -85,9 +105,26 @@ They have been directed to complete their purchase from the retailer.
 Best regards,
 Wedding Registry System`;
 
-    // Send emails
+    // Send emails with enhanced error handling and retry logic
+    const sendEmailWithRetry = async (emailConfig, retries = 2) => {
+      for (let attempt = 0; attempt <= retries; attempt++) {
+        try {
+          const response = await resend.emails.send(emailConfig);
+          console.log(`Email sent successfully on attempt ${attempt + 1}:`, response);
+          return response;
+        } catch (error) {
+          console.error(`Email send attempt ${attempt + 1} failed:`, error);
+          if (attempt === retries) {
+            throw error;
+          }
+          // Wait before retry
+          await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1)));
+        }
+      }
+    };
+
     const emailPromises = [
-      resend.emails.send({
+      sendEmailWithRetry({
         from: "Wedding Registry <onboarding@resend.dev>",
         to: ["titus2luvo@gmail.com"],
         subject: ownerSubject,
@@ -116,7 +153,7 @@ Best regards,
 Wedding Registry Team`;
 
       emailPromises.push(
-        resend.emails.send({
+        sendEmailWithRetry({
           from: "Wedding Registry <onboarding@resend.dev>",
           to: [buyerEmail],
           subject: buyerSubject,
@@ -125,8 +162,14 @@ Wedding Registry Team`;
       );
     }
 
-    const emailResponses = await Promise.all(emailPromises);
-    console.log("Emails sent successfully:", emailResponses);
+    try {
+      const emailResponses = await Promise.all(emailPromises);
+      console.log("All emails sent successfully:", emailResponses);
+    } catch (emailError) {
+      console.error("Email sending failed after retries:", emailError);
+      // Don't throw here - purchase was already recorded, just log the email failure
+      console.log("Purchase recorded successfully but email notification failed - manual follow-up may be needed");
+    }
 
     return new Response(JSON.stringify({ 
       success: true,
