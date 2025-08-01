@@ -261,11 +261,26 @@ const Index = () => {
 
       {/* Developer Credit Footer */}
       <footer className="text-center text-xs text-muted-foreground py-5 font-sans bg-background">
-        © 2025 Mndeni & Nwabisa | Made with ❤️ by{' '}
-        <span className="text-cyan-400">
-          TechNova
+        © 2025 Mndeni & Nwabisa | Website built by Luvo Titus
+        <br />
+        <span className="text-[0.7rem]">
+          Need a website?{' '}
+          <a 
+            href="mailto:technovawebsolutions@gmail.com" 
+            className="text-cyan-400 hover:text-cyan-300 transition-colors no-underline"
+          >
+            Email me
+          </a>
+          {' '}or{' '}
+          <a 
+            href="https://wa.me/27710762021" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:text-cyan-300 transition-colors no-underline"
+          >
+            WhatsApp me
+          </a>
         </span>
-        {' '}— Luvo Titus
       </footer>
     </div>
   );
