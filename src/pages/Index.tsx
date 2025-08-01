@@ -264,22 +264,10 @@ const Index = () => {
         © 2025 Mndeni & Nwabisa | Website built by Luvo Titus
         <br />
         <span className="text-[0.7rem]">
-          Need a website?{' '}
-          <a 
-            href="mailto:technovawebsolutions@gmail.com" 
-            className="text-cyan-400 hover:text-cyan-300 transition-colors no-underline"
-          >
-            Email me
-          </a>
-          {' '}or{' '}
-          <a 
-            href="https://wa.me/27710762021" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors no-underline"
-          >
-            WhatsApp me
-          </a>
+          Need a website? Email: 
+          <span className="text-cyan-400">technovawebsolutions@gmail.com</span>
+          {' '}or WhatsApp: 
+          <span className="text-cyan-400">+27 71 076 2021</span>
         </span>
       </footer>
     </div>
