@@ -240,8 +240,8 @@ const RSVP = () => {
           <div className="text-center mt-8 p-6 bg-white/50 rounded-lg">
             <p className="text-brown/80">
               Questions? Contact us at{' '}
-              <a href="mailto:titus3luvo@gmail.com" className="text-terracotta hover:underline">
-                titus3luvo@gmail.com
+              <a href="mailto:dimphoparkies@gmail.com" className="text-terracotta hover:underline">
+                dimphoparkies@gmail.com
               </a>
             </p>
           </div>
