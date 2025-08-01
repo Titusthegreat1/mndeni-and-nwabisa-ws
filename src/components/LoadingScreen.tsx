@@ -10,8 +10,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
-    // Simulate loading progress - extended by 9 seconds (9000ms)
-    const totalDuration = 11000; // Original was ~2000ms, now 11000ms for 9 extra seconds
+    // Simulate loading progress - extended by 8 seconds (8000ms)
+    const totalDuration = 10000; // Original was ~2000ms, now 10000ms for 8 extra seconds
     const intervalDelay = 150; // Slower progress updates
     
     const progressInterval = setInterval(() => {
