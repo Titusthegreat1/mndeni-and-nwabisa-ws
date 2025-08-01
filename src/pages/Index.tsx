@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import CountdownTimer from '../components/CountdownTimer';
-import { MapPin, Calendar, ExternalLink, Gift } from 'lucide-react';
+import { MapPin, Calendar, ExternalLink, Gift, Bed } from 'lucide-react';
 import { registryItems } from '../components/registry/RegistryItems';
 
 const Index = () => {
@@ -104,16 +104,25 @@ const Index = () => {
           <p className="text-lg text-brown/80 mb-8">
             Join us at this beautiful location for our special day
           </p>
-          <a 
-            href="https://maps.google.com/?q=-28.279469,32.148525"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-brown hover:bg-brown/90 text-cream px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-          >
-            <MapPin className="w-5 h-5" />
-            <span>View Location on Google Maps</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="https://maps.google.com/?q=-28.279469,32.148525"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-brown hover:bg-brown/90 text-cream px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+            >
+              <MapPin className="w-5 h-5" />
+              <span>View Location on Google Maps</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+            <Link 
+              to="/accommodation" 
+              className="inline-flex items-center gap-3 bg-terracotta hover:bg-terracotta/90 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+            >
+              <Bed className="w-5 h-5" />
+              <span>View Accommodation</span>
+            </Link>
+          </div>
         </div>
       </section>
 
