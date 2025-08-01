@@ -258,6 +258,20 @@ const Index = () => {
           <p className="text-sm text-cream/60 mt-4">Made with love for our special day</p>
         </div>
       </footer>
+
+      {/* Developer Credit Footer */}
+      <footer className="text-center text-xs text-muted-foreground py-5 font-sans bg-background">
+        © 2025 Mndeni & Nwabisa | Made with ❤️ by{' '}
+        <a 
+          href="https://technovawebsolutions.lovable.app" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-cyan-400 hover:text-cyan-300 transition-colors no-underline"
+        >
+          TechNova
+        </a>
+        {' '}— Luvo Titus
+      </footer>
     </div>
   );
 };
