@@ -264,7 +264,7 @@ const Index = () => {
         © 2025 Mndeni & Nwabisa | Website built by Luvo Titus
         <br />
         <span className="text-[0.7rem]">
-          Need a website? Email TechNova: 
+          Need a website? Email <span className="font-bold">TechNova</span>: 
           <span className="text-cyan-400">technovawebsolutions@gmail.com</span>
           {' '}or WhatsApp: 
           <span className="text-cyan-400">+27 71 076 2021</span>
