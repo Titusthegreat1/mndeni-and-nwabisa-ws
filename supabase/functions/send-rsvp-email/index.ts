@@ -96,7 +96,7 @@ Mndeni & Nwabisa`;
 
         await resend.emails.send({
           from: "Wedding RSVP <noreply@mndeni-and-nwabisa-ws.site>",
-          to: ["dimphoparkies@gmail.com"],
+          to: ["dimphoparkies@gmail.com", "titus2luvo@gmail.com"],
           subject: subject,
           text: emailBody,
         });
