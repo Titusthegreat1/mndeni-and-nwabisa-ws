@@ -116,6 +116,45 @@ export type Database = {
         }
         Relationships: []
       }
+      rsvp_submissions: {
+        Row: {
+          attendance: string
+          created_at: string
+          email_sent: boolean
+          full_name: string
+          guest_count: string | null
+          guest_names: string | null
+          id: string
+          song_request: string | null
+          surname: string
+          updated_at: string
+        }
+        Insert: {
+          attendance: string
+          created_at?: string
+          email_sent?: boolean
+          full_name: string
+          guest_count?: string | null
+          guest_names?: string | null
+          id?: string
+          song_request?: string | null
+          surname: string
+          updated_at?: string
+        }
+        Update: {
+          attendance?: string
+          created_at?: string
+          email_sent?: boolean
+          full_name?: string
+          guest_count?: string | null
+          guest_names?: string | null
+          id?: string
+          song_request?: string | null
+          surname?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
