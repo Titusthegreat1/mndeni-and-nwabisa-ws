@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      blessings: {
+        Row: {
+          created_at: string
+          id: string
+          likes: number
+          message: string
+          name: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          likes?: number
+          message: string
+          name?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          likes?: number
+          message?: string
+          name?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       registry_items: {
         Row: {
           brand: string

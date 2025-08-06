@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import CountdownTimer from '../components/CountdownTimer';
+import WallOfBlessings from '../components/blessings/WallOfBlessings';
 import { MapPin, Calendar, ExternalLink, Gift, Bed } from 'lucide-react';
 import { registryItems } from '../components/registry/RegistryItems';
 
@@ -230,6 +231,9 @@ const Index = () => {
           </Link>
         </div>
       </section>
+
+      {/* Wall of Blessings Section */}
+      <WallOfBlessings />
 
       {/* Traditional Elements Section */}
       <section className="py-16 bg-white">
