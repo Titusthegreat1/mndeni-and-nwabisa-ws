@@ -10,16 +10,15 @@ const FloatingCelebrationBadge: React.FC<FloatingCelebrationBadgeProps> = ({ day
 
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-scale-in">
-      <div className="bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-full p-4 shadow-2xl animate-pulse hover:scale-110 transition-transform duration-300">
-        <div className="flex items-center space-x-2">
-          <Calendar className="w-5 h-5" />
+      <div className="bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-full p-2 shadow-lg hover:scale-110 transition-transform duration-300">
+        <div className="flex items-center space-x-1">
+          <Calendar className="w-4 h-4" />
           <div className="text-center">
-            <div className="font-bold text-lg">{daysLeft}</div>
+            <div className="font-bold text-sm">{daysLeft}</div>
             <div className="text-xs opacity-90">DAYS</div>
           </div>
-          <Sparkles className="w-5 h-5" />
+          <Sparkles className="w-4 h-4" />
         </div>
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full animate-ping"></div>
       </div>
     </div>
   );
