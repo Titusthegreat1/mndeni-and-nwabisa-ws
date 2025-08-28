@@ -1,13 +1,31 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import CountdownTimer from '../components/CountdownTimer';
 import WallOfBlessings from '../components/blessings/WallOfBlessings';
+import MilestoneBanner from '../components/celebration/MilestoneBanner';
+import FloatingCelebrationBadge from '../components/celebration/FloatingCelebrationBadge';
+import SparkleEffect from '../components/celebration/SparkleEffect';
 import { MapPin, Calendar, ExternalLink, Gift, Bed } from 'lucide-react';
 import { registryItems } from '../components/registry/RegistryItems';
+import { getDaysUntilWedding } from '../utils/dateUtils';
 
 const Index = () => {
+  const [daysLeft, setDaysLeft] = useState(0);
+  
+  useEffect(() => {
+    // Update days left
+    const updateDaysLeft = () => {
+      setDaysLeft(getDaysUntilWedding());
+    };
+    
+    updateDaysLeft();
+    const interval = setInterval(updateDaysLeft, 60000); // Update every minute
+    
+    return () => clearInterval(interval);
+  }, []);
+
   const previewImages = [
     '/lovable-uploads/d0daea06-f034-4959-8fec-504591a3275e.png', // Couple dining with mountain view
     '/lovable-uploads/e7ea9398-fb87-47e1-8391-e451b1810821.png', // Casual selfie together
@@ -33,6 +51,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-cream">
+      {/* Milestone Banner */}
+      <MilestoneBanner daysLeft={daysLeft} />
+      
       <Navigation />
       
       {/* Hero Section */}
@@ -45,6 +66,9 @@ const Index = () => {
         >
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
+        
+        {/* Sparkle Effect */}
+        <SparkleEffect daysLeft={daysLeft} />
         
         {/* Custom CSS for background positioning */}
         <style dangerouslySetInnerHTML={{
@@ -69,6 +93,13 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 animate-fade-in">
             Join Us for Our Traditional Wedding Celebration
           </p>
+          {daysLeft <= 30 && daysLeft > 0 && (
+            <div className="mb-4 animate-scale-in">
+              <p className="text-amber-200 font-semibold text-lg">
+                🌟 Only {daysLeft} days until our special day! 🌟
+              </p>
+            </div>
+          )}
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 text-lg animate-fade-in">
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
@@ -95,6 +126,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      {/* Floating Celebration Badge */}
+      <FloatingCelebrationBadge daysLeft={daysLeft} />
 
       {/* Location Section */}
       <section className="py-16 bg-sand">
