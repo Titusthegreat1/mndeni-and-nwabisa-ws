@@ -85,17 +85,6 @@ export const kitchenwareItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/cuisine-pro-sabre-knife-block-9pc-153300aapk4/p"
   },
   {
-    id: 42,
-    name: "Wolstead Insignia Knife Block Set, 5-Piece",
-    brand: "WOLSTEAD",
-    price: "R1,799.00",
-    size: "KNIVES",
-    color: "Black",
-    available: true,
-    image: "/lovable-uploads/c5b2e663-3192-4e77-b00a-225b7b3adc38.png",
-    websiteUrl: "https://m.yuppiechef.com/wolstead.htm?id=66179&name=Wolstead-Insignia-Knife-Block-Set-5-Piece"
-  },
-  {
     id: 43,
     name: "Bamboo Braai Case, 3-Piece",
     brand: "GIFT BASKETS",
