@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { isRSVPAvailable } from '@/utils/dateUtils';
 
 const RSVP = () => {
   const { toast } = useToast();
@@ -17,6 +18,7 @@ const RSVP = () => {
     songRequest: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const rsvpAvailable = isRSVPAvailable();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -89,18 +91,31 @@ const RSVP = () => {
             <p className="text-lg text-brown/80 mb-4">
               We would be honored by your presence at our special day
             </p>
-            <div className="bg-terracotta/10 border border-terracotta/30 rounded-lg p-4 mb-6">
-              <p className="text-terracotta font-semibold text-lg">
-                ⏰ RSVP Deadline: 31 August 2025
-              </p>
-              <p className="text-brown/70 text-sm mt-1">
-                Please respond by this date to help us with our planning
-              </p>
+            <div className={`${rsvpAvailable ? 'bg-terracotta/10 border-terracotta/30' : 'bg-red-50 border-red-300'} border rounded-lg p-4 mb-6`}>
+              {rsvpAvailable ? (
+                <>
+                  <p className="text-terracotta font-semibold text-lg">
+                    ⏰ RSVP Deadline: 31 August 2025
+                  </p>
+                  <p className="text-brown/70 text-sm mt-1">
+                    Please respond by this date to help us with our planning
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-red-600 font-semibold text-lg">
+                    ❌ RSVPs are no longer available
+                  </p>
+                  <p className="text-red-500 text-sm mt-1">
+                    The RSVP deadline has passed. Please contact us directly if you need to make changes.
+                  </p>
+                </>
+              )}
             </div>
             <div className="geometric-divider w-24 mx-auto mt-6"></div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8 space-y-6">
+          <form onSubmit={handleSubmit} className={`bg-white rounded-lg shadow-lg p-8 space-y-6 ${!rsvpAvailable ? 'opacity-50 pointer-events-none' : ''}`}>
             {/* Full Name */}
             <div>
               <Label htmlFor="fullName" className="text-brown font-semibold">
