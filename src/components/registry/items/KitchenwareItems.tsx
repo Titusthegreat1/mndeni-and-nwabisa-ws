@@ -74,17 +74,6 @@ export const kitchenwareItems: RegistryItem[] = [
     websiteUrl: "https://bash.com/ciroa-set-of-2-sieve-154606aaaa5/p"
   },
   {
-    id: 25,
-    name: "Cuisine::pro Sabre Knife Block 9Pc",
-    brand: "CUISINE::PRO",
-    price: "R1,699.15",
-    size: "KNIVES",
-    color: "Multicolour",
-    available: true,
-    image: "/lovable-uploads/8ecb6fcf-3ffe-47a4-aa61-95b2e17c1f2b.png",
-    websiteUrl: "https://bash.com/cuisine-pro-sabre-knife-block-9pc-153300aapk4/p"
-  },
-  {
     id: 43,
     name: "Bamboo Braai Case, 3-Piece",
     brand: "GIFT BASKETS",

@@ -3,17 +3,6 @@ import { RegistryItem } from '../types';
 
 export const appliancesItems: RegistryItem[] = [
   {
-    id: 15,
-    name: "Cuisine::pro Electric Knife Sharpener",
-    brand: "Cuisine::pro",
-    price: "R1,359.15",
-    size: "ELECTRIC",
-    color: "Grey",
-    available: true,
-    image: "/lovable-uploads/13f2a416-1a82-4227-b37f-ec3204469901.png",
-    websiteUrl: "https://bash.com/cuisine-pro-electric-knife-sharpener-153301aanm6/p?skuId=1676399"
-  },
-  {
     id: 29,
     name: "Delonghi Icona Metallics 4 Slice Toaster",
     brand: "DELONGHI",
