@@ -254,9 +254,13 @@ const RSVP = () => {
 
           <div className="text-center mt-8 p-6 bg-white/50 rounded-lg">
             <p className="text-brown/80">
-              Questions? Contact us at{' '}
+              Questions about your RSVP? Contact Dimpho at{' '}
               <a href="mailto:dimphoparkies@gmail.com" className="text-terracotta hover:underline">
                 dimphoparkies@gmail.com
+              </a>
+              {' '}or{' '}
+              <a href="tel:+27836727679" className="text-terracotta hover:underline">
+                +27 83 672 7679
               </a>
             </p>
           </div>
