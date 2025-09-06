@@ -107,7 +107,11 @@ const RSVP = () => {
                     ❌ RSVPs are no longer available
                   </p>
                   <p className="text-red-500 text-sm mt-1">
-                    The RSVP deadline has passed. Please contact us directly if you need to make changes.
+                    The RSVP deadline has passed. Please contact Dimpho directly at{' '}
+                    <a href="tel:+27836727679" className="text-terracotta hover:underline font-semibold">
+                      +27 83 672 7679
+                    </a>
+                    {' '}if you need to make changes.
                   </p>
                 </>
               )}
