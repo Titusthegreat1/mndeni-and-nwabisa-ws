@@ -1,0 +1,1 @@
+DELETE FROM registry_purchases WHERE item_id = 40 AND buyer_name = 'Ayanda' AND buyer_surname = 'Motau';
