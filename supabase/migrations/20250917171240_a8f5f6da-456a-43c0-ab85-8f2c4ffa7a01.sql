@@ -1,0 +1,1 @@
+UPDATE registry_items SET purchased_quantity = 0, updated_at = now() WHERE name = 'Nouvelle Cast Iron 8-Piece Cookware Set - Matt Black' AND brand = 'Nouvelle';
