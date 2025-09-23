@@ -26,6 +26,7 @@ export const accommodations: AccommodationPlace[] = [
     features: ["Lush gardens", "Landscaped grounds", "Excellent service", "Peaceful atmosphere"],
     image: "/lovable-uploads/9259e865-96f4-49ab-8d1a-7b361ffef11a.png",
     website: "https://search.app/23kwU1767jNrM6uT8",
+    fullyBooked: true,
     contact: {
       name: "Amahle",
       phone: "Contact Amahle for booking inquiries",
@@ -147,6 +148,7 @@ export const accommodations: AccommodationPlace[] = [
     features: ["Private space", "Home comforts", "Intimate setting", "Personalized accommodation"],
     image: "/lovable-uploads/644e97d3-886b-4343-b98b-05728ca0e1d8.png",
     website: "https://www.airbnb.com/l/7Q5hfzh0",
+    fullyBooked: true,
     contact: {
       name: "Amahle",
       phone: "Contact Amahle for booking inquiries",
@@ -162,6 +164,7 @@ export const accommodations: AccommodationPlace[] = [
     features: ["Modern amenities", "Welcoming atmosphere", "Comfortable stay", "Home-like experience"],
     image: "/lovable-uploads/2379af8a-8fdf-4a49-95c0-2388b151d613.png",
     website: "https://www.airbnb.com/l/b1ZEXCc6",
+    fullyBooked: true,
     contact: {
       name: "Amahle",
       phone: "Contact Amahle for booking inquiries",
@@ -177,6 +180,7 @@ export const accommodations: AccommodationPlace[] = [
     features: ["High-end amenities", "Elegant design", "Luxury living", "Premium accommodation"],
     image: "/lovable-uploads/2379af8a-8fdf-4a49-95c0-2388b151d613.png",
     website: "https://www.airbnb.com/l/LIizODyo",
+    fullyBooked: true,
     contact: {
       name: "Amahle",
       phone: "Contact Amahle for booking inquiries",
