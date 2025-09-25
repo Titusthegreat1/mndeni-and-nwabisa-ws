@@ -121,19 +121,19 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           </p>
 
           {/* Rotating blessing messages or fallback */}
-          <div className="min-h-[4rem] flex items-center justify-center px-4">
-            <div className={`transition-all duration-300 ${showBlessing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+          <div className="min-h-[6rem] flex items-center justify-center px-2 sm:px-4">
+            <div className={`transition-all duration-300 w-full max-w-sm sm:max-w-md ${showBlessing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
               {blessings.length > 0 ? (
                 <div className="text-center">
-                  <p className="text-sm md:text-base text-slate-300 italic mb-2 max-w-xs md:max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-300 italic mb-3 leading-relaxed">
                     "{blessings[currentBlessingIndex]?.message}"
                   </p>
-                  <p className="text-xs md:text-sm text-rose-300 font-medium">
+                  <p className="text-sm text-rose-300 font-medium">
                     — {blessings[currentBlessingIndex]?.name || 'A loving friend'}
                   </p>
                 </div>
               ) : (
-                <p className="text-sm md:text-base text-slate-400 italic max-w-xs md:max-w-md mx-auto leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-400 italic leading-relaxed text-center">
                   "Love is not just about finding the right person, but creating a right relationship with the people who matter most..."
                 </p>
               )}
