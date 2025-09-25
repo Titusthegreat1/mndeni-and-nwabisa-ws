@@ -25,7 +25,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         const { data } = await supabase
           .from('blessings')
           .select('name, message')
-          .order('created_at', { ascending: false })
+          .order('random()')
           .limit(6);
         
         if (data && data.length > 0) {
