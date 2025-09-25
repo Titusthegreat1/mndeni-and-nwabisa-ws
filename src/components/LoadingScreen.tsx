@@ -39,7 +39,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     fetchBlessings();
   }, []);
 
-  // Rotate blessing messages every 2.5 seconds
+  // Rotate blessing messages every 4 seconds
   useEffect(() => {
     if (blessings.length <= 1) return;
 
@@ -49,14 +49,14 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         setCurrentBlessingIndex(prev => (prev + 1) % blessings.length);
         setShowBlessing(true);
       }, 300); // Quick fade out before changing
-    }, 2500);
+    }, 4000);
 
     return () => clearInterval(rotationInterval);
   }, [blessings.length]);
 
   useEffect(() => {
-    // Simulate loading progress - extended to 13 seconds
-    const totalDuration = 13000; // 13 seconds total duration
+    // Simulate loading progress - extended to 16 seconds
+    const totalDuration = 16000; // 16 seconds total duration
     const intervalDelay = 150; // Slower progress updates
     
     const progressInterval = setInterval(() => {
